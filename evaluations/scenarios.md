@@ -8,9 +8,13 @@ A successful exercise checks applicability and may reveal ambiguity. It does not
 
 A Spring/JPA service adds reservation create/read. Its generated API request contains a customer UUID, response contains a database-generated ID and status, and the contract defines PENDING/CONFIRMED. The repository uses MapStruct and Lombok. Provide the handwritten structure, write/read flow and focused tests. Identify evidence that cannot be obtained without the actual database/build.
 
-## Python application and utility
+## Python backend feature and utility
 
-An ingestion application using uv/Ruff/pytest receives a provider timeout before replacing a stored dataset. Its internal API client is generated from OpenAPI using HTTPX. Show the failure handling, model placement and tests for successful and malformed responses. Its environment has no mypy configuration. Separately implement a small CSV-counting CLI and explain its structure.
+A new Python application periodically reads a partner catalogue and publishes available items through an internal API whose client is generated from OpenAPI using HTTPX. The partner JSON contains an item identifier, label, available quantity and a completeness marker. The internal API accepts a named publication request and returns an acknowledgement. Service URLs, a credential and operation limits come from process configuration. Implement a small vertical slice and its tests, including a second execution and interruptions. Explain the selected boundaries and unavailable proof. Separately provide a small CSV-counting CLI.
+
+The [replay request](python-backend/request.md) supplies the concrete neutral task and raw contract/fixtures used for the Python convergence exercise. It does not supply expected implementation files.
+
+For a convergence evaluation, give two independent agents this same prompt, the same raw contract/fixtures and the same relevant skills, without a target architecture or the other agent's output. Compare concrete ownership, models, conversions, error/lifecycle behavior and readable tests; do not require identical file counts or wording. A separate adoption question supplies an existing uv/Ruff/pytest application with no mypy configuration and asks what changes the skill alone authorizes.
 
 ## React editing
 

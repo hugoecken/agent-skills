@@ -1,38 +1,51 @@
 ---
 name: python-testing
-description: "Test Python scripts, typed applications and asynchronous boundaries with pytest and controlled fixtures. Includes conditional ingestion characterization and lifecycle testing."
+description: "Write and review readable pytest tests for typed Python use cases, mapping, configuration, generated clients and async lifecycle. Includes conditional provider-ingestion evidence."
 ---
 
 # Python testing
 
-Use pytest through the repository's configured verification target. Protect observable behavior and important boundaries; no coverage percentage or mandatory TDD ceremony. Start a regression fix with a failing reproduction when practical. Characterize an affected seam before refactoring it.
+Use the repository's verification targets and actual interpreter/tool versions. Tests protect observable behavior and important boundaries; no universal coverage target or mandatory TDD ceremony. A regression starts with a failing reproduction when practical; a refactor characterizes the changed seam. New handwritten modules and their tests use mypy strict. Existing projects adopt missing tooling separately, never as a side effect of installing this skill.
 
-## Ordinary tests
+## Location and readable shape
 
-Mirror production feature/role ownership under `tests`; keep integrations beside their boundary owner, not in a global unit/integration split. Name files `test_<boundary>.py` and tests `test_<observable_behavior>`. Use visible `# Given`, `# When` and `# Then` comments and blank lines between phases. Test pure functions using meaningful explicit inputs/results. Keep one-off data local; extract fixtures and fakes only when several tests share a stable need. A small utility does not need an ingestion test architecture.
+Mirror feature/role ownership under `tests`, keeping integration tests beside their boundary owner. Use `test_<boundary>.py` and `test_<observable_behavior>`. Reserve transversal locations for actual cross-boundary scenarios, not a global unit/integration split. Use visible `# Given`, `# When`, `# Then` phases; a combined `# When / Then` is appropriate for an exception assertion enclosing the operation.
 
-Prefer real values and small handwritten fakes for external seams. Do not mock dataclasses, enums or the object under test. No private-method probing, broad snapshots, source-spelling assertions, arbitrary sleeps, production data or live providers. Logs need assertions only when their content is supported behavior.
+The title, decisive values, real/replaced dependencies, action and expected outcome must be visible together. Several assertions may prove one behavior. Do not hide the action, persistence writes or installed mocks in setup helpers. Keep simple data inline; extract meaningful shared factories or provider setup only for actual repeated needs. Public boundaries may have one consumer, and a private helper may name one coherent step; neither justifies a test DSL or generic object mother.
 
-Use controlled HTTP responses for owned method/path/query/headers, serialization, errors, timeout and retry behavior. Generated code is primarily verified by generation/import/type adaptation, not tests of generator syntax. Seed randomness or control time only when it affects the result.
+## What to prove
 
-Async tests own and complete all tasks, await cancellation/cleanup and restore clocks/transports. Replace sleeps with events or controlled sleepers. Test client closure, bounded concurrency, failed task propagation and idempotent retry limits when affected.
+| Boundary                    | Proof                                                                                                                     |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Pure calculation or mapping | Concrete inputs/outputs, owned invariants, intentional omission, nested fields and absence/null/enum distinctions         |
+| Application orchestration   | Real commands/results with fakes of application-owned external needs; meaningful writes, rejections and no-write cases    |
+| Provider adapter            | Controlled bytes/JSON/HTML/CSV through the real parser, validation and mapping                                            |
+| Generated API adapter       | Real generated request/response path through controlled transport; actual serialization, decoding and translated failures |
+| Settings and bootstrap      | Required/invalid values, source precedence, failure before I/O, safe diagnostics and resource assembly/closure            |
+| Async lifecycle             | Task ownership, cancellation, cleanup, bounded active/pending work, repeated-run independence and retry limits            |
 
-## Ingestion scenarios
+An application test must not import a concrete adapter to mock its internals. Prefer real dataclasses, enums and generated model values; never mock the object under test. A recording fake exposes only the behavior needed by the scenario and does not become a second framework. Assert collaborator calls only when they are the contract, such as an emitted write or forbidden action.
 
-For provider parsing, scheduling, reconciliation or internal API ingestion, read [ingestion test cases](references/ingestion.md). Keep provider fixtures sanitized and reviewed; never refresh them automatically from the network.
+Source generation/imports prove compatibility, not every runtime guarantee. If validation is the claim, exercise the actual generated client's decoding path using malformed required fields/types/enums/nulls/forbidden extra properties. Record unsupported guarantees as failures, not successful coverage. A handwritten stand-in model cannot certify generated behavior. Do not test generator spelling or default example methods.
 
-## Evidence
+## Configuration and async scenarios
 
-Run focused tests during development and the owning verification target before delivery. Include configured Ruff/format/mypy checks and affected generated-client verification; do not silently introduce a missing type checker in an unrelated task. Local controlled smokes are needed only for changed integration boundaries. Report unavailable fixtures, checks or runtime dependencies and the remaining risk. Passing unit tests do not prove an omitted HTTP, scheduling or persistence boundary.
+Use synthetic settings and explicitly selected temporary environment files. Isolate environment changes through test fixtures and prove the declared source priority. Check that an invalid configuration opens no clients or scheduler. Verify rendered failures omit supplied secrets; do not snapshot raw validation exceptions.
 
-## Readable scenarios and reusable data
+Exercise successful and failing context exits and client closure. Prefer controlled HTTPX transports for adapter logic; disclose that these do not prove sockets/TLS. Reuse the repository's async test mode; a small standalone case can use `asyncio.run` rather than introducing a second async plugin. Do not nest event loops or reuse a client across incompatible test loops.
 
-The test name, scenario-determining inputs, action and expected result must be visible together. One behavior may need several assertions; do not split one outcome mechanically. Integration tests stay near their boundary owner; reserve transversal locations for truly cross-boundary behavior. Identify which collaborators are real and which are controlled doubles. Helpers must not hide the action, database writes, installed mocks or unrelated setup.
+Use events/barriers or controlled transports to coordinate concurrency/cancellation; no wall-clock sleeps for stability. Prove the concurrency limit actually bounds work, that cancelling one run leaves no surviving tasks and that a second call on the same service has fresh run state. Tests may inspect an exposed client `is_closed` property because resource closure is the contract, not private state.
 
-Keep simple values inline. Use targeted typed factories for rich valid objects that are actually reused, with explicit overrides for the scenario's decisive fields. Search existing factories before adding one, and share only identical meaning at the narrowest owner. A private helper may name one coherent step, and a public boundary may have one consumer; neither permits speculative test DSLs, generic object mothers or automatic reflection-based object graphs.
+Partial, malformed and failed data remain distinct from authoritative empty data. For a replacement operation prove failure/partial results cannot trigger deletion or replacement. A cancellation test before a write proves no write began; it cannot prove that cancelling an already-sent request rolled back the remote operation. Test that writes are not implicitly retried unless idempotency is part of their contract.
 
-Use Faker when generated secondary values are useful, as a test dependency with a project-owned compatible version. Use a native fixed seed per test and explicit construction; never mutable random state shared across parallel tests. Control the clock for time-sensitive data. Assert scenario values, not a hard-coded string tied to a Faker version or call order. Keep boundary cases explicit and parameterized. Small tests do not require a data library, and installing this skill does not add dependencies.
+## Data, typing and examples
 
-Read [canonical examples](references/examples.md) when adding or substantially restructuring tests or factories. They show a unit test, an integration boundary and a rich typed factory, not a new test framework. For a substantive behavior change run the owning suite, necessary integration proofs and affected consumers; mandatory repository checks still apply. No new E2E infrastructure is introduced by this policy.
+Use targeted typed factories for rich valid objects that tests actually share. Put scenario-determining values in explicit parameters/overrides. Faker may supply secondary fields using its standard per-test fixture seed or an instance-local seed; no mutable random generator shared across parallel tests and no custom replay system. Fix relevant time/locale inputs. Explicit boundary cases remain parameterized, not entrusted to random chance. Installing this skill does not add Faker to a small test that only needs literal values.
 
-Focused architecture tests may protect important dependency boundaries. Avoid tests that assert source spelling or incidental file layout rather than the boundary itself.
+Annotate test functions, fixtures, fake methods and factory inputs/returns. New code runs mypy strict; do not silence the entire test directory to accommodate mocks or generated imports. Isolate a demonstrated library typing limitation narrowly and report its scope. No `Any` leakage or unsafe cast used to pretend a boundary is validated.
+
+Read [canonical examples](references/examples.md) when adding or restructuring tests; read [targeted test data](references/test-data.md) when a rich reused object needs a factory. The examples use the same kinds of contracts across unit, integration and lifecycle evidence; they are not a new testing framework. For provider synchronization, read [ingestion scenarios](references/ingestion.md) only when that behavior is in scope.
+
+## Verification
+
+Run focused tests during development, then the owning suite and affected consumers/integrations. Include configured Ruff/format and mypy strict for the new managed scope. Meaningful dependency-boundary tests are allowed; avoid source-wording checks, private-method probing, broad snapshots, arbitrary sleeps or live providers. Report passes, actual failures, expected failures and unavailable proof separately. Keep generated output ignored and inspect the final diff. No new E2E infrastructure is introduced by this policy.

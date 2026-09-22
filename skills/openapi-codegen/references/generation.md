@@ -8,7 +8,7 @@ Keep shared generated model packages limited to genuinely shared enums and techn
 
 ## Python
 
-Use the repository-pinned OpenAPI Generator and asynchronous HTTPX configuration, with one declarative batch configuration per adopted contract. Respect the owning internal/public boundary; language does not change service ownership. Keep generated clients and object models inside the infrastructure API adapter. Reuse a generated enum in application code only for the exact contract-owned concept; pure domain values remain independent. Map objects to typed application/domain values using explicit functions. Validate imports and actual request/response behavior against controlled transport; never production data.
+Use the repository-pinned OpenAPI Generator and asynchronous HTTPX configuration, with one declarative batch configuration per adopted contract. Respect the owning internal/public boundary; language does not change service ownership. Keep generated clients and object models inside the infrastructure API adapter. Reuse a generated enum in application code only for the exact contract-owned concept; pure domain values remain independent. Map objects to typed application/domain values using explicit functions. Validate imports and actual request/response behavior against controlled transport; never production data. Python language guidance owns typed application placement, explicit mapping and resource lifecycle. Keep generation/decoding guarantees here rather than copying that procedure into every adapter policy.
 
 ## Runtime validation guarantees
 

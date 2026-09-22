@@ -1,4 +1,4 @@
-# Python Scraper Testing
+# Provider ingestion tests
 
 Apply these cases only to ingestion, provider parsing, scheduling or internal API adaptation.
 
@@ -12,9 +12,9 @@ Prefer the cheapest test that can fail for the meaningful regression. Coverage a
 
 - Name files `test_<boundary>.py` and tests `test_<observable_behavior>`.
 - Organize tests by feature or provider boundary. Keep characterization tests and sanitized provider fixtures explicit.
-- Structure each test with visible `# Given`, `# When` and `# Then` comments and blank lines between phases.
+- Structure each test with visible `# Given`, `# When` and `# Then` comments and blank lines between phases; a combined `# When / Then` may enclose an exception assertion.
 - Use deterministic identifiers and meaningful values. Keep one-off data and doubles inside the owning test.
-- Extract shared fixtures, builders, fakes, or async support only after several tests share the same stable need.
+- Extract shared fixtures, factories, fakes or async support for a real repeated need. A private helper may name a coherent local step, but must not hide the tested operation or implicit writes.
 
 ## Choosing What To Test
 
@@ -30,13 +30,13 @@ Use small fake provider sources and fake internal API ports. Assert semantic dec
 
 ### HTTP, Contracts, And Lifecycle
 
-Use controlled HTTP responses to protect method, path, query, headers, multipart parts, field naming, decoding, timeout, and error translation. Generated contract compatibility is primarily proved by generation, package verification, and typed adaptation; do not retest the generator.
+Use controlled HTTP responses to protect method, path, query, headers, multipart parts, field naming, decoding, timeout, and error translation. Generation, package verification and typed adaptation prove compatibility. When runtime validation is the claim, test the actual generated decoding path with controlled malformed responses; do not substitute a handwritten model or test generated source spelling.
 
 Test enabled and disabled startup, overlap prevention, scheduler registration, token refresh ownership, cancellation, and graceful shutdown when those behaviors change. Replace sleeps with controlled events or sleepers and assert outcomes rather than wall-clock duration.
 
 ## Fixture Rules
 
-- Store sanitized deterministic fixtures under the owning scraper's `tests/fixtures` directory.
+- Store sanitized deterministic fixtures under the owning feature's `tests/fixtures` directory.
 - Use the smallest source-derived response that preserves the real structure under test; retain a complete page only when cross-section markup affects parsing.
 - Remove tokens, cookies, personal data, private URLs, request identifiers, and unrelated content.
 - Record provider family, encoding, and scenario in the filename or adjacent documentation.
@@ -59,14 +59,14 @@ Compare typed values or compact normalized traces, not log lines, object identit
 - Prefer small handwritten fakes over broad mocks. Do not mock dataclasses, enums, generated values, or pure objects.
 - Avoid large snapshots, source-spelling assertions, private-function access, arbitrary sleeps, real provider calls, production data, and universal fixture DSLs.
 - Assert logs only when the log is supported behavior; otherwise assert state, result, or adapter operation.
-- Seed randomness and freeze or inject time only when they influence the result.
+- Use standard per-test Faker seeds for generated data, keeping decisive inputs explicit; control time when it influences the result.
 - Keep async tasks owned and completed inside the test. No task may survive the test that created it.
 - Small duplication is preferable to a helper that hides the scenario.
 
 ## Verification
 
 - Run the narrowest relevant test while developing.
-- Run the owning scraper verification target before completion.
+- Run the owning ingestion verification target before completion.
 - Run generated Python client verification when contracts or API adaptation change.
 - Run controlled local smokes only when the changed boundary requires real service integration; never use production endpoints or credentials.
 - Run formatting and repository diff-hygiene checks, and report unavailable fixtures, smokes, or intentionally skipped checks with the reason.

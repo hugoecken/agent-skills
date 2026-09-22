@@ -1,20 +1,34 @@
 # Provider ingestion
 
-## Active roles
+## Scope and ownership
 
-Use only roles that real behavior needs: `application` owns use cases, commands, ports and run results; `domain` owns pure values, reconciliation and invariants; `infrastructure` owns provider HTTP/parsing, generated clients and scheduling; `config` owns typed startup settings; the bootstrap composes lifecycle. An observability module is useful only when logging/metrics configuration warrants it. No empty role tree or generic managers/processors.
+Use this reference only for provider parsing, synchronization, reconciliation and scheduled ingestion. General feature, model and dependency decisions follow [architecture](architecture.md); conversions follow [mapping](mapping.md); client/task and failure lifecycle follows [runtime](runtime.md). Read those only for the responsibilities being changed.
 
-Use `Protocol` at real replaceable outbound seams, not on every class. Keep application code independent of HTTPX, parsing-library nodes, raw dictionaries and generated object DTOs. The exact contract-owned enum exception applies to application code only; domain code stays independent of generated packages.
+Provider raw models, HTTP/HTML/CSV parsing and vocabulary stay in the provider adapter. The application's source port returns an application-owned normalized observation, not an infrastructure model, HTML string or parser node. Do not create empty layers or a universal provider abstraction.
 
 ## Parsing, contracts and writes
 
 Separate download, decode, parse, normalize, match and internal writes. A parser takes controlled text/bytes/document input and returns typed provider records without network calls. Keep provider encodings, vocabulary, quirks and markup inside the provider adapter.
 
-Generated internal clients and object models remain in the internal API adapter. Exact contract-owned enums may be reused in the application; provider vocabularies and pure domain values keep their own owner. Explicit typed functions map objects to and from application/domain values. Do not make generated transport classes the domain or introduce a mapping framework.
+Generated internal clients and object models remain in the internal API adapter. Exact contract-owned enums may be reused in the application; provider vocabularies and pure domain values keep their own owner. Apply the explicit boundary conversions from the mapping reference; do not create transport mirrors or import a provider mapper into application code.
 
 Preserve source priority, aliases, missing values, malformed-record treatment, dates, identifiers and matching fallbacks unless the task accepts a correction. Name pure policies for decisions. Do not create a universal parser for unrelated providers.
 
 Represent create/update/replace/skip/no-op and authoritative-completeness decisions explicitly. An unavailable or partial provider response is not an authoritative empty dataset: never convert a failure into emptiness that drives deletion or replacement. Keep idempotence, write order, batching and partial-failure semantics visible.
+
+## Variant: an authoritative catalogue
+
+The [feature example](feature-example.md) reads a bounded selection and records a non-destructive observation. An ingestion that replaces a catalogue needs a different completeness contract; do not reuse that write assumption unchanged.
+
+| Step                 | Catalogue-specific responsibility                                                                                                                                        |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Provider adapter     | Validate the supplied completeness marker and every consumed record; return an immutable normalized application observation with its completeness.                       |
+| Application          | Reject an incomplete observation before invoking replacement. A valid authoritative empty catalogue can still be published when the accepted behavior permits it.        |
+| Mapping              | Convert accepted application values to the generated publication request; preserve zero/absence semantics chosen by the use case.                                        |
+| Internal API adapter | Perform the documented write once. An unusable response leaves its outcome uncertain; no implicit whole-run retry.                                                       |
+| Tests                | Distinguish complete data, complete empty data, partial data, malformed input, read failure and cancellation before write. Assert replacement calls and forbidden calls. |
+
+Do not infer completeness from a nonempty list, successful HTTP status or successful parsing alone. The meaning of “available,” zero-quantity records, duplicate identifiers and replacement/deletion effects requires the provider and product contract. State unresolved semantics before a destructive operation rather than inventing them. The scheduler calls the same application operation; schedule and overlap policy remain project-owned.
 
 ## Runtime
 

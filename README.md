@@ -2,7 +2,7 @@
 
 Seventeen reusable skills for development and delivery. Each folder is independent and contains its own instructions and any conditional references. Copy only the skills a project needs; they do not depend on a central router or another skill's files.
 
-These are personal engineering conventions informed by framework documentation, not a claim that every community prescribes one architecture. The target choices include feature-first Java/React, explicit Java persistence ports, React Hook Form/Zod, semantic StyleSheet styling for native, and generated contracts. An existing application is not migrated merely because the skills are installed.
+These are personal engineering conventions informed by framework documentation, not a claim that every community prescribes one architecture. The target choices include feature-first Java/React, explicit Java persistence ports, React Hook Form/Zod, semantic StyleSheet styling for native, and generated contracts. An existing application is not migrated merely because the skills are installed. Python guidance makes hybrid use cases, immutable internal values, explicit mapping, declared input conversions, strict typing and Pydantic Settings concrete; web frameworks and ORMs remain project decisions. Its linked examples connect composition, adapters and tests without becoming a mandatory scaffold.
 
 ## Catalogue
 
@@ -23,7 +23,7 @@ These are personal engineering conventions informed by framework documentation, 
 | [design-prototyping](skills/design-prototyping/SKILL.md)                 | Disposable responsive exploration before Figma                       |
 | [react-native-expo](skills/react-native-expo/SKILL.md)                   | Expo routing, native UI and lifecycle                                |
 | [expo-testing](skills/expo-testing/SKILL.md)                             | jest-expo/RNTL and native evidence                                   |
-| [python-development](skills/python-development/SKILL.md)                 | Feature-first Python, validated adapters and lifecycle               |
+| [python-development](skills/python-development/SKILL.md)                 | Python architecture, explicit mapping, settings and owned lifecycle  |
 | [python-testing](skills/python-testing/SKILL.md)                         | pytest, controlled I/O and ingestion characterization                |
 
 ## Install or update
