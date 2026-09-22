@@ -31,3 +31,7 @@ A service needs an application image built from repository sources, local databa
 ## Delivery and local authority
 
 The user authorizes implementation of issue 42 and its draft PR. Checks pass and another issue becomes unblocked. State the next actions. Separately, a login change has an existing project-specific identity architecture: identify the inputs needed to implement it. A small documentation correction also needs delivery; describe its tracking.
+
+## Prototype review
+
+The user wants to compare two layouts for an approved screen before final Figma work, then keep the result available for another review next week. Describe where to create the exploration, how to present it, and what happens after the user approves a direction. Identify any Git actions you would take.
