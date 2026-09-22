@@ -16,9 +16,9 @@ Preserve source priority, aliases, missing values, malformed-record treatment, d
 
 Represent create/update/replace/skip/no-op and authoritative-completeness decisions explicitly. An unavailable or partial provider response is not an authoritative empty dataset: never convert a failure into emptiness that drives deletion or replacement. Keep idempotence, write order, batching and partial-failure semantics visible.
 
-## Variant: an authoritative catalogue
+## Authoritative catalogue replacement
 
-The [feature example](feature-example.md) reads a bounded selection and records a non-destructive observation. An ingestion that replaces a catalogue needs a different completeness contract; do not reuse that write assumption unchanged.
+Recording selected observations and replacing an authoritative catalogue have different write semantics. Replacement needs explicit completeness evidence; a successful partial read does not establish that evidence.
 
 | Step                 | Catalogue-specific responsibility                                                                                                                                        |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -40,4 +40,4 @@ Catch unexpected failures once at the run/process boundary with safe context. Su
 
 Characterize the old seam before replacement. Feed old and new implementations the same sanitized fixtures and compare typed normalized records, reconciliation decisions, request values, ordered writes and failure/cancellation outcomes. Differences block replacement unless they are accepted and tested corrections. Never run two production implementations as active writers.
 
-Fixtures are reviewed controlled inputs, never silently refreshed from live providers. Run the owning tests and configured verification target, affected client generation and controlled local integration only where needed. Do not migrate packaging, Docker or a type checker alongside behavior unless the task owns both.
+Fixtures are reviewed controlled inputs, never silently refreshed from live providers. Run the owning tests and configured verification target, affected client generation and controlled local integration only where needed.

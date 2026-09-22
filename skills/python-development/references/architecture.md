@@ -14,7 +14,7 @@ config/              # validated process configuration
 bootstrap.py         # explicit composition and resource lifecycle
 ```
 
-The role matters more than forcing a directory for one small file. A single-feature application can keep these responsibilities flat. A CLI or scheduler invokes the application; it does not acquire ownership of business rules. A standalone script does not need a package, application class or new dependency manager solely to match this diagram. Use a `src` layout for a new installable package; do not move existing packages incidentally.
+The role matters more than forcing a directory for one small file. A single-feature application can keep these responsibilities flat. A CLI or scheduler invokes the application; it does not acquire ownership of business rules. A standalone script does not need a package, application class or new dependency manager solely to match this diagram. Use a `src` layout for a new installable package. A local utility may use argparse, standard-library parsing and a few ordinary functions; configuration objects, service classes and protocols need actual responsibilities.
 
 The domain imports neither HTTPX, generated packages, settings libraries nor infrastructure. The application imports its own contracts and useful domain concepts, not concrete adapters, parser nodes or HTTP response objects. Infrastructure translates external representations and satisfies application-owned needs. The composition root may import concrete implementations because it assembles them. Across features, use an explicit application API; do not import another feature's private adapter or mutable working state.
 
@@ -49,7 +49,7 @@ Closed owned vocabularies use enums; external extensible identifiers do not auto
 
 ## Typing and readable Python
 
-For new modules and tests, use mypy strict through project-owned configuration and compatible pinned tooling. Annotate function/method parameters and returns, including private helpers, fixture factories and test functions. Infer obvious locals. Prefer readable named contracts over chains of calculated types, generic machinery or a dictionary carrying unrelated value variants.
+For new managed projects, configure mypy strict for handwritten production modules and tests from the start, with project-owned compatible tooling. Annotate function/method parameters and returns, including private helpers, fixture factories and test functions. Infer obvious locals. Prefer readable named contracts over chains of calculated types, generic machinery or a dictionary carrying unrelated value variants.
 
 Narrow untrusted objects through verified validation. Do not propagate `Any`, use `cast` as validation or broaden an interface to silence the checker. Generated code may require a narrowly scoped module override; still check handwritten callers and exposed types. A documented `type: ignore[error-code]` may bridge a verified third-party limitation at the adapter, not disable checks application-wide. Prefer available supported library stubs over inventing a parallel SDK. Record what the checker cannot prove.
 
@@ -57,6 +57,8 @@ Keep snake_case functions/modules, meaningful role names and simple comprehensio
 
 Before extracting a helper, search existing owners. A private function used once is valid when it names a coherent step; an exported application contract can have one consumer. Share identical knowledge at the narrowest useful owner when actual consumers need it, then remove copies. Do not invent global utils or add layers around an unresolved ownership problem.
 
-## Example and mechanics
+## Composition and mechanics
 
-Read the [feature example](feature-example.md) when a concrete composition is needed. Language mechanics: [dataclasses](https://docs.python.org/3/library/dataclasses.html), [Protocols](https://typing.python.org/en/latest/spec/protocol.html), [mypy adoption](https://mypy.readthedocs.io/en/stable/existing_code.html) and [package layouts](https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/). Feature roles and the hybrid style are this pack's conventions.
+The composition root loads configuration, creates resources, constructs concrete adapters, injects the application and invokes it, then closes the owned resources. A CLI, scheduler or framework entry calls this composition at its proper lifecycle boundary. This sequence does not require a shared bootstrap framework.
+
+Language mechanics: [dataclasses](https://docs.python.org/3/library/dataclasses.html), [Protocols](https://typing.python.org/en/latest/spec/protocol.html), [mypy strict options](https://mypy.readthedocs.io/en/stable/command_line.html) and [package layouts](https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/). Feature roles and the hybrid style are this pack's conventions.

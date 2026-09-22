@@ -1,24 +1,13 @@
 # Targeted typed test data
 
-Use this pattern only when several tests share a rich valid object. The `Customer` below is an illustrative application value, not a transport DTO or a mandatory model. The decisive identifier and activity stay explicit; Faker supplies only the unimportant display name and contact email. These addresses are synthetic test data.
+Use a factory only when several tests share a rich valid object. This illustrative fragment assumes an application-owned `Customer` with `id`, `display_name`, `contact_email` and `active` fields. The UUID and activity are decisive; Faker supplies secondary synthetic values. The imports stand for the owning project's contracts, not a supplied application or a transport DTO.
 
 ```python
-"""Application-owned customer value and a focused example test factory."""
-
-from dataclasses import dataclass
 from uuid import UUID
 
 from faker import Faker
 
-
-@dataclass(frozen=True)
-class Customer:
-    """Customer projection whose activity controls eligibility."""
-
-    id: UUID
-    display_name: str
-    contact_email: str
-    active: bool
+from app.customers.model import Customer
 
 
 def valid_customer(fake: Faker, customer_id: UUID, *, active: bool) -> Customer:
@@ -29,24 +18,34 @@ def valid_customer(fake: Faker, customer_id: UUID, *, active: bool) -> Customer:
         contact_email=fake.email(),
         active=active,
     )
+```
+
+The following test assumes `can_book(customer)` rejects inactive customers. It illustrates use of the factory in a behavior test, rather than a test that merely repeats the factory's field assignments.
+
+```python
+from uuid import UUID
+
+from faker import Faker
+
+from app.reservations.eligibility import can_book
+from tests.customers.factories import valid_customer
 
 
-def test_factory_preserves_scenario_fields() -> None:
+def test_inactive_customer_cannot_book() -> None:
     # Given
     fake = Faker("en_US")
     fake.seed_instance(42)
-    customer_id = UUID("c17c5c0d-9134-4d55-81ef-472fa2b4be47")
+    customer = valid_customer(
+        fake,
+        UUID("c17c5c0d-9134-4d55-81ef-472fa2b4be47"),
+        active=False,
+    )
 
     # When
-    customer = valid_customer(fake, customer_id, active=False)
+    allowed = can_book(customer)
 
     # Then
-    assert customer.id == customer_id
-    assert customer.active is False
-    assert customer.display_name
-    assert customer.contact_email
+    assert allowed is False
 ```
 
-In a project, the value belongs to its application owner and the factory stays near its consuming tests. This focused factory test demonstrates its explicit overrides; application behavior tests must still assert the real eligibility or other outcome they protect. Do not add factory tests mechanically to every constructor helper.
-
-Use a new local seeded instance per test or Faker's standard pytest fixture. Do not share mutable random state across tests, assert exact generated strings, generate object graphs by reflection or add a replay framework. The locale and library version belong to the project when they affect a scenario. Small records in the [integration example](examples.md) use literals because a fake-data dependency adds no value there.
+The value belongs to its application owner and the factory stays near its consuming tests. Use a fresh local seeded instance per test or Faker's standard pytest fixture. Do not share mutable random state, assert exact generated strings, generate object graphs by reflection or create a replay framework. Locale and library versions belong to the project when they affect a scenario. Small records in the [adapter fragment](examples.md) use literals because a fake-data dependency adds no value there.

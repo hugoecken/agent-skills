@@ -2,7 +2,7 @@
 
 Seventeen reusable skills for development and delivery. Each folder is independent and contains its own instructions and any conditional references. Copy only the skills a project needs; they do not depend on a central router or another skill's files.
 
-These are personal engineering conventions informed by framework documentation, not a claim that every community prescribes one architecture. The target choices include feature-first Java/React, explicit Java persistence ports, React Hook Form/Zod, semantic StyleSheet styling for native, and generated contracts. An existing application is not migrated merely because the skills are installed. Python guidance makes hybrid use cases, immutable internal values, explicit mapping, declared input conversions, strict typing and Pydantic Settings concrete; web frameworks and ORMs remain project decisions. Its linked examples connect composition, adapters and tests without becoming a mandatory scaffold.
+These are personal engineering conventions informed by framework documentation, not a claim that every community prescribes one architecture. The target choices include feature-first Java/React, explicit Java persistence ports, React Hook Form/Zod, semantic StyleSheet styling for native, and generated contracts. An existing application is not migrated merely because the skills are installed. Python guidance targets new projects with hybrid use cases, immutable internal values, explicit mapping, declared input conversions, strict typing and Pydantic Settings; web frameworks and ORMs remain project decisions. Conditional references and focused illustrative fragments clarify these conventions without distributing an example application, pinned demonstration toolchain or reusable scaffold.
 
 ## Catalogue
 

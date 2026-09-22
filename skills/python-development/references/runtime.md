@@ -2,7 +2,7 @@
 
 ## Startup settings
 
-For a new durable application use Pydantic Settings with an application-owned settings class. Validate before opening clients, starting tasks or scheduling jobs. Required settings have no fictional defaults. Validate positive limits/timeouts and relevant URL/choice constraints. Small scripts may use argparse and direct checks; installing this skill does not replace an existing settings implementation.
+For a new durable application use Pydantic Settings with an application-owned settings class. Validate before opening clients, starting tasks or scheduling jobs. Required settings have no fictional defaults. Validate positive limits/timeouts and relevant URL/choice constraints. Small scripts may use argparse and direct checks.
 
 Select the local dotenv path explicitly, and keep the safe `.env.example` consistent with the actual loader. Do not assume `.env.local` is discovered by every tool. Retain and document the application's source precedence; use normal supported Pydantic Settings sources rather than a custom loader framework. In a new simple application, environment variables override the explicitly selected dotenv file; constructor overrides may be used for controlled composition/tests. Test this policy with synthetic values.
 
@@ -25,6 +25,18 @@ Do not introduce a universal Result wrapper, exception hierarchy or catch-all er
 Catch errors where recovery, translation, cleanup or the terminal outcome is owned. A broad catch may serve a process/job boundary with safe diagnostics, not every helper. Logging occurs at one operational owner and does not change retry/business decisions. Keep cancellation separate from ordinary failures; do not suppress it to emit a successful result. Use `finally`/context managers for cleanup rather than catch/log/rethrow chains.
 
 The use case decides whether individual failures can coexist with successful work. Independent items may continue only with a defined partial-result policy; an authoritative replacement needs explicit completeness evidence. No universal “continue every batch” or “abort every item” rule. A reusable application instance must not leak one run's partial state into the next.
+
+## Actionable diagnostics
+
+Use the project's existing logging boundary. An operational failure identifies the operation, dependency and a useful category such as timeout, invalid external data or uncertain publication. Preserve original causes for handling, but their presence does not authorize rendering their messages, nested causes or payloads. Use a stack trace only through the project's safe diagnostic path; otherwise report bounded safe technical context rather than a generic failure. Do not build a common logger or diagnostic framework for this fallback.
+
+| Situation                                    | Required diagnostic meaning                                                                                                                                             |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Invalid configuration                        | Identify the known parameter and violated constraint, such as “request timeout must be positive,” without the received value.                                           |
+| Provider read fails before publication       | Identify the read operation, provider and category; report that no publication started only when the control flow proves it.                                            |
+| Publication was sent but cannot be confirmed | Identify the publication and dependency, state that the remote result is unknown, and require reconciliation or established safe repeatability before another mutation. |
+
+Do not turn every write failure into “nothing was written.” Distinguish failures known to precede sending from failures after sending where the outcome is uncertain. Unknown exceptions still need an operation and safe exception category; suppressing raw sensitive details must not erase all diagnostic value. Emit each operational failure at one owner.
 
 ## HTTP and asynchronous flow
 
@@ -50,6 +62,6 @@ A later scheduled run can repeat an uncertain write even if it is called a new r
 
 ## Evidence and mechanics
 
-Test invalid startup configuration before operations; environment/file precedence; safe failure rendering; client closure; successive-run independence; cancellation; partial-result safety; and bounded concurrency when affected. Use controlled transports and synchronization events rather than real services or arbitrary sleeps. See the [feature example](feature-example.md) for one owned lifecycle.
+Test invalid startup configuration before operations; environment/file precedence; safe failure rendering; client closure; successive-run independence; cancellation; partial-result safety; and bounded concurrency when affected. Use controlled transports and synchronization events rather than real services or arbitrary sleeps.
 
 Mechanics: [Pydantic Settings](https://docs.pydantic.dev/latest/concepts/pydantic_settings/), [asyncio tasks](https://docs.python.org/3/library/asyncio-task.html), [HTTPX async clients](https://www.python-httpx.org/async/) and [timeouts](https://www.python-httpx.org/advanced/timeouts/). Actual versions, defaults and operational limits remain project-owned.

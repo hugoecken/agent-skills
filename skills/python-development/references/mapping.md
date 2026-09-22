@@ -19,7 +19,7 @@ Use names that identify the target: `to_create_request`, `to_application_view`, 
 
 ## Explicit construction
 
-Construct targets with deliberately selected named attributes. Reuse a nested converter only when it implements the same semantics. For example, an outgoing adapter can map an application value to the actual generated request:
+Construct targets with deliberately selected named attributes. Reuse a nested converter only when it implements the same semantics. In this illustrative fragment, `Club` is an application-owned value and `CreateClubRequest` is the owning API's generated transport type. Both names stand for the project's actual types; this is not a standalone executable module:
 
 ```python
 # Illustrative signature; use the owning project's actual generated request type.
@@ -50,4 +50,4 @@ Keep four operations distinct: decode the format, validate its declared shape/co
 
 ## Evidence
 
-Assert concrete target values and intentionally omitted fields; cover meaningful nested conversions, unknown enums and absent/null semantics. Use real models. Include request serialization when presence or aliases affect the wire contract. A test that compares the mapper to another copy of its constructor proves little; select scenario values that reveal a meaningful regression. The [feature example](feature-example.md) shows explicit construction in a complete adapter flow.
+Assert concrete target values and intentionally omitted fields; cover meaningful nested conversions, unknown enums and absent/null semantics. Use real models. Include request serialization when presence or aliases affect the wire contract. A test that compares the mapper to another copy of its constructor proves little; select scenario values that reveal a meaningful regression.

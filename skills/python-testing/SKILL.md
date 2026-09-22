@@ -1,11 +1,11 @@
 ---
 name: python-testing
-description: "Write and review readable pytest tests for typed Python use cases, mapping, configuration, generated clients and async lifecycle. Includes conditional provider-ingestion evidence."
+description: "Write readable pytest tests for new typed Python applications: use cases, mappings, adapters, configuration and async lifecycle. Includes conditional provider-ingestion evidence."
 ---
 
 # Python testing
 
-Use the repository's verification targets and actual interpreter/tool versions. Tests protect observable behavior and important boundaries; no universal coverage target or mandatory TDD ceremony. A regression starts with a failing reproduction when practical; a refactor characterizes the changed seam. New handwritten modules and their tests use mypy strict. Existing projects adopt missing tooling separately, never as a side effect of installing this skill.
+These conventions target new Python applications. Use uv, Ruff, pytest and mypy strict on handwritten production code and tests from the start, with project-owned versions and check targets. Applying this skill to an existing repository does not authorize a general migration; its instructions and the authorized task scope remain applicable. Tests protect observable behavior and important boundaries; no universal coverage target or mandatory TDD ceremony. A regression starts with a failing reproduction when practical; a refactor characterizes the changed seam.
 
 ## Location and readable shape
 
@@ -30,7 +30,7 @@ Source generation/imports prove compatibility, not every runtime guarantee. If v
 
 ## Configuration and async scenarios
 
-Use synthetic settings and explicitly selected temporary environment files. Isolate environment changes through test fixtures and prove the declared source priority. Check that an invalid configuration opens no clients or scheduler. Verify rendered failures omit supplied secrets; do not snapshot raw validation exceptions.
+Use synthetic settings and explicitly selected temporary environment files. Isolate environment changes through test fixtures and prove the declared source priority. Check that an invalid configuration opens no clients or scheduler. Verify configuration failures identify the parameter and constraint without the received value. Operational diagnostics identify the operation, dependency and category, distinguishing no publication started from an uncertain publication. Verify rendered failures omit supplied secrets; do not snapshot raw validation exceptions.
 
 Exercise successful and failing context exits and client closure. Prefer controlled HTTPX transports for adapter logic; disclose that these do not prove sockets/TLS. Reuse the repository's async test mode; a small standalone case can use `asyncio.run` rather than introducing a second async plugin. Do not nest event loops or reuse a client across incompatible test loops.
 
@@ -42,9 +42,9 @@ Partial, malformed and failed data remain distinct from authoritative empty data
 
 Use targeted typed factories for rich valid objects that tests actually share. Put scenario-determining values in explicit parameters/overrides. Faker may supply secondary fields using its standard per-test fixture seed or an instance-local seed; no mutable random generator shared across parallel tests and no custom replay system. Fix relevant time/locale inputs. Explicit boundary cases remain parameterized, not entrusted to random chance. Installing this skill does not add Faker to a small test that only needs literal values.
 
-Annotate test functions, fixtures, fake methods and factory inputs/returns. New code runs mypy strict; do not silence the entire test directory to accommodate mocks or generated imports. Isolate a demonstrated library typing limitation narrowly and report its scope. No `Any` leakage or unsafe cast used to pretend a boundary is validated.
+Annotate test functions, fixtures, fake methods and factory inputs/returns. In new managed projects, handwritten production code and tests run mypy strict from the start; do not silence the entire test directory to accommodate mocks or generated imports. Isolate a demonstrated library typing limitation narrowly and report its scope. No `Any` leakage or unsafe cast used to pretend a boundary is validated.
 
-Read [canonical examples](references/examples.md) when adding or restructuring tests; read [targeted test data](references/test-data.md) when a rich reused object needs a factory. The examples use the same kinds of contracts across unit, integration and lifecycle evidence; they are not a new testing framework. For provider synchronization, read [ingestion scenarios](references/ingestion.md) only when that behavior is in scope.
+Read [illustrative test fragments](references/examples.md) when the intended test shape needs clarification; read [targeted test data](references/test-data.md) when a rich reused object needs a factory. The fragments assume explicitly described project contracts; they are neither an executable sample application nor a test framework. For provider synchronization, read [ingestion scenarios](references/ingestion.md) only when that behavior is in scope.
 
 ## Verification
 
