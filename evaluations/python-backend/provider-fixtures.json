@@ -1,0 +1,15 @@
+{
+  "complete": {
+    "complete": true,
+    "items": [{ "sku": "item-1", "title": "Blue mug", "quantity": 3 }]
+  },
+  "empty": { "complete": true, "items": [] },
+  "partial": {
+    "complete": false,
+    "items": [{ "sku": "item-1", "title": "Blue mug", "quantity": 3 }]
+  },
+  "invalid": {
+    "complete": true,
+    "items": [{ "sku": "item-1", "title": "Blue mug", "quantity": "3" }]
+  }
+}
