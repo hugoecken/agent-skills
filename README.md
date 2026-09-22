@@ -20,7 +20,7 @@ These are personal engineering conventions informed by framework documentation, 
 | [docker-conventions](skills/docker-conventions/SKILL.md)                 | Source-built images, local infrastructure and explicit configuration |
 | [nextjs-separate-backend](skills/nextjs-separate-backend/SKILL.md)       | Next.js rendering with a separate business backend                   |
 | [nextjs-testing](skills/nextjs-testing/SKILL.md)                         | Vitest/RTL and real Next/Playwright boundaries                       |
-| [design-prototyping](skills/design-prototyping/SKILL.md)                 | Disposable responsive exploration before Figma                       |
+| [design-prototyping](skills/design-prototyping/SKILL.md)                 | Standalone responsive exploration before Figma                       |
 | [react-native-expo](skills/react-native-expo/SKILL.md)                   | Expo routing, native UI and lifecycle                                |
 | [expo-testing](skills/expo-testing/SKILL.md)                             | jest-expo/RNTL and native evidence                                   |
 | [python-development](skills/python-development/SKILL.md)                 | Python architecture, explicit mapping, settings and owned lifecycle  |
