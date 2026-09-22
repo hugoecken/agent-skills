@@ -36,7 +36,7 @@ Exercise successful and failing context exits and client closure. Prefer control
 
 Use events/barriers or controlled transports to coordinate concurrency/cancellation; no wall-clock sleeps for stability. Prove the concurrency limit actually bounds work, that cancelling one run leaves no surviving tasks and that a second call on the same service has fresh run state. Tests may inspect an exposed client `is_closed` property because resource closure is the contract, not private state.
 
-Partial, malformed and failed data remain distinct from authoritative empty data. For a replacement operation prove failure/partial results cannot trigger deletion or replacement. A cancellation test before a write proves no write began; it cannot prove that cancelling an already-sent request rolled back the remote operation. Test that writes are not implicitly retried unless idempotency is part of their contract.
+Partial, malformed and failed data remain distinct from authoritative empty data. For a replacement operation prove failure/partial results cannot trigger deletion or replacement. A cancellation test before a write proves no write began; it cannot prove that cancelling an already-sent request rolled back the remote operation. Test that writes are not implicitly retried unless idempotency is part of their contract. When scheduled execution owns recovery, also verify what happens before the next mutating run after an uncertain write; a new schedule tick does not prove repeatability.
 
 ## Data, typing and examples
 

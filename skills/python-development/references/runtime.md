@@ -46,6 +46,8 @@ Retry one declared repeatable I/O operation, with bounded attempts/backoff and a
 
 A scheduler triggers an application operation and owns trigger/lifecycle details, not business rules. Preserve existing scheduler versions and supported APIs; no framework upgrade is implied. The project defines cadence, overlap, missed runs and shutdown behavior. Local locks prevent local overlap only. Do not introduce distributed coordination merely because an application runs periodically; determine whether multiple actual writers require it.
 
+A later scheduled run can repeat an uncertain write even if it is called a new run rather than a retry. The project must explicitly decide how to reconcile that outcome or establish safe repeatability before further automatic mutations. Without that decision, stop the affected mutating workflow and surface the uncertainty; do not silently continue because each individual run makes only one attempt. A local scheduler cannot establish exactly-once delivery. Test the failure-to-next-run policy when it is part of the application.
+
 ## Evidence and mechanics
 
 Test invalid startup configuration before operations; environment/file precedence; safe failure rendering; client closure; successive-run independence; cancellation; partial-result safety; and bounded concurrency when affected. Use controlled transports and synchronization events rather than real services or arbitrary sleeps. See the [feature example](feature-example.md) for one owned lifecycle.
