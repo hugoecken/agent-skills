@@ -76,7 +76,8 @@ numbers, and provider families. Never log:
 - User-visible failures belong in the established error, toast, alert, or screen state rather than a console statement.
 - Do not commit `console.log` or `console.debug`.
 - Keep `console.warn` or `console.error` only at a native/provider boundary when it records a real failure that is not
-  already presented or handled elsewhere, uses no personal/sensitive data, and does not duplicate an adjacent layer.
+  already recorded at its operational owner, uses no personal/sensitive data, and does not duplicate an adjacent layer.
+- User feedback and operational diagnosis have different purposes. A visible error does not automatically make a safe diagnostic redundant; it must still identify a useful boundary and avoid duplicate recording.
 - Do not add analytics, crash reporting, browser log capture, or a generic logger without an explicit product and
   privacy task.
 

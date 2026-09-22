@@ -8,7 +8,7 @@ description: "Test Expo and React Native behavior with jest-expo and React Nativ
 Read this before adding or changing Expo mobile tests, test selectors, mocks, or component behavior protected by Jest.
 
 Tests belong to the feature delivery. Test-first development is optional; a regression fix starts with a failing
-reproduction whenever practical. Keep arrange, act and assert visibly separated.
+reproduction whenever practical. Use visible `// Given`, `// When` and `// Then` comments and blank lines between phases.
 
 ## Test Stack And Responsibilities
 
@@ -106,3 +106,15 @@ Native Testing Library guidance for
 [realistic interactions](https://callstack.github.io/react-native-testing-library/docs/api/events/user-event).
 
 For affected data/form behavior, prove dirty values survive background refetch, failed validation never enters the successful query cache, and submission failures preserve editable values. Do not add a test-only state mirror.
+
+## Readable scenarios and reusable data
+
+The test name, scenario-determining inputs, action and expected result must be visible together. One behavior may need several assertions; do not split one outcome mechanically. Integration tests stay near their boundary owner; reserve transversal locations for truly cross-boundary behavior. Identify which collaborators are real and which are controlled doubles. Helpers must not hide the action, database writes, installed mocks or unrelated setup.
+
+Keep simple values inline. Use targeted typed factories for rich valid objects that are actually reused, with explicit overrides for the scenario's decisive fields. Search existing factories before adding one, and share only identical meaning at the narrowest owner. A private helper may name one coherent step, and a public boundary may have one consumer; neither permits speculative test DSLs, generic object mothers or automatic reflection-based object graphs.
+
+Use `@faker-js/faker` when generated secondary values are useful, as a test dependency with a project-owned compatible version. Use a native fixed seed per test and explicit construction; never mutable random state shared across parallel tests. Control the clock for time-sensitive data. Assert scenario values, not a hard-coded string tied to a Faker version or call order. Keep boundary cases explicit and parameterized. Small tests do not require a data library, and installing this skill does not add dependencies.
+
+Read [canonical examples](references/examples.md) when adding or substantially restructuring tests or factories. They show a unit test, an integration boundary and a rich typed factory, not a new test framework. For a substantive behavior change run the owning suite, necessary integration proofs and affected consumers; mandatory repository checks still apply. No new E2E infrastructure is introduced by this policy.
+
+Focused architecture tests may protect important dependency boundaries. Avoid tests that assert source spelling or incidental file layout rather than the boundary itself.

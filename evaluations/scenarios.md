@@ -1,35 +1,29 @@
-# Independent forward-test scenarios
+# Targeted skill evaluations
 
-These are neutral requests for future evaluations, not an executable test framework or an answer key. Give the evaluator only a scenario, the relevant skills and raw fixtures it needs. Use an isolated temporary directory. Do not authorize network access, installation, production writes or live GitHub/Figma changes merely to perform an exercise. Ask for concrete output, assumptions and verification still missing.
+These are neutral task prompts, not an executable framework or an answer key. Replay relevant scenarios for material policy changes; not every edit needs a run. Keep this file in the pack repository, never in copied project skills. Provide the selected skills and minimum raw artifacts. Use an isolated temporary workspace and request concrete output, assumptions and missing verification. No production writes, live GitHub/Figma changes or dependency installation are implied.
 
-## Java CRUD and contracts
+A successful exercise checks applicability and may reveal ambiguity. It does not certify an application or prove improvement over an agent without the skill. An efficacy claim needs comparable with/without-skill runs, equal task/context and observable outcomes. Record executed checks separately from review conclusions.
 
-A new Spring service with JPA, MapStruct and Lombok needs reservation create/read. Generated transport provides a create request with customer UUID, a response with generated ID and status, and PENDING/CONFIRMED status enum. Persistence generates IDs. Sketch handwritten classes and transaction/write flow; use a contract-owned status in the application projection. Explain verification with JUnit and the database engine, without pretending an absent build exists.
+## Java reservation
 
-## Fetch client and retained schema
+A Spring/JPA service adds reservation create/read. Its generated API request contains a customer UUID, response contains a database-generated ID and status, and the contract defines PENDING/CONFIRMED. The repository uses MapStruct and Lombok. Provide the handwritten structure, write/read flow and focused tests. Identify evidence that cannot be obtained without the actual database/build.
 
-An existing fetch-mode Orval web client receives a new nullable contract property and a list response. Plan contract and consumer changes, and show handwritten response handling for invalid enum data. The backend uses Flyway with retained data and now needs a unique reference. Explain the scoped schema action using only known database semantics.
+## Python application and utility
 
-## Native editing
+An ingestion application using uv/Ruff/pytest receives a provider timeout before replacing a stored dataset. Its internal API client is generated from OpenAPI using HTTPX. Show the failure handling, model placement and tests for successful and malformed responses. Its environment has no mypy configuration. Separately implement a small CSV-counting CLI and explain its structure.
 
-A new Expo feature edits bookings while a paginated list refetches in the background. Show feature ownership, form/query behavior after a failed submit and focused semantic UI tests. There is no requirement for disk offline storage. Distinguish JS evidence from native and visual proof.
+## React editing
 
-## Public web page
+An Expo feature edits a booking while a list refetches. A successful HTTP response sometimes contains an unexpected status; a failed submission must offer useful recovery. Generated client types are available. Show feature ownership, form/query behavior, component contracts and focused tests. A second screen needs one existing display transformation.
 
-An existing Next App Router app with a separate Spring BFF adds an account control to an SEO page. Its async server rendering and redirect behavior need verification. Propose code boundaries, data/cache ownership and meaningful tests.
+## Test readability
 
-## Python failure and utility
+A module has several reservation scenarios with rich customer data, two nearly identical helpers and a factory that inserts database rows. Add tests for accepting a valid reservation, rejecting a missing customer, and preserving a uniqueness rule. Show locations, fixtures, preparation, action and assertions. Identify the needed infrastructure and reproduce a failed scenario using standard tool facilities.
 
-An existing uv/Ruff/pytest ingestion application has no mypy configuration. A provider timeout can be treated as an empty dataset before replacement writes. Sketch the scoped correction and fake-port tests, including cancellation. Separately propose a structure for a new 40-line CSV counting utility with no network access.
+## Docker packaging and configuration
 
-## Identity, documentation and logs
+A service needs an application image built from repository sources, local database infrastructure and per-application configuration. The repository also has a mobile development server. Propose the Dockerfile/Compose and configuration arrangement with verification. Separately, a documentation-only skill edit encounters a user-owned process on a configured port; state what verification is appropriate.
 
-An authenticated web user returns from successful reauthentication while a domain role was revoked. Provider logout later becomes unavailable. Describe session and authorization behavior, focused tests, a documented Java boundary and safe diagnostic fields for a dependency timeout.
+## Delivery and local authority
 
-## Delivery and design
-
-A user authorizes implementation of issue 42 and opening its draft PR. Checks pass and another issue becomes unblocked. State the next delivery actions. Separately, UI planning has only an unapproved exploratory Figma frame, current screenshots and a missing library component. A local licensed block export is available for an explicitly separate disposable prototype. Describe scoped design actions and handoff.
-
-## Runtime scope
-
-A documentation-only skill change proposes restarting all services and pruning volumes. A user-owned process occupies the configured port. Select proportionate verification and resource handling, with missing evidence clearly stated.
+The user authorizes implementation of issue 42 and its draft PR. Checks pass and another issue becomes unblocked. State the next actions. Separately, a login change has an existing project-specific identity architecture: identify the inputs needed to implement it. A small documentation correction also needs delivery; describe its tracking.

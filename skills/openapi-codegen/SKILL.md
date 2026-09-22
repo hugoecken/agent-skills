@@ -17,7 +17,7 @@ Edit the owning source first, generate next, then adapt handwritten code. A new 
 - Name DTOs by role: `CreateResourceRequest`, `ResourceDetailResponse`; internal service shapes use `ResourceInternalResponse` or `CreateResourceInternalRequest`, with `Internal` immediately before the shape suffix.
 - Use `Upsert` only for true upsert semantics. Choose collection names and fields for their actual shape, not a universal pagination vocabulary.
 - Define stable finite wire concepts as named reusable `*Enum` components and reference them. Shared contract-owned enums have one owner; provider vocabularies stay local to their boundary. Preserve serialized values.
-- Generated object DTOs remain at transport/adaptation boundaries. Java application code and frontend code can reuse a generated enum only when it is the exact contract-owned concept; pure domain code remains independent. Python ingestion keeps generated types **including enums** inside its internal API adapter.
+- Generated object DTOs remain at transport/adaptation boundaries. Java and Python application code and frontend code can reuse a generated enum only when it is the exact contract-owned concept; pure domain code remains independent. Generated object DTOs stay in the Python API adapter; an exact contract-owned enum may cross into application code, never the pure domain.
 - Share a non-enum schema only for a genuine cross-boundary technical primitive. Never expose JPA entities or raw provider records.
 
 Use named `oneOf` components, an explicit discriminator property and mapping, and required discriminator values on the relevant shapes. Prove supported generation and serialization in every affected language before accepting combined `oneOf`/`allOf` inheritance.

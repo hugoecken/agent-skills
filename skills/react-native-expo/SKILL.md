@@ -9,11 +9,9 @@ Read the accepted specification, local platform/design authority, actual Expo/Re
 
 ## Routing and feature ownership
 
-Keep Expo Router files thin: routes, layouts, navigation, redirects and top-level composition. Feature screens live outside the route tree. Use business-capability features with populated `screens`, `api`, `components`, `hooks`, `forms`, `schemas` and `model` roles. Screens can own queries and simple state; no mandatory container or screen hook.
+Keep Expo Router files thin: routes, layouts, navigation, redirects and top-level composition. Business feature screens live outside the route tree. Use the existing feature owners; do not require a container or screen hook for simple behavior.
 
-Keep generated clients at the API boundary, map only for changed UI/editing semantics and reuse contract-owned enums when exact. Keep provider payloads and native constants in their adapters. Public feature APIs are narrow; shared code does not import features.
-
-TanStack Query owns remote state. New forms use React Hook Form and Zod. Local interactions remain local; add Zustand only for an identified transversal client need. Effects synchronize native/external systems with correct dependencies and cleanup. Reuse generated query keys where available and validate JSON responses once before success caching. Preserve form values on errors and dirty values on refetch. Offline defaults to existing in-memory data, not disk persistence or queued writes.
+Keep native/provider constants and payloads in their adapters. Follow shared React conventions for feature state, forms, effects and generated contracts; this skill concentrates on native responsibilities. Session, token storage and authorization decisions come from the project's accepted identity architecture, not a portable provider profile.
 
 ## Native UI and tokens
 

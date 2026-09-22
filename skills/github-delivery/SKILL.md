@@ -11,7 +11,7 @@ Read repository instructions, Git state, remotes, branch model and the authorize
 
 Read-only investigation and recommending a next issue do not claim it. An eligible issue is open, unassigned, has no open native blocker and no obvious overlapping delivery PR. Compare assigned work, PRs and relevant branches/worktrees; favor clear prerequisites and low overlap. Recommend one with reasons, then await authorization to execute if it has not already been given.
 
-Before content implementation, use an existing authorized issue or create the tracking issue when the task authorizes doing so. A maintenance issue states objective, scope, acceptance and sources. Product implementation resolves its task to approved specification/plan and constitution; applicable official Spec Kit procedures remain authoritative, not duplicated here.
+Before content implementation, use an existing authorized issue or create the tracking issue when the task authorizes doing so. This includes small documentation and maintenance changes; an explicit implementation request covers their ordinary tracking workflow. Do not request the same authorization again. A maintenance issue states objective, scope, acceptance and sources. Product implementation resolves its task to approved specification/plan and constitution; applicable official Spec Kit procedures remain authoritative, not duplicated here.
 
 Re-read native blockers, assignee and overlapping work before claiming. Do not overwrite another assignee or begin blocked work. Self-assign the authenticated GitHub user. GitHub assignment is the claim; do not invent local locks or a second status system.
 

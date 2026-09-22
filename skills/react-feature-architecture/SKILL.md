@@ -26,6 +26,12 @@ A small feature may start with a few files. Route files belong to the framework 
 
 Expose narrow public feature APIs when other features need them. Do not import another feature's internals or create cycles. Shared modules never depend on features. Promote shared code for identical active semantics, not similar appearance. No global barrel, registry, screen engine, base hook or speculative abstraction.
 
+## Helpers and public boundaries
+
+Keep simple expressions local. A private function used once is useful when it names a coherent step or makes an invariant easier to understand; it does not justify a reusable framework. Before extracting shared behavior, search existing owners. When a second consumer needs the same rule, reuse or move the existing function to the narrowest meaningful common owner and remove copies. Share identical knowledge, not merely similar syntax.
+
+An exported contract or public boundary can be justified with one consumer. Do not prohibit exports mechanically or create global utils, generic facades, registries or layers in anticipation of reuse. Investigate the underlying ownership or data-flow problem before adding another adapter around its symptom.
+
 ## State ownership
 
 | Kind                                               | Owner                                           |
@@ -64,7 +70,7 @@ Use effects for synchronization with external systems, with correct dependencies
 
 Memoize only for a meaningful computation cost, required referential stability or a measured issue. Prefer explicit props, children and small named compositions. Normal `disabled`/`loading`/`selected` booleans are fine; unrelated mode combinations deserve separate compositions or a finite variant. Compound components/context need actual coordinated public parts.
 
-Infer local TypeScript types; type public props, stable interfaces, mappings and boundaries explicitly. Narrow unknown input, avoid `any`, unsafe casts and non-null assertions. Handwritten files use kebab-case except framework-mandated names and existing generated output.
+Prefer explicit named contracts for public props, stable interfaces, mappings and boundaries; infer obvious local variables. Reuse an exact generated object type instead of a renamed handwritten mirror. Define a local form/view model when its meaning differs. `Pick`, `Partial`, `ReturnType`, indexed access and schema-derived types are acceptable when they remove real duplicated knowledge and remain immediately readable, not as a default construction language for every interface. Avoid nested calculated types such as `NonNullable<ReturnType<typeof useBookings>["data"]>["items"][number]` as component APIs. Never make a required field optional just to silence the checker. Narrow unknown input, avoid `any`, unsafe casts and non-null assertions. Handwritten files use kebab-case except framework-mandated names and existing generated output.
 
 ## Evidence
 

@@ -19,12 +19,11 @@ themselves. Do not test framework, browser, generated-client, or component-libra
 
 ## Consistent Shape
 
-- Co-locate `*.test.ts` and `*.test.tsx` with the feature code they protect.
+- Place `*.test.ts` and `*.test.tsx` in `__tests__` beside the owning file, feature role or shared module.
 - Reserve the project-level `tests` directory for cross-cutting contract or build proofs that do not belong to one
   source module.
 - Name tests after observable behavior in user or domain language, not component methods or implementation state.
-- Structure each test as arrange, act, assert, separated clearly by blank lines. Use comments only when the phases or
-  reason are not obvious.
+- Structure each test with visible `// Given`, `// When` and `// Then` comments and blank lines between phases.
 - Keep one behavior per test. Group a coherent scenario family only when grouping improves navigation.
 - Use explicit meaningful fixtures and deterministic values. Keep one-off data and fakes inside the owning test.
 - Extract shared setup, builders, or test renderers only after several tests share the same stable requirement.
@@ -70,7 +69,7 @@ focused generated-client proof only when repository configuration or a critical 
 - Mock time, randomness, browser APIs, or transport only when the scenario owns that boundary; restore global state
   after every test.
 - Never mock React or Next.js internals to make an implementation testable.
-- Avoid broad snapshots, source scans, private-function access, arbitrary delays, retry-based stabilization, and tests
+- Avoid broad snapshots, source-spelling assertions, private-function access, arbitrary delays, retry-based stabilization, and tests
   that only prove rendering did not throw.
 - Test the application compositions and behavior, not the internal rendering of shadcn or the application UI Library primitives.
 - Keep tests readable before making them abstract. Small duplication is preferable to a helper that hides the scenario.
@@ -92,3 +91,15 @@ Do not pretend Vitest renders asynchronous React Server Components with full Nex
 Exercise malformed successful JSON rejected before query caching, stable error-code feedback, narrow invalidation, no implicit mutation retries, and dirty form values preserved across refetch when those behaviors change. Restore global state and isolate Query caches between tests. Mock controlled network boundaries rather than React/Next internals.
 
 Report browser/runtime checks that could not run, with residual risk and any equivalent evidence. A DOM test cannot substitute for a missing framework proof.
+
+## Readable scenarios and reusable data
+
+The test name, scenario-determining inputs, action and expected result must be visible together. One behavior may need several assertions; do not split one outcome mechanically. Integration tests stay near their boundary owner; reserve transversal locations for truly cross-boundary behavior. Identify which collaborators are real and which are controlled doubles. Helpers must not hide the action, database writes, installed mocks or unrelated setup.
+
+Keep simple values inline. Use targeted typed factories for rich valid objects that are actually reused, with explicit overrides for the scenario's decisive fields. Search existing factories before adding one, and share only identical meaning at the narrowest owner. A private helper may name one coherent step, and a public boundary may have one consumer; neither permits speculative test DSLs, generic object mothers or automatic reflection-based object graphs.
+
+Use `@faker-js/faker` when generated secondary values are useful, as a test dependency with a project-owned compatible version. Use a native fixed seed per test and explicit construction; never mutable random state shared across parallel tests. Control the clock for time-sensitive data. Assert scenario values, not a hard-coded string tied to a Faker version or call order. Keep boundary cases explicit and parameterized. Small tests do not require a data library, and installing this skill does not add dependencies.
+
+Read [canonical examples](references/examples.md) when adding or substantially restructuring tests or factories. They show a unit test, an integration boundary and a rich typed factory, not a new test framework. For a substantive behavior change run the owning suite, necessary integration proofs and affected consumers; mandatory repository checks still apply. No new E2E infrastructure is introduced by this policy.
+
+Focused architecture tests may protect important dependency boundaries. Avoid tests that assert source spelling or incidental file layout rather than the boundary itself.

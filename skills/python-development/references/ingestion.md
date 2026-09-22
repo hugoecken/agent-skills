@@ -4,13 +4,13 @@
 
 Use only roles that real behavior needs: `application` owns use cases, commands, ports and run results; `domain` owns pure values, reconciliation and invariants; `infrastructure` owns provider HTTP/parsing, generated clients and scheduling; `config` owns typed startup settings; the bootstrap composes lifecycle. An observability module is useful only when logging/metrics configuration warrants it. No empty role tree or generic managers/processors.
 
-Use `Protocol` at real replaceable outbound seams, not on every class. Keep domain/application independent of HTTPX, parsing-library nodes, raw dictionaries and generated transport packages.
+Use `Protocol` at real replaceable outbound seams, not on every class. Keep application code independent of HTTPX, parsing-library nodes, raw dictionaries and generated object DTOs. The exact contract-owned enum exception applies to application code only; domain code stays independent of generated packages.
 
 ## Parsing, contracts and writes
 
 Separate download, decode, parse, normalize, match and internal writes. A parser takes controlled text/bytes/document input and returns typed provider records without network calls. Keep provider encodings, vocabulary, quirks and markup inside the provider adapter.
 
-Generated internal clients, object models **and enums** remain in the internal API adapter. Explicit typed functions map application/domain values to requests and responses back. Do not make generated transport classes the domain or introduce a mapping framework. This stricter Python boundary is deliberate even when other languages reuse contract-owned enums.
+Generated internal clients and object models remain in the internal API adapter. Exact contract-owned enums may be reused in the application; provider vocabularies and pure domain values keep their own owner. Explicit typed functions map objects to and from application/domain values. Do not make generated transport classes the domain or introduce a mapping framework.
 
 Preserve source priority, aliases, missing values, malformed-record treatment, dates, identifiers and matching fallbacks unless the task accepts a correction. Name pure policies for decisions. Do not create a universal parser for unrelated providers.
 

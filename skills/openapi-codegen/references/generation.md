@@ -8,7 +8,15 @@ Keep shared generated model packages limited to genuinely shared enums and techn
 
 ## Python
 
-Use the repository-pinned OpenAPI Generator and asynchronous HTTPX configuration, with one declarative batch configuration per adopted contract. Respect the owning internal/public boundary; language does not change service ownership. Keep generated classes, models and enums inside the infrastructure API adapter in ingestion applications. Map to typed application/domain values using explicit functions. Validate imports and actual request/response behavior against controlled transport; never production data.
+Use the repository-pinned OpenAPI Generator and asynchronous HTTPX configuration, with one declarative batch configuration per adopted contract. Respect the owning internal/public boundary; language does not change service ownership. Keep generated clients and object models inside the infrastructure API adapter. Reuse a generated enum in application code only for the exact contract-owned concept; pure domain values remain independent. Map objects to typed application/domain values using explicit functions. Validate imports and actual request/response behavior against controlled transport; never production data.
+
+## Runtime validation guarantees
+
+Own generation and transport-validation mechanics here; language policies own placement and application adaptation. Verify the installed generator's actual output and invocation path. An annotation, Pydantic dependency or generated type alone does not prove that received data is validated. Generated constraints must actually run at the entry boundary; Java server validation wiring and Python response deserialization require their own evidence.
+
+At affected boundaries prove valid input succeeds and required-field absence, wrong types, unknown enum values, forbidden nulls, forbidden extra properties and malformed/partial responses fail as the contract requires. Specify permitted coercions rather than assuming strict mode everywhere. If the contract forbids extra properties, verify rejection: silently dropping them does not prove conformance. Do not admit invalid external data as a valid application value. For Python inspect the generated model configuration and the HTTPX client's actual decoding path; exercise that path, not only a manually constructed model.
+
+If generation misses a required guarantee, identify the exact gap and use a supported configuration or a narrow handwritten boundary check outside generated code. Keep one contract owner: no parallel DTO family, copied schema or second routine validation at each layer. Generator/template adoption changes remain explicit work. Provider HTML/CSV without an API contract uses its own adapter parsing/validation, not an invented OpenAPI specification.
 
 ## TypeScript, Orval and Zod
 

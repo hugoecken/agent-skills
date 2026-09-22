@@ -12,7 +12,7 @@ Prefer the cheapest test that can fail for the meaningful regression. Coverage a
 
 - Name files `test_<boundary>.py` and tests `test_<observable_behavior>`.
 - Organize tests by feature or provider boundary. Keep characterization tests and sanitized provider fixtures explicit.
-- Structure each test as arrange, act, assert, separated clearly by blank lines.
+- Structure each test with visible `# Given`, `# When` and `# Then` comments and blank lines between phases.
 - Use deterministic identifiers and meaningful values. Keep one-off data and doubles inside the owning test.
 - Extract shared fixtures, builders, fakes, or async support only after several tests share the same stable need.
 
@@ -57,7 +57,7 @@ Compare typed values or compact normalized traces, not log lines, object identit
 ## Maintainability Rules
 
 - Prefer small handwritten fakes over broad mocks. Do not mock dataclasses, enums, generated values, or pure objects.
-- Avoid large snapshots, source scans, private-function access, arbitrary sleeps, real provider calls, production data, and universal fixture DSLs.
+- Avoid large snapshots, source-spelling assertions, private-function access, arbitrary sleeps, real provider calls, production data, and universal fixture DSLs.
 - Assert logs only when the log is supported behavior; otherwise assert state, result, or adapter operation.
 - Seed randomness and freeze or inject time only when they influence the result.
 - Keep async tasks owned and completed inside the test. No task may survive the test that created it.
