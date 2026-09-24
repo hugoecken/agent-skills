@@ -1,6 +1,6 @@
 # Personal agent skills
 
-Seventeen reusable skills for development and delivery. Each folder is independent and contains its own instructions and any conditional references. Copy only the skills a project needs; they do not depend on a central router or another skill's files.
+Eighteen reusable skills for development and delivery. Each folder is independent and contains its own instructions and any conditional references. Copy only the skills a project needs; they do not depend on a central router or another skill's files.
 
 These are personal engineering conventions informed by framework documentation, not a claim that every community prescribes one architecture. The target choices include feature-first Java/React, explicit Java persistence ports, React Hook Form/Zod, semantic StyleSheet styling for native, and generated contracts. An existing application is not migrated merely because the skills are installed. Python guidance targets new projects with hybrid use cases, immutable internal values, explicit mapping, declared input conversions, strict typing and Pydantic Settings; web frameworks and ORMs remain project decisions. Conditional references and focused illustrative fragments clarify these conventions without distributing an example application, pinned demonstration toolchain or reusable scaffold.
 
@@ -20,7 +20,8 @@ These are personal engineering conventions informed by framework documentation, 
 | [docker-conventions](skills/docker-conventions/SKILL.md)                 | Source-built images, local infrastructure and explicit configuration |
 | [nextjs-separate-backend](skills/nextjs-separate-backend/SKILL.md)       | Next.js rendering with a separate business backend                   |
 | [nextjs-testing](skills/nextjs-testing/SKILL.md)                         | Vitest/RTL and real Next/Playwright boundaries                       |
-| [design-prototyping](skills/design-prototyping/SKILL.md)                 | Standalone responsive exploration before Figma                       |
+| [design-workflow](skills/design-workflow/SKILL.md)                       | SDD scope, parallel prototype lots, whole-scope approval and Figma    |
+| [design-prototyping](skills/design-prototyping/SKILL.md)                 | Standalone interactive sketches and incremental review               |
 | [react-native-expo](skills/react-native-expo/SKILL.md)                   | Expo routing, native UI and lifecycle                                |
 | [expo-testing](skills/expo-testing/SKILL.md)                             | jest-expo/RNTL and native evidence                                   |
 | [python-development](skills/python-development/SKILL.md)                 | Python architecture, explicit mapping, settings and owned lifecycle  |

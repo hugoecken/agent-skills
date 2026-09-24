@@ -35,3 +35,19 @@ The user authorizes implementation of issue 42 and its draft PR. Checks pass and
 ## Prototype review
 
 The user wants to compare two layouts for an approved screen before final Figma work, then keep the result available for another review next week. Describe where to create the exploration, how to present it, and what happens after the user approves a direction. Identify any Git actions you would take.
+
+## New application design
+
+Accepted V1 specifications cover a shared workspace selector, a home screen, a reservation journey and account settings. No product code exists. A rough prototype has links between placeholder screens, but the return paths and workspace context are unresolved. Three contributors are available. Plan the next work and concrete issue boundaries, including file ownership and integration criteria. State what can happen concurrently and what evidence is needed to move to the next stage. One contributor later reports that their reservation screen is approved while settings still has no error states; describe the available next actions.
+
+## Evolution and shared changes
+
+An existing application has an approved prototype, UI Library and Product Design. Accepted specifications add a rescheduling flow with a changed reservation detail entry point and a new recovery state. Two contributors own disjoint screen directories, but both need to change the shared router. Propose the task decomposition, coordination and review scope. During exploration, a contributor proposes silently removing a required confirmation step to make the flow shorter. Describe how to handle the proposal and the eventual Figma handoff.
+
+## Exploration evidence and issue organization
+
+The user asks to reorganize prototype issues so several people can work independently. A tracking issue currently contains iteration screenshots, a completed checkbox for an unreviewed screen and a link to an application documentation PR that only records the process. The user says no prototype version has been approved and asks for a cleanup proposal only. Produce the proposed issue content and explain which repository or GitHub changes, if any, you would execute now.
+
+## Complete prototype handoff and limited Figma maintenance
+
+All visual and interactive requirements of an agreed V1 have been reviewed in isolation. On integration, the back action from account settings loses the selected workspace. There is no final art direction yet. Describe the next work before production planning, then the order of operations once the complete integrated prototype is approved. Separately, a user asks only to rename a private Figma documentation helper without changing product design; state the appropriate scope.
