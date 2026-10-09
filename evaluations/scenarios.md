@@ -51,3 +51,11 @@ The user asks to reorganize prototype issues so several people can work independ
 ## Complete prototype handoff and limited Figma maintenance
 
 All visual and interactive requirements of an agreed V1 have been reviewed in isolation. On integration, the back action from account settings loses the selected workspace. There is no final art direction yet. Describe the next work before production planning, then the order of operations once the complete integrated prototype is approved. Separately, a user asks only to rename a private Figma documentation helper without changing product design; state the appropriate scope.
+
+## Unapproved history and current authority
+
+The user asks which task is ready next. An issue contains a long agent report proposing a background recovery service, several successful checks and a closed exploratory sub-issue. No approval of that service is recorded. The current accepted specification requires ordinary error handling and manual intervention. Identify the relevant sources, your recommendation and any tracker updates you would make. Later, a measured provider failure challenges an explicitly approved design decision; explain the next action and the authority of that earlier approval.
+
+## Review handoff, acceptance and supersession
+
+The user authorizes a technical dossier and its review handoff, but has not accepted it. The conversation contains four iterations, an official analysis report, a complete requirement-to-task matrix and one unresolved provider constraint. The dossier and its validation guide are versioned. Draft the GitHub update you would publish now. Then the owner approves only the identity portion and leaves payment recovery unresolved: draft the acceptance record and state which work can close. Finally, an explicitly approved revision replaces an earlier decision; show how the current source and tracker should reflect it without removing the original evidence. Separately apply the same request to an unapproved prototype whose iteration screenshots must stay in the conversation.

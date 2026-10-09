@@ -11,7 +11,7 @@ Keep the three sources complementary: accepted specifications own requirements, 
 
 ## Establish scope from specifications
 
-Read the project's accepted specifications and existing decisions. Identify the visual and interactive requirements, supported platforms, relevant states and affected journeys for the selected scope. Keep requirement-to-journey coverage in the existing issue or task structure; do not create a second roadmap or a project documentation file just to hold the workflow.
+Read the project's current accepted specifications and applicable approved decisions. Use history only to resolve a specific approval, rationale or dependency question; an earlier proposal or detailed review report does not establish design authority. Challenge an approved choice when new evidence warrants revision, without silently replacing it. Identify the visual and interactive requirements, supported platforms, relevant states and affected journeys for the selected scope. Keep requirement-to-journey coverage in the existing issue or task structure; do not create a second roadmap or a project documentation file just to hold the workflow.
 
 When exploration exposes a gap or contradiction, surface the decision and obtain explicit agreement before changing accepted behavior. Use the applicable official SDD/Spec Kit procedure available in the project to amend specifications; do not reproduce that procedure here or treat prototype experiments as approved specification changes.
 
@@ -34,7 +34,7 @@ Maintain a separate prototype project with mock data and local interactions. Reu
 
 Review useful alternatives when there is a real decision. Validate each coherent stage with the user and integrate parallel contributions frequently to expose broken transitions, context loss or inconsistent shared elements. Rapid iterations and authorized pushes support exploration; production architecture and optimization are not prerequisites for the sketch. Follow the standalone prototyping skill when available for build and review mechanics.
 
-Keep iteration screenshots and discussion in the conversation during exploration. Publish evidence in the owning issue only after explicit approval of the corresponding work, with its actual scope. An approved lot is not evidence that the entire prototype is complete. Keep issue content focused on current scope, decisions, dependencies and acceptance rather than a running history of experiments. Organizing issues does not authorize adding repository documentation or specification commits.
+Keep iteration screenshots and discussion in the conversation during exploration. Publish evidence in the owning issue only after explicit approval of the corresponding work, with its actual scope. An approved lot is not evidence that the entire prototype is complete. Keep issue content focused on current scope, decisions, dependencies and acceptance rather than a running history of experiments. A concise pre-approval handoff or decision request may link the reviewable proposal, clearly labeled as unapproved; it does not publish iteration evidence as accepted design. Approval records identify the actual scope, revision, approval source and material limits, linking detailed evidence rather than duplicating reports. When an authorized decision changes, update its owning source and identify the superseded decision. Organizing issues does not authorize adding repository documentation or specification commits.
 
 ## Validate the complete selected prototype scope
 
