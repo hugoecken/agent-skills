@@ -83,3 +83,15 @@ An approved upload plan assumes a pinned mobile SDK supports cancellable backgro
 ## Required automation and ordinary defects
 
 An accepted incident dashboard must update without user action while staff watch it. Its query library supports interval refresh, and access rules are rechecked by the server. Recommend a proportionate implementation. Separately, a filter fails to update because its value is absent from an otherwise valid query key; a failing test reproduces that omission. Describe the correction and any design approval you would request. Do not edit the accepted dashboard requirement.
+
+## Shared documentation with a specialized workflow
+
+A project uses Spec Kit with its installed official procedures and accepted feature artifacts. A feature plan owns the booking API and data model. `docs/notes.md` repeats that model, records the approved two-application topology, and includes a proposed unapproved payment retry policy. The root README links the notes; AGENTS routes architecture work there. Manifests do not exist yet. The user authorizes documentation consolidation only, preserving accepted meaning. Use `project-documentation` to produce the revised files and identify any transfer requiring another workflow. Keep the installed procedures and feature artifacts unchanged unless the authorized task requires their official workflow. No application, provider or design writes are authorized.
+
+## Documentation without a specification framework
+
+A project has a root README with working setup instructions, a manifest and lockfile, a partial prototype with a review link, and one accepted note choosing a single application with an embedded database. No specification framework, feature plans or Figma file exists. The user asks for a consistent shared technical reference. Produce the necessary files and explain their owners and verification limits. A subsequent request asks to record a provider configuration shared by two consumers; the schema already has an authoritative location. Show the scoped addition.
+
+## Cleanup with unresolved authority and missing evidence
+
+Two documents disagree about the selected storage engine; neither records approval, and there is no implementation to inspect. A linked historical note contains the only recovery prerequisites, while its replacement is inaccessible. The user requests naming and structure cleanup without changing decisions. Produce the safe edits and explain what remains unresolved. Separately, a new repository has only an approved product brief and no technical choices: apply the same documentation convention without selecting a stack.

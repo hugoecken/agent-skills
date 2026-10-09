@@ -1,32 +1,33 @@
 # Personal agent skills
 
-Nineteen reusable skills for design, development and delivery. Each folder is independent and contains its own instructions and any conditional references. Copy only the skills a project needs; they do not depend on a central router or another skill's files.
+Twenty reusable skills for design, development and delivery. Each folder is independent and contains its own instructions and any conditional references. Copy only the skills a project needs; they do not depend on a central router or another skill's files.
 
 These are personal engineering conventions informed by framework documentation, not a claim that every community prescribes one architecture. The target choices include feature-first Java/React, explicit Java persistence ports, React Hook Form/Zod, semantic StyleSheet styling for native, and generated contracts. An existing application is not migrated merely because the skills are installed. Python guidance targets new projects with hybrid use cases, immutable internal values, explicit mapping, declared input conversions, strict typing and Pydantic Settings; web frameworks and ORMs remain project decisions. Conditional references and focused illustrative fragments clarify these conventions without distributing an example application, pinned demonstration toolchain or reusable scaffold.
 
 ## Catalogue
 
-| Skill                                                                    | Purpose                                                                      |
-| ------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| [java-spring](skills/java-spring/SKILL.md)                               | Application boundaries, JPA, transactions and Java mapping                   |
-| [java-testing](skills/java-testing/SKILL.md)                             | Focused JVM, Spring, database and runtime evidence                           |
-| [react-feature-architecture](skills/react-feature-architecture/SKILL.md) | Shared React feature, state, form and effect ownership                       |
-| [openapi-codegen](skills/openapi-codegen/SKILL.md)                       | Source-first REST contracts, generators and response validation              |
-| [liquibase-schema](skills/liquibase-schema/SKILL.md)                     | Baseline posture, durable invariants and schema evolution                    |
-| [github-delivery](skills/github-delivery/SKILL.md)                       | Issues, topic branches, draft PRs and human-directed merges                  |
-| [figma-design-governance](skills/figma-design-governance/SKILL.md)       | Library/screen ownership and approved design evidence                        |
-| [code-documentation](skills/code-documentation/SKILL.md)                 | Useful Java, Python and TypeScript contracts                                 |
-| [application-logging](skills/application-logging/SKILL.md)               | Safe operational logs and failure ownership                                  |
-| [docker-conventions](skills/docker-conventions/SKILL.md)                 | Source-built images, local infrastructure and explicit configuration         |
-| [nextjs-separate-backend](skills/nextjs-separate-backend/SKILL.md)       | Next.js rendering with a separate business backend                           |
-| [nextjs-testing](skills/nextjs-testing/SKILL.md)                         | Vitest/RTL and real Next/Playwright boundaries                               |
-| [proportionate-design](skills/proportionate-design/SKILL.md)             | Product tradeoffs, supported mechanisms and evidence-driven design decisions |
-| [design-workflow](skills/design-workflow/SKILL.md)                       | SDD scope, parallel prototype lots, whole-scope approval and Figma           |
-| [design-prototyping](skills/design-prototyping/SKILL.md)                 | Standalone interactive sketches and incremental review                       |
-| [react-native-expo](skills/react-native-expo/SKILL.md)                   | Expo routing, native UI and lifecycle                                        |
-| [expo-testing](skills/expo-testing/SKILL.md)                             | jest-expo/RNTL and native evidence                                           |
-| [python-development](skills/python-development/SKILL.md)                 | Python architecture, explicit mapping, settings and owned lifecycle          |
-| [python-testing](skills/python-testing/SKILL.md)                         | pytest, controlled I/O and ingestion characterization                        |
+| Skill                                                                    | Purpose                                                                                    |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| [java-spring](skills/java-spring/SKILL.md)                               | Application boundaries, JPA, transactions and Java mapping                                 |
+| [java-testing](skills/java-testing/SKILL.md)                             | Focused JVM, Spring, database and runtime evidence                                         |
+| [react-feature-architecture](skills/react-feature-architecture/SKILL.md) | Shared React feature, state, form and effect ownership                                     |
+| [openapi-codegen](skills/openapi-codegen/SKILL.md)                       | Source-first REST contracts, generators and response validation                            |
+| [liquibase-schema](skills/liquibase-schema/SKILL.md)                     | Baseline posture, durable invariants and schema evolution                                  |
+| [github-delivery](skills/github-delivery/SKILL.md)                       | Issues, topic branches, draft PRs and human-directed merges                                |
+| [figma-design-governance](skills/figma-design-governance/SKILL.md)       | Library/screen ownership and approved design evidence                                      |
+| [project-documentation](skills/project-documentation/SKILL.md)           | Shared technical references, consistent docs structure and source-preserving consolidation |
+| [code-documentation](skills/code-documentation/SKILL.md)                 | Useful Java, Python and TypeScript contracts                                               |
+| [application-logging](skills/application-logging/SKILL.md)               | Safe operational logs and failure ownership                                                |
+| [docker-conventions](skills/docker-conventions/SKILL.md)                 | Source-built images, local infrastructure and explicit configuration                       |
+| [nextjs-separate-backend](skills/nextjs-separate-backend/SKILL.md)       | Next.js rendering with a separate business backend                                         |
+| [nextjs-testing](skills/nextjs-testing/SKILL.md)                         | Vitest/RTL and real Next/Playwright boundaries                                             |
+| [proportionate-design](skills/proportionate-design/SKILL.md)             | Product tradeoffs, supported mechanisms and evidence-driven design decisions               |
+| [design-workflow](skills/design-workflow/SKILL.md)                       | SDD scope, parallel prototype lots, whole-scope approval and Figma                         |
+| [design-prototyping](skills/design-prototyping/SKILL.md)                 | Standalone interactive sketches and incremental review                                     |
+| [react-native-expo](skills/react-native-expo/SKILL.md)                   | Expo routing, native UI and lifecycle                                                      |
+| [expo-testing](skills/expo-testing/SKILL.md)                             | jest-expo/RNTL and native evidence                                                         |
+| [python-development](skills/python-development/SKILL.md)                 | Python architecture, explicit mapping, settings and owned lifecycle                        |
+| [python-testing](skills/python-testing/SKILL.md)                         | pytest, controlled I/O and ingestion characterization                                      |
 
 ## Install or update
 
@@ -48,7 +49,7 @@ A project can select the common backend/contracts/delivery skills plus the frame
 
 Authentication belongs to each project’s accepted architecture: route identity, session and authorization work there from `AGENTS.md`, rather than installing a portable authentication profile.
 
-Keep `AGENTS.md` short: product/spec authority, repository map and commands, validation/reporting requirements, and task-based skill selection. Apply `code-documentation` to changed handwritten contracts, plus the relevant language/test skills. Route significant requirement and technical design decisions, and structural implementation friction, to `proportionate-design`. Ordinary coding tasks use their focused language and framework skills without a mandatory design review. An installed skill is neither authorization for unrelated changes nor proof that existing code complies.
+Keep `AGENTS.md` short: product/spec authority, repository map and commands, validation/reporting requirements, and task-based skill selection. Apply `code-documentation` to changed handwritten contracts, plus the relevant language/test skills. Route significant requirement and technical design decisions, and structural implementation friction, to `proportionate-design`. Use `project-documentation` for shared technical references and authorized documentation organization; it defines a common `docs` convention without changing specialized workflows such as Spec Kit. Ordinary coding tasks use their focused language and framework skills without a mandatory design review. An installed skill is neither authorization for unrelated changes nor proof that existing code complies.
 
 Keep official Spec Kit, Karpathy and shadcn skills intact when already present. Official Nx skills come directly from [nrwl/nx-ai-agents-config](https://github.com/nrwl/nx-ai-agents-config), with their complete folders and license, not from this personal pack. Verify the current [Nx catalogue](https://nx.dev/.well-known/agent-skills/index.json) at update time. The verified catalogue currently includes `link-workspace-packages`, `monitor-ci`, `nx-generate`, `nx-import`, `nx-plugins`, `nx-run-tasks` and `nx-workspace`.
 
