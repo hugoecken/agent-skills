@@ -26,7 +26,7 @@ The title, decisive values, real/replaced dependencies, action and expected outc
 
 An application test must not import a concrete adapter to mock its internals. Prefer real dataclasses, enums and generated model values; never mock the object under test. A recording fake exposes only the behavior needed by the scenario and does not become a second framework. Assert collaborator calls only when they are the contract, such as an emitted write or forbidden action.
 
-Source generation/imports prove compatibility, not every runtime guarantee. If validation is the claim, exercise the actual generated client's decoding path using malformed required fields/types/enums/nulls/forbidden extra properties. Record unsupported guarantees as failures, not successful coverage. A handwritten stand-in model cannot certify generated behavior. Do not test generator spelling or default example methods.
+Source generation/imports prove compatibility, not every runtime guarantee. If validation is the claim, exercise the actual generated client's decoding path using missing required fields, wrong types, unknown enum values and forbidden nulls. For new contracts, prove unknown request properties are rejected and additive response properties remain accepted; preserve explicitly closed existing contracts unless their evolution is authorized. Record unsupported guarantees as failures, not successful coverage. A handwritten stand-in model cannot certify generated behavior. Do not test generator spelling or default example methods.
 
 ## Configuration and async scenarios
 

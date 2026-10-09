@@ -80,7 +80,7 @@ focused generated-client proof only when repository configuration or a critical 
 
 - Run the narrowest relevant test while developing.
 - Run the web test target before completion.
-- Run code generation and type checking when contracts, schemas, API adaptation, or types change.
+- Run code generation, type checking and affected consumer/integration proofs when contracts, schemas, API adaptation, or types change.
 - Run the production build when routing, server/client boundaries, configuration, or rendering changes.
 - Run formatting and repository diff-hygiene checks, and report intentionally skipped checks with the reason.
 
@@ -88,7 +88,7 @@ focused generated-client proof only when repository configuration or a critical 
 
 Do not pretend Vitest renders asynchronous React Server Components with full Next request/cache semantics. Use the actual Next runtime and Playwright for async rendering, route transitions, redirects, authentication visibility or cache behavior when those boundaries are the claim. A production build is necessary for affected framework boundaries but is not an end-to-end behavior test.
 
-Exercise malformed successful JSON rejected before query caching, stable error-code feedback, narrow invalidation, no implicit mutation retries, and dirty form values preserved across refetch when those behaviors change. Restore global state and isolate Query caches between tests. Mock controlled network boundaries rather than React/Next internals.
+For new or explicitly evolved contracts, prove additive response properties are accepted and malformed known fields are rejected before success. Preserve existing compatibility. Exercise stable error-code feedback, narrow invalidation, no implicit mutation retries, and dirty form values preserved across refetch when those behaviors change. Isolate Query caches between tests. When server prefetch/hydration is used, verify its client interaction and request/identity isolation through the actual framework boundary.
 
 Report browser/runtime checks that could not run, with residual risk and any equivalent evidence. A DOM test cannot substitute for a missing framework proof.
 
@@ -100,6 +100,6 @@ Keep simple values inline. Use targeted typed factories for rich valid objects t
 
 Use `@faker-js/faker` when generated secondary values are useful, as a test dependency with a project-owned compatible version. Use a native fixed seed per test and explicit construction; never mutable random state shared across parallel tests. Control the clock for time-sensitive data. Assert scenario values, not a hard-coded string tied to a Faker version or call order. Keep boundary cases explicit and parameterized. Small tests do not require a data library, and installing this skill does not add dependencies.
 
-Read [canonical examples](references/examples.md) when adding or substantially restructuring tests or factories. They show a unit test, an integration boundary and a rich typed factory, not a new test framework. For a substantive behavior change run the owning suite, necessary integration proofs and affected consumers; mandatory repository checks still apply. No new E2E infrastructure is introduced by this policy.
+Read [canonical examples](references/examples.md) when adding or substantially restructuring tests or factories. They show a unit test, an integration boundary and a rich typed factory, not a new test framework. No new E2E infrastructure is introduced by this policy.
 
 Focused architecture tests may protect important dependency boundaries. Avoid tests that assert source spelling or incidental file layout rather than the boundary itself.

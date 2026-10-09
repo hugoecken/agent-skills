@@ -92,10 +92,11 @@ add IDs to every nested view or expose implementation structure through selector
 
 - Do not add pixel snapshots, screenshot assertions inside Jest, duplicated Figma fixtures, or a second UI test
   framework. A snapshot may cover a small stable serialized value only when that value is the behavior under test.
+- Visual completion requires approved Figma coverage for the affected scope; a partial prototype is not that approval. Nonvisual changes do not require unrelated design work.
 - Compare visual changes with the exact canonical Figma node at the platform, viewport, theme, authentication mode, and
   state selected by the repository design authority. Record unavailable evidence instead of fabricating it.
 - Run the narrow test while developing. Before publishing a mobile slice, run the formatting, lint, typecheck, complete
-  test, and diff commands declared by the repository build configuration.
+  test, and diff commands declared by the repository build configuration. Run affected consumers and integration proofs when shared contracts or provider boundaries change.
 - Run Expo Doctor when dependencies or Expo configuration change. Run the relevant unsigned platform build/launch when
   native modules, provider adapters, routing, safe areas, or platform-specific behavior change. Run every platform
   required by the repository instructions for a shared visual-system slice before certification.
@@ -115,6 +116,6 @@ Keep simple values inline. Use targeted typed factories for rich valid objects t
 
 Use `@faker-js/faker` when generated secondary values are useful, as a test dependency with a project-owned compatible version. Use a native fixed seed per test and explicit construction; never mutable random state shared across parallel tests. Control the clock for time-sensitive data. Assert scenario values, not a hard-coded string tied to a Faker version or call order. Keep boundary cases explicit and parameterized. Small tests do not require a data library, and installing this skill does not add dependencies.
 
-Read [canonical examples](references/examples.md) when adding or substantially restructuring tests or factories. They show a unit test, an integration boundary and a rich typed factory, not a new test framework. For a substantive behavior change run the owning suite, necessary integration proofs and affected consumers; mandatory repository checks still apply. No new E2E infrastructure is introduced by this policy.
+Read [canonical examples](references/examples.md) when adding or substantially restructuring tests or factories. They show a unit test, an integration boundary and a rich typed factory, not a new test framework. No new E2E infrastructure is introduced by this policy.
 
 Focused architecture tests may protect important dependency boundaries. Avoid tests that assert source spelling or incidental file layout rather than the boundary itself.

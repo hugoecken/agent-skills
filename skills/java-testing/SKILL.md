@@ -5,7 +5,7 @@ description: "Write and select JUnit Jupiter, Spring MVC/JPA, Testcontainers and
 
 # Java Testing Policy
 
-Read this reference before adding or changing backend Java tests.
+Read this reference before adding or changing backend Java tests. This policy selects Maven with Surefire/Failsafe for new work; use repository-pinned configuration. Installing it does not authorize a build-tool migration.
 
 ## Goal
 
@@ -47,24 +47,20 @@ testing boundary.
 ## JUnit And Mockito
 
 - Use JUnit Jupiter and AssertJ consistently with the module.
-- Prefer direct construction and real immutable values.
 - Use Mockito for observable collaborator boundaries, not to reproduce implementation line by line.
 - Stub only interactions needed by the scenario. Avoid lenient global setup and reset-heavy shared mocks.
 - Verify an interaction only when it is behavior, such as a write, publication, or forbidden dependency call.
 - Use an argument captor only when the delivered value is clearer than exposed internal state.
-- Never mock records, enums, generated DTOs, collections, or the class under test.
+- Use real immutable values; never mock records, enums, DTOs, value objects, generated models, collections, simple data containers, or the class under test.
 
 ## Selection
 
 - Construct pure services, mappers, parsers, validators, policies, factories, and small adapters directly.
-- Use Mockito only for true collaborators when isolation clarifies behavior. Do not mock records, enums, DTOs, value
-  objects, generated models, or simple data containers.
 - Use `@MockitoBean` when a supported Spring version must replace a bean in a test context; do not introduce
   deprecated `@MockBean` in that setup. Do not upgrade an older module incidentally to adopt an annotation.
 - Use integration tests when transactions, schema migrations, database-specific behavior, repository queries,
   ordering, locks, constraints, structured columns, or entity lifecycle are part of the contract.
 - Do not use a full Spring context for code that direct construction can prove.
-- A focused architecture test is useful for an important dependency boundary; test actual dependencies rather than source spelling. Do not freeze incidental method names or private layout.
 - Do not change production behavior only to satisfy an obsolete or incidental test.
 
 ## Component Guidance
@@ -123,15 +119,6 @@ testing boundary.
 - Regeneration parity and compilation are stronger evidence than source scans for generated names or methods.
 - Ignore generated examples and default interface methods unless the repository explicitly relies on their behavior.
 
-## Deterministic Data
-
-Use explicit values when a value proves an invariant. Seed any random generator, keep UUIDs stable when asserted or
-persisted, and never share mutable random state across unrelated tests. Do not add a test-data dependency merely to
-avoid writing a few meaningful values.
-
-Builders and fixtures expose meaningful defaults and named overrides. Avoid universal object mothers, reflection-based
-population, random object graphs, and fixtures with hidden database writes.
-
 ## Spring Context Discipline
 
 - Use the smallest slice that proves the owned behavior and import only the configuration it needs.
@@ -155,7 +142,6 @@ population, random object graphs, and fixtures with hidden database writes.
 
 ## Documentation And Size
 
-- Document testkit ownership and non-obvious fixture/invariant contracts; do not narrate every assertion.
 - Keep a test focused on one observable behavior. Use nested groups for a coherent family, not deep hierarchy.
 - Extract setup when it clarifies intent; do not build a DSL for a handful of values.
 - Review unusually large test classes and split by behavior when navigation becomes difficult.
@@ -170,14 +156,14 @@ population, random object graphs, and fixtures with hidden database writes.
 - Report tests intentionally skipped and why, especially when Docker/Testcontainers is unavailable.
 - Always run the repository diff-hygiene check.
 
-Use explicit Java types in all handwritten tests, resources and loops; do not use `var`. Qualify enum constants except switch cases. Tests of application orchestration should replace its persistence port, not import a repository into application code. When transaction semantics matter, exercise the real transaction owner and database.
+Use explicit Java types in all handwritten tests, resources and loops; do not use `var`. Qualify enum constants except switch cases.
 
 ## Readable scenarios and reusable data
 
 The test name, scenario-determining inputs, action and expected result must be visible together. One behavior may need several assertions; do not split one outcome mechanically. Integration tests stay near their boundary owner; reserve transversal locations for truly cross-boundary behavior. Identify which collaborators are real and which are controlled doubles. Helpers must not hide the action, database writes, installed mocks or unrelated setup.
 
-Keep simple values inline. Use targeted typed factories for rich valid objects that are actually reused, with explicit overrides for the scenario's decisive fields. Search existing factories before adding one, and share only identical meaning at the narrowest owner. A private helper may name one coherent step, and a public boundary may have one consumer; neither permits speculative test DSLs, generic object mothers or automatic reflection-based object graphs.
+Keep scenario-defining values explicit and UUIDs stable when asserted or persisted. Keep simple values inline. Use targeted typed factories for rich valid objects that are actually reused, with explicit overrides for the scenario's decisive fields. Search existing factories before adding one, and share only identical meaning at the narrowest owner. A private helper may name one coherent step, and a public boundary may have one consumer; neither permits speculative test DSLs, generic object mothers or automatic reflection-based object graphs.
 
 Use Datafaker when generated secondary values are useful, as a test dependency with a project-owned compatible version. Use a native fixed seed per test and explicit construction; never mutable random state shared across parallel tests. Control the clock for time-sensitive data. Assert scenario values, not a hard-coded string tied to a Faker version or call order. Keep boundary cases explicit and parameterized. Small tests do not require a data library, and installing this skill does not add dependencies.
 
-Read [canonical examples](references/examples.md) when adding or substantially restructuring tests or factories. They show a unit test, an integration boundary and a rich typed factory, not a new test framework. For a substantive behavior change run the owning suite, necessary integration proofs and affected consumers; mandatory repository checks still apply. No new E2E infrastructure is introduced by this policy.
+Read [canonical examples](references/examples.md) when adding or substantially restructuring tests or factories. They show a unit test, an integration boundary and a rich typed factory, not a new test framework. No new E2E infrastructure is introduced by this policy.

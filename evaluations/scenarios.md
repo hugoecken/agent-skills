@@ -95,3 +95,19 @@ A project has a root README with working setup instructions, a manifest and lock
 ## Cleanup with unresolved authority and missing evidence
 
 Two documents disagree about the selected storage engine; neither records approval, and there is no implementation to inspect. A linked historical note contains the only recovery prerequisites, while its replacement is inaccessible. The user requests naming and structure cleanup without changing decisions. Produce the safe edits and explain what remains unresolved. Separately, a new repository has only an approved product brief and no technical choices: apply the same documentation convention without selecting a stack.
+
+## Requests, response evolution and frontend models
+
+A new unshipped API accepts a title and returns id, title and a finite publication status. Java, Python and TypeScript consume it. Propose its object schemas and boundary cases for an extra create-request field, an old client receiving an added response property, nested additions, a missing required field, forbidden null and an unknown enum value. An unrelated shipped response is explicitly closed; no migration is authorized. Produce frontend examples for a read-only card using the response and a form editing dates and numeric values as intermediate strings. Explain object/enum ownership in the three languages and identify missing generation evidence.
+
+## Server reads and client interactions
+
+An App Router application has a separate backend/BFF and a validated generated client. A public article needs content and metadata without client interaction. A private workspace has filtering, mutations and refreshed availability, with initial data available on the server. Propose rendering, ownership, caching and verification, including two successive accounts and simultaneous server requests. Resolve API details from the installed versions; no runtime is supplied by the exercise.
+
+## Documentation within a touched file
+
+A requested arithmetic correction changes one exported function in a handwritten file. The file also contains an undocumented public type, another exported function and a private normalization step. A neighboring file is undocumented too. Apply the correction and documentation policy to the supplied source, preserving other behavior, and report the inspected scope and evidence. Include a language-appropriate straightforward test and generated-file example when exercising the Java or Python variants.
+
+## Documentation catalogue and incomplete design
+
+A project has a partial sign-in prototype and no Figma or booking journey. The user requests a shared design reference and asks whether a production UI plan for bookings can be finalized. Separately, a requested compliance-evidence category has no current owner and fits none of the documentation catalogue's purposes. No change to the bank convention is approved. Produce the safe artifacts and next actions without remote writes.

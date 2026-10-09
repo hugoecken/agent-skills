@@ -15,7 +15,9 @@ This skill selects a backend-separated web architecture. It is not a universal p
 - Next.js owns rendering; the separate backend owns business behavior. Keep product authorization there, with no direct database access or second business API. Read the project’s accepted identity/session architecture for OAuth, cookies and session ownership rather than inventing a portable authentication profile. Do not add product-mutating Server Actions.
 - A technical route handler can serve an explicit non-product need; name that need and preserve the backend boundary. Do not create route handlers merely to proxy an already suitable BFF.
 
-Use narrow client boundaries. Render public content and SEO metadata on the server through static generation, explicit revalidation or request rendering according to freshness. Build connected workspaces with client React and TanStack Query when that matches their interaction; do not force their product state through Server Components. Use the Next router as the navigation authority.
+Use narrow client boundaries and the Next router as navigation authority. Read data needed for server-rendered content and metadata through supported Next server mechanisms and the owning backend client. Select static generation, explicit revalidation or request rendering according to accepted freshness and the installed version. A server-only read does not require a Query cache.
+
+TanStack Query owns remote data whose lifecycle is managed by client interactions. Use its supported server prefetching and hydration when that client lifecycle benefits from initial server data. Keep request-scoped server Query clients isolated; do not share private data across requests or identities. Avoid independently refreshed server and client copies of the same displayed value. A client boundary does not require moving the whole page to client rendering, and a server-rendered page does not require Query for every read.
 
 ## Public content and caching
 
@@ -35,4 +37,4 @@ Use existing workspace targets for generation/typechecks/builds. Add a library o
 
 Check route semantics, private/public data separation, hydration, metadata consistency and affected responsive states. Run generation/typecheck when boundaries change, relevant tests and the production Next build for routing, rendering or server/client changes. Use a real framework/browser proof for async server rendering, redirects or cache semantics that unit tests cannot reproduce. Inspect the final diff and ignored outputs. Do not claim visual approval from a passing build.
 
-Mechanics: [Next.js App Router documentation](https://nextjs.org/docs/app). Separate business ownership is a project profile selected by this pack.
+Mechanics: [Next.js data fetching](https://nextjs.org/docs/app/getting-started/fetching-data) and [TanStack Query server rendering](https://tanstack.com/query/latest/docs/framework/react/guides/advanced-ssr). Check the installed versions before choosing cache, prefetch or hydration APIs; these links do not prescribe version-specific defaults. Separate business ownership is a project profile selected by this pack.
