@@ -15,7 +15,7 @@ Keep native/provider constants and payloads in their adapters. Follow shared Rea
 
 ## Native UI and tokens
 
-Use certified semantic Figma tokens and published components as the visual authority. Keep one narrow theme/token public API; primitive palette values and implementation details remain private. Safe-area insets, keyboard dimensions and measured device sizes are runtime values, not design tokens.
+Production UI work requires approved designs for the affected scope, including certified semantic Figma tokens and published components as the visual authority. If that prerequisite is missing, identify the design work needed before proceeding with production UI; do not substitute a prototype or passing tests for approval. Nonvisual work does not require unrelated design changes. Keep one narrow theme/token public API; primitive palette values and implementation details remain private. Safe-area insets, keyboard dimensions and measured device sizes are runtime values, not design tokens.
 
 Use `StyleSheet.create` for stable named styles. Small dynamic values may stay inline where clearer. Do not introduce NativeWind, Tailwind, CSS, a styling runtime, style factories or generated style code. Use flex, gap and container padding; use `useWindowDimensions` only for actual viewport-dependent layouts, not fixed module-load device dimensions.
 

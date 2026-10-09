@@ -11,13 +11,14 @@ Edit the owning source first, generate next, then adapt handwritten code. A new 
 
 ## Schema contracts
 
-- Define object roles and `required` explicitly; omit `required` for an all-optional object. Use `additionalProperties: false` unless extension keys are intentional.
+- Define object roles and `required` explicitly; omit `required` for an all-optional object. For new contracts, reject unknown request properties (`additionalProperties: false` on request objects) and allow additive response properties. Apply this distinction to nested objects too; intentional request maps declare their value schema. Preserve existing contracts until an evolution is authorized.
 - Document objects, operations **and properties**, including meaning, units, relevant examples, bounds and supported absence/null semantics. Required, absent, null and empty are not interchangeable.
 - Separate request and response shapes. Do not reuse a mutation request as a read projection.
 - Name DTOs by role: `CreateResourceRequest`, `ResourceDetailResponse`; internal service shapes use `ResourceInternalResponse` or `CreateResourceInternalRequest`, with `Internal` immediately before the shape suffix.
 - Use `Upsert` only for true upsert semantics. Choose collection names and fields for their actual shape, not a universal pagination vocabulary.
 - Define stable finite wire concepts as named reusable `*Enum` components and reference them. Shared contract-owned enums have one owner; provider vocabularies stay local to their boundary. Preserve serialized values.
-- Generated object DTOs remain at transport/adaptation boundaries. Java and Python application code and frontend code can reuse a generated enum only when it is the exact contract-owned concept; pure domain code remains independent. Generated object DTOs stay in the Python API adapter; an exact contract-owned enum may cross into application code, never the pure domain.
+- Java and Python generated object DTOs stay at transport/adaptation boundaries and map to application/domain values. An exact contract-owned generated enum may cross into application code, never the pure domain. Frontend code may reuse a validated generated object type or enum directly when its meaning fits; introduce a form/view model and mapping only for different editing or presentation semantics.
+- Additive responses still validate known properties, required fields, types and nullability. Extra properties may be ignored; unknown enum values remain invalid unless their evolution policy explicitly permits them.
 - Share a non-enum schema only for a genuine cross-boundary technical primitive. Never expose JPA entities or raw provider records.
 
 Use named `oneOf` components, an explicit discriminator property and mapping, and required discriminator values on the relevant shapes. Prove supported generation and serialization in every affected language before accepting combined `oneOf`/`allOf` inheritance.
@@ -32,7 +33,7 @@ Choose page/offset/cursor per use case and compatibility. Define maximum bounds,
 
 ## Language generation
 
-Read [generator and validation boundaries](references/generation.md) for any client or server generation change. Use the existing configured Java OpenAPI Generator, pinned Python HTTPX generator and TypeScript Orval pipeline. Do not change framework versions to satisfy a policy-only task.
+Read [generator and validation boundaries](references/generation.md) for any client or server generation change. The prescribed generators are OpenAPI Generator for Java and asynchronous Python HTTPX clients, and Orval for TypeScript. Use repository-pinned versions and owning configuration; installation alone does not authorize replacing a different existing pipeline. Do not change framework versions to satisfy a policy-only task.
 
 Replace handwritten transport mirrors only after the accepted shapes and owner/consumer behavior are characterized. Then remove the obsolete mirrors as part of the same scoped adoption. Do not disguise a route, model or business redesign as code generation.
 

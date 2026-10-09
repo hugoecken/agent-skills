@@ -36,7 +36,8 @@ An exported contract or public boundary can be justified with one consumer. Do n
 
 | Kind                                               | Owner                                           |
 | -------------------------------------------------- | ----------------------------------------------- |
-| Server data and request lifecycle                  | TanStack Query                                  |
+| Client-managed remote data and request lifecycle   | TanStack Query                                  |
+| Server-rendered data reads                         | Owning framework server mechanisms              |
 | Navigation and navigable URL state                 | Framework router                                |
 | Form values, errors, touched and submission state  | React Hook Form with Zod                        |
 | Local interaction                                  | Closest component or coherent hook              |
@@ -47,6 +48,8 @@ An exported contract or public boundary can be justified with one consumer. Do n
 Do not mirror server cache in a store or copy props into state merely to synchronize them. Keep a form's editable snapshot when editing semantics require one; a background refetch must not overwrite dirty values. Reset intentionally on an accepted resource/identity change or successful submit policy.
 
 ## Queries and mutations
+
+TanStack Query owns remote data managed by client interactions, not every read performed by a server-rendering framework. Use the platform’s supported preloading/hydration when that client lifecycle needs initial server data; do not create two independently refreshed owners for the same displayed value.
 
 Reuse generated client functions and query-key factories when the configured generator provides them. Otherwise use one feature-owned key definition containing every input that affects the response, including applicable actor/tenant scope. Preserve cancellation, timeouts and safe error translation at the transport boundary. Do not introduce a second generic client wrapper.
 
@@ -60,7 +63,7 @@ Offline behavior defaults to reading existing in-memory cache with honest stale/
 
 Use React Hook Form and Zod for new interactive forms. Form schemas express editing and immediate usability; generated transport schemas express the API. Reuse only if semantics match. Map parsing, defaults and composition once at submission and keep server authorization/persistence rules authoritative.
 
-Generated clients/types and response schemas come from the contract pipeline. Validate consumed JSON responses once before admitting them as successful data to Query; do not cast invalid data into the cache or validate again in every component. An error response remains an error.
+Generated clients/types and response schemas come from the contract pipeline. Validate consumed JSON responses once before admitting them as successful data to Query; do not cast invalid data into the cache or validate again in every component. Accept additive response properties while validating known fields, required values, types and nullability; do not infer extensible enum values. Keep existing compatibility until a change is authorized. An error response remains an error.
 
 Generated enums may be used in frontend code when the contract owns the exact concept. Reuse an identical generated type rather than creating a renamed mirror. For different presentation/editing semantics, map at the feature API boundary into a feature model; do not spread provider objects or generated client machinery across feature logic.
 

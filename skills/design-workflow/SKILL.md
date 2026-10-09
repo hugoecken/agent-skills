@@ -52,6 +52,6 @@ Preserve navigation, context, states and meaningful motion from the prototype wh
 
 ## Gate production and retain the prototype
 
-Finalize the technical implementation plan and begin production only when the specifications, whole-scope prototype and corresponding Figma design are coherent and explicitly approved. Use the project's implementation, architecture and testing conventions to build production code; do not automatically transfer prototype code into the application.
+For work affecting visual or interactive requirements, finalize the technical implementation plan and begin production only when the specifications, whole-scope prototype and corresponding Figma design are coherent and explicitly approved. Read-only research may establish feasibility before that gate; it does not waive it. Nonvisual work does not require unrelated prototype or Figma changes. Use the project's implementation, architecture and testing conventions to build production code; do not automatically transfer prototype code into the application.
 
 Retain the prototype as an executable reference and a place to explore subsequent changes. Repeat the same process for later scope, reusing approved foundations and checking affected journeys. Stage approval, publishing authority and Git delivery permissions remain distinct; this skill does not grant merges, deployment, branch deletion or additional work beyond the user's request.

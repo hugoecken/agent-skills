@@ -1,6 +1,6 @@
 ---
 name: code-documentation
-description: "Write or review Javadoc, Python docstrings and TSDoc for changed handwritten contracts, including meaningful private steps; perform explicitly scoped documentation audits."
+description: "Align Javadoc, Python docstrings and TSDoc throughout touched handwritten code files, including meaningful private steps; perform broader documentation audits only within an explicit scope."
 ---
 
 # Code Documentation
@@ -10,10 +10,13 @@ service interfaces, use cases, private helpers, and module boundaries.
 
 ## Rule
 
-Document every handwritten production class and every handwritten method or function introduced or changed by the
-task, including private methods that form an extracted local step. During a documentation pass, inspect every
-handwritten source and test file in the declared scope, including unchanged files. Apply the language guidance and
-explicit exceptions below. Generated files and generated methods are excluded.
+Every handwritten code file touched by the task receives a complete documentation review, including its unchanged
+elements. Bring missing or stale documentation in that file into alignment with the language rules and exceptions
+below, including meaningful extracted private steps. This applies to source and test files; generated files and
+generated methods are excluded. A small code edit does not limit the review to its changed function.
+
+Do not expand that obligation to untouched files or the whole module. A broader documentation audit requires an
+explicit scope; inspect every handwritten source and test file within that scope, including unchanged files.
 
 Prefer a short, useful explanation over leaving a reader to reconstruct the contract from the implementation. Clear
 names do not replace documentation of purpose, inputs, outcomes, side effects, or failure behavior. A class comment
@@ -25,8 +28,8 @@ actual behavior; do not invent guarantees or narrate syntax.
 
 ## Java
 
-- Add class-level Javadoc to every handwritten class, interface, enum, record, annotation, and exception introduced
-  or touched by the task. Explain its responsibility and place in the feature or module.
+- Add class-level Javadoc to every handwritten class, interface, enum, record, annotation, and exception in each
+  touched file. Explain its responsibility and place in the feature or module.
 - Add Javadoc to handwritten methods, including public, protected, package-private, and extracted private methods.
   Start with a short sentence describing the operation or local step. Include supported inputs, results, side
   effects, and failures when applicable; readers should not need to inspect the body to discover the contract.
@@ -34,7 +37,7 @@ actual behavior; do not invent guarantees or narrate syntax.
 - Use `@param` for each parameter to explain its role and relevant constraints, `@return` when the result semantics
   are not already obvious, and `@throws` for supported business, API, authorization, or operational failures. Do not
   enumerate hypothetical exceptions from every library call.
-- Put exposed contracts on interface methods. Use `/** {@inheritDoc} */` on touched implementations instead of
+- Put exposed contracts on interface methods. Use `/** {@inheritDoc} */` on implementations in the reviewed files instead of
   duplicating the contract; add implementation-specific guarantees only when needed.
 - Handwritten Spring controllers implementing generated OpenAPI interfaces use `/** {@inheritDoc} */` on override
   methods. Improve the OpenAPI source when the endpoint contract is incomplete, then regenerate.
@@ -56,7 +59,7 @@ actual behavior; do not invent guarantees or narrate syntax.
 
 ## TypeScript And React
 
-- Add TSDoc to touched exported functions, hooks, components, types, and provider boundaries. Explain purpose,
+- Add TSDoc to exported functions, hooks, components, types, and provider boundaries in each reviewed file. Explain purpose,
   supported behavior, effects, lifecycle, and failures as relevant.
 - Document extracted private functions and local algorithms. Inline JSX callbacks, straightforward style objects,
   and trivial one-line forwarding adapters do not need separate comments.
@@ -76,7 +79,7 @@ actual behavior; do not invent guarantees or narrate syntax.
 
 ## Verification
 
-- Inspect all handwritten files in the declared scope, including tests, and exclude generated sources.
+- Inspect every element of each touched handwritten file, including tests. Include untouched files only within an explicitly requested broader audit; exclude generated sources.
 - Review types and methods individually; a class-level overview alone does not satisfy the method rule.
 - Confirm comments describe current behavior, explain relevant contracts, and contain no unsupported guarantees.
 - Run the impacted formatter, typecheck, compilation, or tests proportionately when source changes.
