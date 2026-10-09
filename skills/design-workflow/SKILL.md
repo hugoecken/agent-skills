@@ -13,6 +13,8 @@ Keep the three sources complementary: accepted specifications own requirements, 
 
 Read the project's current accepted specifications and applicable approved decisions. Use history only to resolve a specific approval, rationale or dependency question; an earlier proposal or detailed review report does not establish design authority. Challenge an approved choice when new evidence warrants revision, without silently replacing it. Identify the visual and interactive requirements, supported platforms, relevant states and affected journeys for the selected scope. Keep requirement-to-journey coverage in the existing issue or task structure; do not create a second roadmap or a project documentation file just to hold the workflow.
 
+Identify interactions whose feasibility depends on native behavior, library lifecycle or custom synchronization while requirements and prototypes are still being explored. Establish the relevant supported capability through documentation or a scoped experiment within the authorized environment; a working mock is not runtime evidence. If the mechanism is disproportionate to the user outcome, present a simpler behavior and its limitation before treating the design as settled. This targeted check does not require a production implementation or a full technical plan before exploration.
+
 When exploration exposes a gap or contradiction, surface the decision and obtain explicit agreement before changing accepted behavior. Use the applicable official SDD/Spec Kit procedure available in the project to amend specifications; do not reproduce that procedure here or treat prototype experiments as approved specification changes.
 
 ## Decompose by dependencies and ownership

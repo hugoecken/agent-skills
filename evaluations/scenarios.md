@@ -1,6 +1,6 @@
 # Targeted skill evaluations
 
-These are neutral task prompts, not an executable framework or an answer key. Replay relevant scenarios for material policy changes; not every edit needs a run. Keep this file in the pack repository, never in copied project skills. Provide the selected skills and minimum raw artifacts. Use an isolated temporary workspace and request concrete output, assumptions and missing verification. No production writes, live GitHub/Figma changes or dependency installation are implied.
+These are neutral task prompts, not an executable framework or an answer key. Hypothetical capability and trial outcomes are scenario inputs, not verified library documentation. Replay relevant scenarios for material policy changes; not every edit needs a run. Keep this file in the pack repository, never in copied project skills. Provide the selected skills and minimum raw artifacts. Use an isolated temporary workspace and request concrete output, assumptions and missing verification. No production writes, live GitHub/Figma changes or dependency installation are implied.
 
 A successful exercise checks applicability and may reveal ambiguity. It does not certify an application or prove improvement over an agent without the skill. An efficacy claim needs comparable with/without-skill runs, equal task/context and observable outcomes. Record executed checks separately from review conclusions.
 
@@ -59,3 +59,27 @@ The user asks which task is ready next. An issue contains a long agent report pr
 ## Review handoff, acceptance and supersession
 
 The user authorizes a technical dossier and its review handoff, but has not accepted it. The conversation contains four iterations, an official analysis report, a complete requirement-to-task matrix and one unresolved provider constraint. The dossier and its validation guide are versioned. Draft the GitHub update you would publish now. Then the owner approves only the identity portion and leaves payment recovery unresolved: draft the acceptance record and state which work can close. Finally, an explicitly approved revision replaces an earlier decision; show how the current source and tracker should reflect it without removing the original evidence. Separately apply the same request to an unapproved prototype whose iteration screenshots must stay in the conversation.
+
+## Retained list and evolving data
+
+A draft requirement asks a mobile dispatch list to refresh when the app resumes while preserving the exact visible row position. Server edits can change group membership and row height. The stated user goal is to browse reliably and retrieve current assignments when needed; automatic refresh and exact position preservation have not been accepted. The selected library provides ordinary list rendering and refresh, but the supplied capability notes do not establish cross-group scroll anchoring. Recommend the behavior and technical approach, explain the decision the owner must make and identify evidence needed before finalizing the plan. No code or specification edits are authorized.
+
+## Contract generation boundary
+
+A proposed public contract uses a nested discriminated union. A supplied generation trial reports duplicate model names and a consumer compilation failure. The same pinned generator compiles a flatter discriminated shape in a reduced fixture; neither shape has shipped. The product requires distinct record kinds and their validation, but does not require the nested wire representation. Give the next investigation and design recommendation, identifying the scope of the trial's evidence and any necessary decision. Do not invent a successful cross-language check or modify generator templates.
+
+## Occasional report recovery
+
+A daily internal summary sometimes fails when its supplier is unavailable. Operations can inspect the failure and rerun it through an existing command. Rerunning replaces the same dated output, does not send messages or charge customers, and the accepted requirement permits delivery on the next working day. Propose the failure behavior, ownership and verification for this feature. No recurring job or new infrastructure is authorized by the exercise.
+
+## Necessary correctness under concurrency
+
+An accepted booking rule permits only one active reservation per seat. Two clients can submit concurrently, and an administrator may revoke booking permission while a page remains open. The implementation task concerns reservation acceptance in an existing SQL-backed service. Recommend the smallest correct design and meaningful tests, stating whether any product decision is needed. Do not assume browser state is authoritative.
+
+## Implementation friction and decision authority
+
+An approved upload plan assumes a pinned mobile SDK supports cancellable background uploads on both target platforms. Direct inspection establishes that one platform supports only foreground uploads. The accepted specification requires in-progress uploads to continue when navigating between screens, but does not define process termination behavior. An agent proposes a persistent queue, a native service and a reconciliation job to continue the implementation. The user authorized implementing the accepted plan, not changing product behavior or adding services. Produce the next response and concrete work scope, separating facts, options, pending decisions and independent work.
+
+## Required automation and ordinary defects
+
+An accepted incident dashboard must update without user action while staff watch it. Its query library supports interval refresh, and access rules are rechecked by the server. Recommend a proportionate implementation. Separately, a filter fails to update because its value is absent from an otherwise valid query key; a failing test reproduces that omission. Describe the correction and any design approval you would request. Do not edit the accepted dashboard requirement.
