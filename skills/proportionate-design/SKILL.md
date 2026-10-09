@@ -25,7 +25,7 @@ For a material tradeoff, compare the direct solution with a credible simpler alt
 
 ## Establish feasibility at the uncertain boundary
 
-Check the relevant supported API, selected version, platform and actual project configuration before relying on a capability. Read authoritative documentation or source and use a focused experiment when a consequential uncertainty cannot be resolved by inspection. Stay within the authorized environment and side effects; feasibility work does not authorize production changes or application scaffolding.
+Once a technical direction emerges, consult official documentation and release notes for the relevant technologies, libraries or providers, checking the intended version, platform and project configuration. Compare relevant alternatives or available updates when they could materially simplify the solution, accounting for compatibility and adoption cost without implicitly changing an approved stack. Link the decisive sources and distinguish documented capabilities from inferred implementation difficulty. Use a focused experiment when consequential uncertainty remains. Stay within the authorized environment and side effects; feasibility work does not authorize production changes or application scaffolding.
 
 Label what is documented, directly observed, inferred and still unverified. A mock, generated schema or successful launch proves only its own boundary. An unavailable native or integration environment remains a qualification limit; do not present a plausible workaround as proven support. Resolve decision-critical uncertainty before treating the affected choice as settled, while continuing independent work.
 
