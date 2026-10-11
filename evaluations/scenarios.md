@@ -111,3 +111,11 @@ A requested arithmetic correction changes one exported function in a handwritten
 ## Documentation catalogue and incomplete design
 
 A project has a partial sign-in prototype and no Figma or booking journey. The user requests a shared design reference and asks whether a production UI plan for bookings can be finalized. Separately, a requested compliance-evidence category has no current owner and fits none of the documentation catalogue's purposes. No change to the bank convention is approved. Produce the safe artifacts and next actions without remote writes.
+
+## Shared API across feature plans
+
+Two accepted features concern a catalogue: public browsing and partner ingestion. No production stack or generator has been selected. Both proposed plans define a different Product schema and their own Problem response; the ingestion draft sends 400 individual writes on each import. Propose the decisions needed before these plans can be accepted, the authoritative artifacts and a representative qualification exercise. Decide what may be shared and what needs distinct semantics. No installation, implementation or new product behavior is authorized.
+
+## Evolving a shared contract with an accepted pipeline
+
+A new moderation plan proposes another endpoint for an operation already owned by the catalogue API. The accepted API is consumed by two independently released applications, and its existing generator supports the current schema. A draft proposes a nested union, a new generator and a persistent retry dashboard for one rare conflict. The product only requires reporting success or refusal and permits manual correction. Produce a bounded planning recommendation with affected owners, compatibility checks and unresolved decisions. Do not change files or assume the proposal is approved.

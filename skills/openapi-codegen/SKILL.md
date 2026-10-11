@@ -1,11 +1,13 @@
 ---
 name: openapi-codegen
-description: "Change OpenAPI schemas, REST semantics, generated server interfaces or clients, shared transport enums and response validation across Java, Python and TypeScript."
+description: "Plan and evolve contract-first OpenAPI APIs across features and services; coordinate authoritative sources, generated server interfaces, DTOs, clients and response validation."
 ---
 
 # OpenAPI contracts and generation
 
-Read the repository's accepted API behavior, source fragments, OpenAPI version, bundling/mapping targets, generator configuration and consumers. Existing contracts keep their compatibility. New fields and query parameters use camelCase; do not rename existing wire fields incidentally.
+Read accepted requirements, current interface owners, source contracts, the selected OpenAPI version, generation configuration and consumers. An installed skill selects no application stack, service topology or generator. Existing contracts keep their compatibility. New fields and query parameters use camelCase; do not rename existing wire fields incidentally.
+
+For technical planning, a new API or a change shared by several features, read [contract ownership and planning](references/planning.md). Plan scopes do not partition API ownership: several plans can evolve the same authoritative contract. Settle the affected interaction before either side implements assumptions about it.
 
 Edit the owning source first, generate next, then adapt handwritten code. A new schema is not permission to expose new behavior. Generate only active boundaries. Never edit or commit generated output, patch its templates as a shortcut, or add recursive case-conversion/compatibility aliases without an accepted migration.
 
@@ -27,13 +29,13 @@ Use named `oneOf` components, an explicit discriminator property and mapping, an
 
 Every endpoint needs a stable operationId, focused tags, concise summary and description, concrete success schema or intentional 204, expected errors and explicit security where not inherited. Model resources and HTTP method semantics before implementation; never mutate via safe methods.
 
-Use RFC 9457-compatible ProblemDetail errors with stable machine-readable codes. Clients branch on codes rather than human/provider messages. Distinguish malformed input (400), unauthenticated (401), forbidden (403), missing or deliberately hidden (404), duplicate/stale/state conflict (409), valid-shape business rejection (422 only when the API distinguishes it), and dependency unavailable (503). Do not leak stack traces, internal topology or provider payloads.
+Use RFC 9457-compatible Problem Details errors with stable machine-readable codes. Define the shared technical profile once and reference it from affected APIs; retain meaningful domain extensions and status-specific responses. A framework error class is an implementation adapter, not the source of the wire contract. Clients branch on codes rather than human/provider messages. Distinguish malformed input (400), unauthenticated (401), forbidden (403), missing or deliberately hidden (404), duplicate/stale/state conflict (409), valid-shape business rejection (422 only when the API distinguishes it), and dependency unavailable (503). Do not leak stack traces, internal topology or provider payloads.
 
 Choose page/offset/cursor per use case and compatibility. Define maximum bounds, deterministic ordering/tie-breakers, filter behavior, count availability/cost and the effect of concurrent changes. Cursors need an explicit validity/continuation contract; pages need explicit indexing and stability expectations. Do not impose `pageInfo`, total counts or one universal collection envelope.
 
 ## Language generation
 
-Read [generator and validation boundaries](references/generation.md) for any client or server generation change. The prescribed generators are OpenAPI Generator for Java and asynchronous Python HTTPX clients, and Orval for TypeScript. Use repository-pinned versions and owning configuration; installation alone does not authorize replacing a different existing pipeline. Do not change framework versions to satisfy a policy-only task.
+Read [generator and validation boundaries](references/generation.md) when selecting or changing client or server generation. Select tools against the approved stack and required outputs, then pin their versions and configuration in the repository. OpenAPI Generator and Orval are candidates when their targets fit; their presence in this skill is not a selection. Installation alone does not authorize replacing an existing pipeline. Do not change framework versions to satisfy a policy-only task.
 
 Replace handwritten transport mirrors only after the accepted shapes and owner/consumer behavior are characterized. Then remove the obsolete mirrors as part of the same scoped adoption. Do not disguise a route, model or business redesign as code generation.
 
