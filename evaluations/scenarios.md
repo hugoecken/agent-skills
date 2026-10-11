@@ -84,18 +84,6 @@ An approved upload plan assumes a pinned mobile SDK supports cancellable backgro
 
 An accepted incident dashboard must update without user action while staff watch it. Its query library supports interval refresh, and access rules are rechecked by the server. Recommend a proportionate implementation. Separately, a filter fails to update because its value is absent from an otherwise valid query key; a failing test reproduces that omission. Describe the correction and any design approval you would request. Do not edit the accepted dashboard requirement.
 
-## Shared documentation with a specialized workflow
-
-A project uses Spec Kit with its installed official procedures and accepted feature artifacts. A feature plan owns the booking API and data model. `docs/notes.md` repeats that model, records the approved two-application topology, and includes a proposed unapproved payment retry policy. The root README links the notes; AGENTS routes architecture work there. Manifests do not exist yet. The user authorizes documentation consolidation only, preserving accepted meaning. Use `project-documentation` to produce the revised files and identify any transfer requiring another workflow. Keep the installed procedures and feature artifacts unchanged unless the authorized task requires their official workflow. No application, provider or design writes are authorized.
-
-## Documentation without a specification framework
-
-A project has a root README with working setup instructions, a manifest and lockfile, a partial prototype with a review link, and one accepted note choosing a single application with an embedded database. No specification framework, feature plans or Figma file exists. The user asks for a consistent shared technical reference. Produce the necessary files and explain their owners and verification limits. A subsequent request asks to record a provider configuration shared by two consumers; the schema already has an authoritative location. Show the scoped addition.
-
-## Cleanup with unresolved authority and missing evidence
-
-Two documents disagree about the selected storage engine; neither records approval, and there is no implementation to inspect. A linked historical note contains the only recovery prerequisites, while its replacement is inaccessible. The user requests naming and structure cleanup without changing decisions. Produce the safe edits and explain what remains unresolved. Separately, a new repository has only an approved product brief and no technical choices: apply the same documentation convention without selecting a stack.
-
 ## Requests, response evolution and frontend models
 
 A new unshipped API accepts a title and returns id, title and a finite publication status. Java, Python and TypeScript consume it. Propose its object schemas and boundary cases for an extra create-request field, an old client receiving an added response property, nested additions, a missing required field, forbidden null and an unknown enum value. An unrelated shipped response is explicitly closed; no migration is authorized. Produce frontend examples for a read-only card using the response and a form editing dates and numeric values as intermediate strings. Explain object/enum ownership in the three languages and identify missing generation evidence.
@@ -108,10 +96,6 @@ An App Router application has a separate backend/BFF and a validated generated c
 
 A requested arithmetic correction changes one exported function in a handwritten file. The file also contains an undocumented public type, another exported function and a private normalization step. A neighboring file is undocumented too. Apply the correction and documentation policy to the supplied source, preserving other behavior, and report the inspected scope and evidence. Include a language-appropriate straightforward test and generated-file example when exercising the Java or Python variants.
 
-## Documentation catalogue and incomplete design
-
-A project has a partial sign-in prototype and no Figma or booking journey. The user requests a shared design reference and asks whether a production UI plan for bookings can be finalized. Separately, a requested compliance-evidence category has no current owner and fits none of the documentation catalogue's purposes. No change to the bank convention is approved. Produce the safe artifacts and next actions without remote writes.
-
 ## Shared API across feature plans
 
 Two accepted features concern a catalogue: public browsing and partner ingestion. No production stack or generator has been selected. Both proposed plans define a different Product schema and their own Problem response; the ingestion draft sends 400 individual writes on each import. Propose the decisions needed before these plans can be accepted, the authoritative artifacts and a representative qualification exercise. Decide what may be shared and what needs distinct semantics. No installation, implementation or new product behavior is authorized.
@@ -119,3 +103,7 @@ Two accepted features concern a catalogue: public browsing and partner ingestion
 ## Evolving a shared contract with an accepted pipeline
 
 A new moderation plan proposes another endpoint for an operation already owned by the catalogue API. The accepted API is consumed by two independently released applications, and its existing generator supports the current schema. A draft proposes a nested union, a new generator and a persistent retry dashboard for one rare conflict. The product only requires reporting success or refusal and permits manual correction. Produce a bounded planning recommendation with affected owners, compatibility checks and unresolved decisions. Do not change files or assume the proposal is approved.
+
+## Technical decisions inside the native planning step
+
+An accepted feature specification describes a catalogue with a public browser and partner imports. The project has the official Spec Kit skills and a constitution requiring KISS and contract-first generation. No application stack, technical plan or architecture document exists. The owner asks to frame the next planning issue and identify how shared API decisions will be reached, but does not authorize executing the plan or creating an application. Use the GitHub delivery and OpenAPI skills. Produce the issue request and explain the source ownership and evidence needed for its later review. No remote writes are permitted by this exercise.

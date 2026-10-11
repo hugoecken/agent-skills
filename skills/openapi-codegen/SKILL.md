@@ -35,7 +35,7 @@ Choose page/offset/cursor per use case and compatibility. Define maximum bounds,
 
 ## Language generation
 
-Read [generator and validation boundaries](references/generation.md) when selecting or changing client or server generation. Select tools against the approved stack and required outputs, then pin their versions and configuration in the repository. OpenAPI Generator and Orval are candidates when their targets fit; their presence in this skill is not a selection. Installation alone does not authorize replacing an existing pipeline. Do not change framework versions to satisfy a policy-only task.
+Read [generator and validation boundaries](references/generation.md) when selecting or changing client or server generation. Select generators and the application stack together against the required outputs when undecided; otherwise preserve the approved choices. Pin selected versions and configuration in the repository. OpenAPI Generator and Orval are candidates when their targets fit; their presence in this skill is not a selection. Installation alone does not authorize replacing an existing pipeline. Do not change framework versions to satisfy a policy-only task.
 
 Replace handwritten transport mirrors only after the accepted shapes and owner/consumer behavior are characterized. Then remove the obsolete mirrors as part of the same scoped adoption. Do not disguise a route, model or business redesign as code generation.
 

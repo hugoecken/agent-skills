@@ -2,11 +2,11 @@
 
 ## Establish the shared boundary
 
-Start from accepted user outcomes and the current approved architecture. Inspect existing routes, contract sources and related plans before proposing another endpoint or model. Identify the provider, consumers, semantic owner and compatibility obligations of each affected interface. Reuse an operation only when it expresses the same behavior and access policy; similar names do not establish shared meaning.
+Start from accepted user outcomes and any applicable approved technical decisions. When the stack or architecture is undecided, resolve it within the project’s technical-planning workflow together with the contract requirements; an architecture document is not a prerequisite. Inspect existing routes, contract sources and related plans before proposing another endpoint or model. Identify the provider, consumers, semantic owner and compatibility obligations of each affected interface. Reuse an operation only when it expresses the same behavior and access policy; similar names do not establish shared meaning.
 
 An API follows an actual provider/consumer boundary. A feature plan, repository, programming language or module does not automatically require a separate API, service or deployment. Several plans may contribute to one API; one plan may affect several APIs. Keep domain objects owned by their domain and share technical primitives only where their meaning is identical. Coordinate changes to an existing route at its owner and reconcile affected plans before dependent implementation proceeds.
 
-In a Spec Kit project, follow its official workflow. Feature contract artifacts describe the proposed interface change and reference the authoritative source and agreed revision. They do not create a second editable definition. Record concrete ownership and affected consumers in the existing plan or contract documentation, not a separate registry unless the project needs one. Keep issue sequencing and acceptance in the tracker.
+In a Spec Kit project, use the installed official planning procedure to make these decisions and produce its artifacts; this skill adds contract expertise, not a separate planning phase. Feature contract artifacts describe the proposed interface change and reference the authoritative source and agreed revision. They do not create a second editable definition. Record concrete ownership and affected consumers in the existing plan or contract documentation, not a separate registry unless the project needs one. Keep issue sequencing and acceptance in the tracker.
 
 ## Choose one source and a reproducible pipeline
 
@@ -16,7 +16,7 @@ Describe the actual dependency chain: authored definitions, any required export/
 
 Define composition behavior for references, schema names, operationIds, security and reusable error responses. Resolve collisions by meaning and ownership instead of silently renaming components. Provider and consumer generation use the same agreed contract revision. Cross-repository consumers pin a published artifact or a read-only copy with an exact source revision; updates remain deliberate.
 
-Distinguish the OpenAPI specification version, the API compatibility version and the product release. Public/internal exposure alone does not select a version number or URL convention. Put the selected policy and rollout consequences in the project's architecture and contracts.
+Distinguish the OpenAPI specification version, the API compatibility version and the product release. Public/internal exposure alone does not select a version number or URL convention. Record the selected policy and rollout consequences in their owning plan and contract artifacts; reference existing project-wide constraints where applicable.
 
 ## Keep operation design proportionate
 

@@ -19,6 +19,8 @@ After approval, record the accepted scope, exact artifact/revision where applica
 
 Keep the issue's current scope, dependencies and acceptance criteria readable; comments retain only useful milestones and decisions. Prefer a few sentences or short bullets, expanding when unresolved risks or a requested audit need it. Do not erase historical evidence or rewrite earlier approvals merely to tidy the discussion. Approval, issue closure, merge and deployment remain separate decisions under the authorized workflow.
 
+In a Spec Kit project, issue requests name the relevant installed procedure, scope, inputs and reviewable outcome. Keep dependencies tied to actual inputs; do not introduce a separate mandatory architecture phase, documentation catalogue or one-issue-per-command rule. Starting one authorized step does not authorize later steps. Personal delivery conventions do not replace the official artifact workflow.
+
 ## Triage and claim
 
 Read-only investigation and recommending a next issue do not claim it. An eligible issue is open, unassigned, has no open native blocker and no obvious overlapping delivery PR. Compare assigned work, PRs and relevant branches/worktrees; favor clear prerequisites and low overlap. Recommend one with reasons, then await authorization to execute if it has not already been given.
