@@ -38,11 +38,11 @@ The user wants to compare two layouts for an approved screen before final Figma 
 
 ## New application design
 
-Accepted V1 specifications cover a shared workspace selector, a home screen, a reservation journey and account settings. No product code exists. A rough prototype has links between placeholder screens, but the return paths and workspace context are unresolved. Three contributors are available. Plan the next work and concrete issue boundaries, including file ownership and integration criteria. State what can happen concurrently and what evidence is needed to move to the next stage. One contributor later reports that their reservation screen is approved while settings still has no error states; describe the available next actions.
+The project constitution requires approval of the complete selected prototype, including its visual direction, followed by UI Library and Product Design approval before technical planning. Accepted V1 specifications cover a shared workspace selector, a home screen, a reservation journey and account settings. No product code exists. A rough prototype has links between placeholder screens, but the return paths and workspace context are unresolved. Three contributors are available. Plan the next work and concrete issue boundaries, including file ownership and integration criteria. State what can happen concurrently and what evidence is needed to move to the next stage. One contributor later reports that their reservation screen is approved while settings still has no error states; describe the available next actions.
 
 ## Evolution and shared changes
 
-An existing application has an approved prototype, UI Library and Product Design. Accepted specifications add a rescheduling flow with a changed reservation detail entry point and a new recovery state. Two contributors own disjoint screen directories, but both need to change the shared router. Propose the task decomposition, coordination and review scope. During exploration, a contributor proposes silently removing a required confirmation step to make the flow shorter. Describe how to handle the proposal and the eventual Figma handoff.
+The project constitution requires approval of the complete selected prototype, including its visual direction, followed by UI Library and Product Design approval before technical planning. An existing application has an approved prototype, UI Library and Product Design. Accepted specifications add a rescheduling flow with a changed reservation detail entry point and a new recovery state. Two contributors own disjoint screen directories, but both need to change the shared router. Propose the task decomposition, coordination and review scope. During exploration, a contributor proposes silently removing a required confirmation step to make the flow shorter. Describe how to handle the proposal and the eventual Figma handoff.
 
 ## Exploration evidence and issue organization
 
@@ -50,7 +50,7 @@ The user asks to reorganize prototype issues so several people can work independ
 
 ## Complete prototype handoff and limited Figma maintenance
 
-All visual and interactive requirements of an agreed V1 have been reviewed in isolation. On integration, the back action from account settings loses the selected workspace. There is no final art direction yet. Describe the next work before production planning, then the order of operations once the complete integrated prototype is approved. Separately, a user asks only to rename a private Figma documentation helper without changing product design; state the appropriate scope.
+The project constitution requires approval of the complete selected prototype, including its visual direction, followed by UI Library and Product Design approval before technical planning. All visual and interactive requirements of an agreed V1 have been reviewed in isolation. On integration, the back action from account settings loses the selected workspace. There is no final art direction yet. Describe the next work before production planning, then the order of operations once the complete integrated prototype is approved. Separately, a user asks only to rename a private Figma documentation helper without changing product design; state the appropriate scope.
 
 ## Unapproved history and current authority
 
@@ -107,3 +107,7 @@ A new moderation plan proposes another endpoint for an operation already owned b
 ## Technical decisions inside the native planning step
 
 An accepted feature specification describes a catalogue with a public browser and partner imports. The project has the official Spec Kit skills and a constitution requiring KISS and contract-first generation. No application stack, technical plan or architecture document exists. The owner asks to frame the next planning issue and identify how shared API decisions will be reached, but does not authorize executing the plan or creating an application. Use the GitHub delivery and OpenAPI skills. Produce the issue request and explain the source ownership and evidence needed for its later review. No remote writes are permitted by this exercise.
+
+## Design tools without a project gate
+
+A project uses the native Spec Kit workflow and has no prototype/Figma approval requirement. An approved specification is ready for technical planning. The installed personal pack includes prototyping, Figma and native UI skills. Identify the next applicable procedure and whether the mere presence of these skills adds a prerequisite. Separately, the owner requests a standalone prototype review without authorizing production implementation; describe the bounded result.

@@ -15,7 +15,7 @@ Keep native/provider constants and payloads in their adapters. Follow shared Rea
 
 ## Native UI and tokens
 
-Production UI work requires approved designs for the affected scope, including certified semantic Figma tokens and published components as the visual authority. If that prerequisite is missing, identify the design work needed before proceeding with production UI; do not substitute a prototype or passing tests for approval. Nonvisual work does not require unrelated design changes. Keep one narrow theme/token public API; primitive palette values and implementation details remain private. Safe-area insets, keyboard dimensions and measured device sizes are runtime values, not design tokens.
+Follow the project's design authority and prerequisites for the affected scope. When Figma is authoritative, implement its approved semantic tokens and components; passing tests do not establish visual fidelity. This skill does not require Figma for projects that have not selected it. Keep one narrow theme/token public API; primitive palette values and implementation details remain private. Safe-area insets, keyboard dimensions and measured device sizes are runtime values, not design tokens.
 
 Use `StyleSheet.create` for stable named styles. Small dynamic values may stay inline where clearer. Do not introduce NativeWind, Tailwind, CSS, a styling runtime, style factories or generated style code. Use flex, gap and container padding; use `useWindowDimensions` only for actual viewport-dependent layouts, not fixed module-load device dimensions.
 
@@ -33,6 +33,6 @@ Expose role, accessible name, state and useful hints. Support screen-reader navi
 
 ## Evidence
 
-Run configured formatting, lint, typecheck and mobile tests. Run Expo Doctor for changed dependencies/configuration, and the relevant native build/launch for modules, provider adapters, routing or platform-specific behavior. Compare visual changes to exact accepted Figma nodes at required platform/theme/state and viewport; JavaScript tests prove neither visual fidelity nor native behavior. Report unavailable native/design evidence explicitly.
+Run configured formatting, lint, typecheck and mobile tests. Run Expo Doctor for changed dependencies/configuration, and the relevant native build/launch for modules, provider adapters, routing or platform-specific behavior. Compare visual changes to the project's accepted design references at the required platform/theme/state and viewport; JavaScript tests prove neither visual fidelity nor native behavior. Report unavailable native/design evidence explicitly.
 
 Mechanics: [Expo Router](https://docs.expo.dev/router/introduction/) and [React Native accessibility](https://reactnative.dev/docs/accessibility). Feature structure, StyleSheet and form choices are personal conventions.
