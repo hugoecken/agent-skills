@@ -1,6 +1,6 @@
 ---
 name: figma-design-governance
-description: "Organize and verify approved Figma libraries, product screens, journeys and design evidence, preserving specification authority, live instances and the UI planning gate."
+description: "Organize and verify Figma libraries, product screens, journeys and design evidence using live instances and the project-designated sources."
 ---
 
 # Figma design governance
@@ -10,7 +10,7 @@ Repository instructions and the accepted issue identify the canonical design fil
 ## Design Authority
 
 - Accepted specifications own future observable product and design intent, for a whole application release or an evolution.
-- An approved interactive prototype demonstrates scoped navigation and behavior; its exploratory styling does not override the designated Figma visual authority.
+- Preserve the navigation, behavior and visual direction approved in the designated inputs. If a prototype is the accepted input, Figma formalizes that experience; it does not independently select a different direction.
 - The designated UI library owns approved reusable variables, styles, foundations, icons, and components.
 - The designated product design file owns approved product patterns and representative screen states composed from published designated UI library instances.
 - Repository design tokens are controlled, versioned implementation projections of approved designated UI library values. They are not a separately maintained visual authority.
@@ -117,12 +117,10 @@ Before creating a page, section, screen, or pattern:
 - Cover the supported platforms, every supported theme, required widths, relevant interaction and failure states, keyboard behavior, focus, touch targets, text scaling, safe areas, and reduced motion.
 - Treat unpublished experiments, detached instances, stale library versions, and unresolved synchronization differences as invalid downstream evidence.
 
-## Planning gate and scope
+## Scope and review
 
-For material UI work, resolve accepted product behavior first, then obtain explicit approval of the corresponding Figma design before the technical implementation plan is finalized. Read-only feasibility work may resolve design prerequisites before approval; it does not certify an unapproved design or authorize product implementation. Use the applicable official Spec Kit and Figma workflows rather than reproducing their mechanics here.
+Read the project's constitution and accepted request for prerequisites, design authorities and approval scope. In a Spec Kit project, its official procedures own specification and technical planning; this skill introduces no additional phase or gate.
 
-When following a prototype-first workflow, require explicit approval of the complete selected prototype scope before canonical translation, not just approval of one screen or lot. Use the design-workflow skill when available for decomposition and stage transitions. Reuse approved visual identity or settle the remaining art direction, then build or amend the designated UI Library from validated needs before composing Product Design patterns and complete screens with its published instances. Preserve the prototype's approved navigation, states and meaningful effects; reconcile specification, prototype and Figma differences explicitly before production. This sequence applies to a whole V1 or an evolution and its affected journeys; it does not force unrelated library maintenance through a new prototype.
+Identify the target files, relevant specification, journeys/components and evidence before editing. Reuse the designated library before composing Product Design with its published instances. Preserve accepted prototype interactions and visual direction when translating them. Raise a conflict with accepted intent or a missing library capability instead of detaching instances or silently redesigning the product.
 
-A design issue must identify its authoritative specification/decision, target library/product file, scoped journeys or components, acceptance coverage and required evidence. Do not invent design authority from current screenshots or another product. If a required library capability is absent, report the conflict and obtain a design decision rather than detaching or silently drawing a replacement.
-
-Only certify the supported platforms/themes/states the task requires and for which evidence exists. Report absent platform captures, unpublished components and unresolved differences. A source-code policy change does not certify a design system.
+Only certify the platforms, themes and states requested and actually reviewed. Record exact nodes, revision information where available, scope and remaining limitations. A file's existence, a passing test or approval of another scope does not approve the current result. Limited file maintenance does not require unrelated design exploration.

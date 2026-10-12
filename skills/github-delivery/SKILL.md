@@ -41,12 +41,10 @@ Report the draft PR and evidence. Readiness and merge remain human-directed; an 
 
 Read [merge verification and cleanup](references/merge.md) only after a human explicitly asks to merge. That request also authorizes leaving draft unless the human separates those decisions. Use a merge commit, not squash or GitHub rebase merge.
 
-## Design-only work and standalone prototypes
+## Design-only delivery
 
-For an authorized Figma-only issue, record required evidence and get explicit human design approval before closing/unassigning it; no artificial documentation PR is needed.
+Use the project's accepted design scope and approval requirements. Link the reviewable prototype revision or Figma nodes directly; an application documentation PR is not required merely to present external design work. Create tracking lots only when they clarify ownership, real dependencies or review scope.
 
-Build an authorized prototype as a separate project outside the application repository. Review it directly, using screenshots when useful; do not create an application branch or PR just for this exploration, or impose a PR as its validation gate. When organization is authorized, reuse or create useful issues for foundations and independent lots, with dependencies, file ownership and integration criteria. Do not create issues solely to satisfy a delivery ceremony. Organizing issues does not authorize repository documentation or specification changes.
-
-Keep iteration evidence in the conversation; attach evidence to its owning issue only after explicit approval of the corresponding work, without representing a partial approval as whole-scope completion. Retain the prototype for further review and remove it only on explicit request. Prototype approval does not bypass the Figma gate or turn its code into production implementation. Follow the design-workflow skill when available for the complete design lifecycle; Git delivery does not replace its approval gates.
+Label proposals, observations and actual approvals accurately. Keep current issue content concise and link detailed evidence when useful. Approval records identify the accepted scope, revision and reservations; issue closure and Git delivery do not certify unreviewed design. Prototype construction and Figma file operations belong to their specialist skills, while the project owns the stage sequence.
 
 When abandoning claimed work, unassign and report remaining work. Completing or unblocking one issue never authorizes claiming the next automatically.

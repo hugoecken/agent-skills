@@ -88,13 +88,13 @@ add IDs to every nested view or expose implementation structure through selector
 - Test owned redirects or deep-link normalization as plain functions when possible; mount navigation only when the
   route interaction is the behavior. Do not assert generated-client or native-SDK internals.
 
-## Visual And Completion Gate
+## Visual And Runtime Evidence
 
 - Do not add pixel snapshots, screenshot assertions inside Jest, duplicated Figma fixtures, or a second UI test
   framework. A snapshot may cover a small stable serialized value only when that value is the behavior under test.
-- Visual completion requires approved Figma coverage for the affected scope; a partial prototype is not that approval. Nonvisual changes do not require unrelated design work.
-- Compare visual changes with the exact canonical Figma node at the platform, viewport, theme, authentication mode, and
-  state selected by the repository design authority. Record unavailable evidence instead of fabricating it.
+- Follow the project's visual acceptance requirements for the affected scope; this skill adds no design approval gate.
+- Compare visual changes with the accepted design reference (exact nodes when Figma is used) at the platform, viewport,
+  theme, authentication mode and state selected by the project. Record unavailable evidence instead of fabricating it.
 - Run the narrow test while developing. Before publishing a mobile slice, run the formatting, lint, typecheck, complete
   test, and diff commands declared by the repository build configuration. Run affected consumers and integration proofs when shared contracts or provider boundaries change.
 - Run Expo Doctor when dependencies or Expo configuration change. Run the relevant unsigned platform build/launch when
