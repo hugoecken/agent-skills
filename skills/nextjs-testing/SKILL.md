@@ -11,8 +11,8 @@ Apply this policy when adding or changing behavior or tests in the Next.js web a
 
 Tests protect supported user behavior and important frontend boundaries without freezing component structure or visual
 implementation. Every feature ships with the proportionate tests needed to prove its accepted behavior and risks;
-tests are part of the same delivery rather than a later stabilization phase. Test-first development is optional, but a
-regression fix starts with a failing reproduction whenever practical.
+tests are part of the same delivery rather than a later stabilization phase. Follow the project’s required test order
+and workflow. A regression fix starts with a failing reproduction whenever practical.
 
 Prefer the cheapest test that can fail for the meaningful regression. More tests and higher coverage are not goals by
 themselves. Do not test framework, browser, generated-client, or component-library behavior that the application does not own.
