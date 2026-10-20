@@ -68,6 +68,18 @@ A draft requirement asks a mobile dispatch list to refresh when the app resumes 
 
 A proposed public contract uses a nested discriminated union. A supplied generation trial reports duplicate model names and a consumer compilation failure. The same pinned generator compiles a flatter discriminated shape in a reduced fixture; neither shape has shipped. The product requires distinct record kinds and their validation, but does not require the nested wire representation. Give the next investigation and design recommendation, identifying the scope of the trial's evidence and any necessary decision. Do not invent a successful cross-language check or modify generator templates.
 
+## Owned API and decoder guarantees
+
+A service and its internal worker generate their server models and client from one contract. A controlled HTTP check shows that the native client accepts an omitted required boolean as null, which the application mapper converts to false; it rejects malformed JSON and invalid enum strings. An additional schema interceptor rejects the missing boolean. The owner explicitly accepts possible incomplete work or late failure if the service violates its contract and asks to remove preventive runtime validation. Propose the change, tests and documentation without changing the schema. Explain what the observed probe does and does not establish.
+
+## Explicitly required response enforcement
+
+A partner response supplies a payment recipient and amount. The accepted boundary requires missing or invalid required fields to fail before any payment is authorized. The selected generated decoder does not enforce required-field presence, and the provided capability notes establish no supported strict mode. The owner asks for simpler code but has not waived that requirement. Give the next investigation and decision without implementing a payment or assuming that using a mature library establishes the required validation.
+
+## Native lifecycle and duplicate state
+
+An application uses an installed query library whose supplied documentation supports request cancellation, invalidation and account-scoped keys. The application's adapter maintains a second response cache and a separate cancellation flag to guard against hypothetical late SDK results; no reproduced defect or stronger accepted guarantee is supplied. Describe how to evaluate the duplication, what can be simplified within the existing requirements and the integration evidence needed. Preserve the requirement that one account must never receive another account's data.
+
 ## Occasional report recovery
 
 A daily internal summary sometimes fails when its supplier is unavailable. Operations can inspect the failure and rerun it through an existing command. Rerunning replaces the same dated output, does not send messages or charge customers, and the accepted requirement permits delivery on the next working day. Propose the failure behavior, ownership and verification for this feature. No recurring job or new infrastructure is authorized by the exercise.
