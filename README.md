@@ -1,6 +1,6 @@
 # Personal agent skills
 
-Eighteen reusable skills for design, development and delivery. Each folder is independent and contains its own instructions and any conditional references. Copy only the skills a project needs; they do not depend on a central router or another skill's files.
+Nineteen reusable skills for design, development and delivery. Each folder is independent and contains its own instructions and any conditional references. Copy only the skills a project needs; they do not depend on a central router or another skill's files.
 
 These are personal engineering conventions informed by framework documentation, not a claim that every community prescribes one architecture. The target choices include feature-first Java/React, explicit Java persistence ports, React Hook Form/Zod, semantic StyleSheet styling for native, and generated contracts. An existing application is not migrated merely because the skills are installed. Python guidance targets new projects with hybrid use cases, immutable internal values, explicit mapping, declared input conversions, strict typing and Pydantic Settings; web frameworks and ORMs remain project decisions. Conditional references and focused illustrative fragments clarify these conventions without distributing an example application, pinned demonstration toolchain or reusable scaffold.
 
@@ -14,6 +14,7 @@ These are personal engineering conventions informed by framework documentation, 
 | [openapi-codegen](skills/openapi-codegen/SKILL.md)                       | Source-first REST contracts, generators and response validation                            |
 | [liquibase-schema](skills/liquibase-schema/SKILL.md)                     | Baseline posture, durable invariants and schema evolution                                  |
 | [github-delivery](skills/github-delivery/SKILL.md)                       | Issues, topic branches, draft PRs and human-directed merges                                |
+| [parallel-issue-delivery](skills/parallel-issue-delivery/SKILL.md) | Explicit parallel issue batches, isolated worktrees and fresh-context reviews |
 | [figma-design-governance](skills/figma-design-governance/SKILL.md)       | Library/screen ownership and approved design evidence                                      |
 | [code-documentation](skills/code-documentation/SKILL.md)                 | Useful Java, Python and TypeScript contracts                                               |
 | [application-logging](skills/application-logging/SKILL.md)               | Safe operational logs and failure ownership                                                |

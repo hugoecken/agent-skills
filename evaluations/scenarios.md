@@ -123,3 +123,15 @@ An accepted feature specification describes a catalogue with a public browser an
 ## Design tools without a project gate
 
 A project uses the native Spec Kit workflow and has no prototype/Figma approval requirement. An approved specification is ready for technical planning. The installed personal pack includes prototyping, Figma and native UI skills. Identify the next applicable procedure and whether the mere presence of these skills adds a prerequisite. Separately, the owner requests a standalone prototype review without authorizing production implementation; describe the bounded result.
+
+## Parallel issue batch selection
+
+The owner asks for up to six independent tasks and a proposal before launching. The supplied tracker contains a ready task, a task with an open blocker, an epic, an already assigned task and two otherwise ready tasks sharing one generated contract. Existing task conversations and draft PRs are included. Use the parallel delivery skill to produce the proposal and identify what actions are currently authorized. Work only with the supplied isolated artifacts; no live GitHub writes or conversation launches are authorized by this exercise.
+
+## Parallel batch resume and guidance update
+
+The owner approves updating the existing task conversations after a reviewed skill update is merged. Supplied snapshots include one active task with local edits, one completed draft PR with finished independent reviews, one stale branch, and one unresolved message acknowledgment. The new skill codifies the same review protocol. Reconstruct the batch state and write the precise handoff messages and verification plan using those snapshots. Do not perform live external writes or infer that the update authorizes merging the implementation PRs.
+
+## Shared native runtime resources
+
+Three approved tasks need native mobile checks on one Mac. Supplied resource snapshots include an occupied simulator/development-server port, one available simulator, available ports and a shared foreground mouse/keyboard tool. Produce task allocations and handoff instructions, then describe what can run concurrently and what must wait. Device-targeted terminal tools are available, but no live simulator action is authorized by this isolated exercise.
