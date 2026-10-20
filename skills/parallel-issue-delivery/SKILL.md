@@ -32,7 +32,7 @@ Check eligibility again before claiming, using the repository's delivery workflo
 
 When tasks need local services or native devices, record each resource's owner, exact device ID, ports and worktree in the conversation before use. Inspect existing allocations instead of choosing the next apparently available default independently. Use native device, port and output selection; keep build outputs local to each worktree. If a resource cannot be isolated, serialize that phase while other work continues. Do not introduce a lock service or committed allocation registry.
 
-For concurrent native mobile checks, assign distinct simulator/emulator IDs and development-server ports. Target devices explicitly rather than using a shared `booted` alias or the most recently opened device. Desktop mouse/keyboard automation shares focus even with separate simulators: serialize those interactive checks unless the available tool demonstrably controls a specific device independently. Bound concurrency to the host's actual capacity, and release only resources owned by the task.
+For concurrent iOS and Android checks, assign distinct devices and development-server ports: use the iOS simulator UDID or Android ADB serial explicitly. Target devices explicitly rather than using a shared `booted` alias or the most recently opened device. Desktop mouse/keyboard automation shares focus even with separate simulators: serialize those interactive checks unless the available tool demonstrably controls a specific device independently. Bound concurrency to the host's actual capacity, and release only resources owned by the task.
 
 ## Review each implementation independently
 
