@@ -8,6 +8,10 @@ A successful exercise checks applicability and may reveal ambiguity. It does not
 
 A Spring/JPA service adds reservation create/read. Its generated API request contains a customer UUID, response contains a database-generated ID and status, and the contract defines PENDING/CONFIRMED. The repository uses MapStruct and Lombok. Provide the handwritten structure, write/read flow and focused tests. Identify evidence that cannot be obtained without the actual database/build.
 
+## Existing Java preferences module
+
+An existing Spring/JPA module has a controller, a service and a Spring Data repository. Implement PUT for the authenticated account's theme and compact mode, returning the complete updated preferences in its existing response shape. Preserve GET. Another account returns 403 before its data is read or written; an absent preference record returns 404. Save both fields together. Use the supplied source and tests to produce inspectable edits and useful regression checks. No build configuration, database, new consumer or project scaffolding is supplied.
+
 ## Python backend feature and utility
 
 A new Python application periodically reads a partner catalogue and publishes available items through an internal API whose client is generated from OpenAPI using HTTPX. The partner JSON contains an item identifier, label, available quantity and a completeness marker. The internal API accepts a named publication request and returns an acknowledgement. Service URLs, a credential and operation limits come from process configuration. Implement a small vertical slice and its tests, including a second execution and interruptions. Explain the selected boundaries and unavailable proof. Separately provide a small CSV-counting CLI.
@@ -106,7 +110,11 @@ An App Router application has a separate backend/BFF and a validated generated c
 
 ## Documentation within a touched file
 
-A requested arithmetic correction changes one exported function in a handwritten file. The file also contains an undocumented public type, another exported function and a private normalization step. A neighboring file is undocumented too. Apply the correction and documentation policy to the supplied source, preserving other behavior, and report the inspected scope and evidence. Include a language-appropriate straightforward test and generated-file example when exercising the Java or Python variants.
+A reservation accepts a whole number of guests from 1 through the stated capacity, inclusive. The supplied function rejects 4 at capacity 4. Fix it and add the regression check, preserving the other behaviors. Its handwritten file also contains an undocumented public type, another exported function and a private normalization step; a neighboring file is undocumented too. Produce inspectable edits and report evidence. No build configuration or project scaffolding is supplied.
+
+## Representative Figma compositions
+
+Prepare the translation plan for an approved match list into an existing Product Design file. Supplied inputs describe the prototype, existing journey section, library components and tokens. States include first loading, success, empty, three read failures sharing one composition but different copy, and an action waiting inside the error card. The card already has an action-busy property. Identify the pages, sections, frames, instances and notes to create or update and what these inputs can establish for later native implementation. Produce an inspectable plan; no live Figma change or application code is authorized.
 
 ## Shared API across feature plans
 
