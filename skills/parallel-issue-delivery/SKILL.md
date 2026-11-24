@@ -23,7 +23,7 @@ Begin each task conversation with a short, plain-language explanation of the pro
 
 Give each task a self-contained handoff:
 
-- Repository/worktree, issue, base revision, exact scope and owning spec/plan/tasks.
+- Repository/worktree, issue, base revision, agreed scope and the project's source for its acceptance criteria.
 - Accepted decisions, explicit checklist exceptions and unresolved evidence limits, with their approval source. Do not silently convert proposals into approvals.
 - Applicable skills, permitted external actions, expected draft-PR outcome and the review protocol below. Request one goal per task when goals are included in the approved batch; never invent a token budget or mark incomplete work complete.
 - Ownership of shared files/resources and any intended integration order. Keep edits within the issue and preserve unrelated work; never stop another task's services or edit its worktree.

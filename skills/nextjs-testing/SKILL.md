@@ -40,7 +40,7 @@ Do not enumerate equivalent permutations merely to increase coverage.
 
 Test a component when the application owns observable interaction, conditional content, validation feedback, focus behavior,
 or an accessibility contract that could regress. Interact through semantic roles, names, labels, and visible outcomes.
-Do not assert internal state, hook calls, component trees, Tailwind classes, or incidental DOM structure.
+Do not assert internal state, hook calls, component trees, styling classes, or incidental DOM structure.
 
 Test a custom hook directly only when it owns reusable behavior that is clearer without a component. Otherwise test
 the component or feature outcome that consumes it.
@@ -51,17 +51,9 @@ Test public-rendering adapters, metadata derivation, cache policy, and route-own
 functions when their contract can be isolated. Use framework-aware setup only when Next.js request, cache, redirect,
 header, or rendering semantics are the behavior under test.
 
-Generation, type checking, and a production build are stronger evidence than tests that inspect framework conventions
-or generated source text.
+### API responses
 
-### API And Generated Clients
-
-Test handwritten adaptation, validation, error mapping, and feature behavior at the generated-client boundary. Use an
-explicit fake response or controlled transport boundary when isolation is needed. Do not mock generated DTO values or
-retest Orval's implementation.
-
-Contract generation and TypeScript compilation prove that the generated client matches its source contract. Add a
-focused generated-client proof only when repository configuration or a critical operation mapping needs protection.
+Exercise the feature's actual response handling against a controlled transport. Check the visible effects of successful data, validation failures and API errors when those cases change. If a generated client is involved, check the configured generation and type interfaces separately from its runtime decoding.
 
 ## Maintainability Rules
 
@@ -71,7 +63,7 @@ focused generated-client proof only when repository configuration or a critical 
 - Never mock React or Next.js internals to make an implementation testable.
 - Avoid broad snapshots, source-spelling assertions, private-function access, arbitrary delays, retry-based stabilization, and tests
   that only prove rendering did not throw.
-- Test the application compositions and behavior, not the internal rendering of shadcn or the application UI Library primitives.
+- Test how the application composes its UI and responds to user actions.
 - Keep tests readable before making them abstract. Small duplication is preferable to a helper that hides the scenario.
 - Fix nondeterminism at its source and keep tests independent from execution order, uncontrolled local services, and secrets. Framework/end-to-end tests may start explicitly controlled local services whose lifecycle and fixtures they own.
 - Use Vitest and React Testing Library for pure/component behavior, and Playwright for actual browser/framework behavior. Preserve existing configuration; adopting or migrating a runner must be in scope.
@@ -80,7 +72,7 @@ focused generated-client proof only when repository configuration or a critical 
 
 - Run the narrowest relevant test while developing.
 - Run the web test target before completion.
-- Run code generation, type checking and affected consumer/integration proofs when contracts, schemas, API adaptation, or types change.
+- Run the configured checks for affected API contracts, types and consumers. Regenerate a client when its inputs change.
 - Run the production build when routing, server/client boundaries, configuration, or rendering changes.
 - Run formatting and repository diff-hygiene checks, and report intentionally skipped checks with the reason.
 
@@ -88,7 +80,7 @@ focused generated-client proof only when repository configuration or a critical 
 
 Do not pretend Vitest renders asynchronous React Server Components with full Next request/cache semantics. Use the actual Next runtime and Playwright for async rendering, route transitions, redirects, authentication visibility or cache behavior when those boundaries are the claim. A production build is necessary for affected framework boundaries but is not an end-to-end behavior test.
 
-For new or explicitly evolved contracts, prove additive response properties are accepted and malformed known fields are rejected before success. Preserve existing compatibility. Exercise stable error-code feedback, narrow invalidation, no implicit mutation retries, and dirty form values preserved across refetch when those behaviors change. Isolate the feature's data cache between tests when it uses one. When server prefetch/hydration is used, verify its client interaction and request/identity isolation through the actual framework boundary.
+Exercise response compatibility and validation according to the API contract. Cover error feedback, invalidation, mutation retries and dirty form values across refetch when those behaviors change. Isolate the feature's data cache between tests when it uses one. When server prefetch/hydration is used, verify its client interaction and request/identity isolation through the actual framework boundary.
 
 Report browser/runtime checks that could not run, with residual risk and any equivalent evidence. A DOM test cannot substitute for a missing framework proof.
 
@@ -98,7 +90,7 @@ The test name, scenario-determining inputs, action and expected result must be v
 
 Keep simple values inline. Use targeted typed factories for rich valid objects that are actually reused, with explicit overrides for the scenario's decisive fields. Search existing factories before adding one, and share only identical meaning at the narrowest owner. A private helper may name one coherent step, and a public boundary may have one consumer; neither permits speculative test DSLs, generic object mothers or automatic reflection-based object graphs.
 
-Use `@faker-js/faker` when generated secondary values are useful, as a test dependency with a project-owned compatible version. Use a native fixed seed per test and explicit construction; never mutable random state shared across parallel tests. Control the clock for time-sensitive data. Assert scenario values, not a hard-coded string tied to a Faker version or call order. Keep boundary cases explicit and parameterized. Small tests do not require a data library, and installing this skill does not add dependencies.
+If the project's fixtures generate secondary values, seed them per test and keep scenario-defining values explicit. Control the clock for time-sensitive data.
 
 Consult the [test examples](references/examples.md) when you need to distinguish a form rerender from a refetch in a regression test, or build a typed factory with explicit scenario values. No new E2E infrastructure is introduced by this policy.
 

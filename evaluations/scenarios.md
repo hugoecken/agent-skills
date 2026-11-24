@@ -22,6 +22,8 @@ For a separate adoption decision, ask what project changes are authorized when a
 
 ## React editing
 
+A new React workspace has only React and React DOM. Its first screen accepts a title and a note, both required. Pressing Preview displays the submitted values locally. Propose the implementation and list any changes you would make to the dependency manifest.
+
 An Expo feature edits a booking while a list refetches. A successful HTTP response sometimes contains an unexpected status; a failed submission must offer useful recovery. Generated client types are available. Show feature ownership, form/query behavior, component contracts and focused tests. A second screen needs one existing display transformation.
 
 ## Test readability
