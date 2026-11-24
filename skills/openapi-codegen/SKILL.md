@@ -9,7 +9,7 @@ Read accepted requirements, current interface owners, source contracts, the sele
 
 For technical planning, a new API or a change shared by several features, read [contract ownership and planning](references/planning.md). Plan scopes do not partition API ownership: several plans can evolve the same authoritative contract. Settle the affected interaction before either side implements assumptions about it.
 
-Edit the owning source first, generate next, then adapt handwritten code. A new schema is not permission to expose new behavior. Generate only active boundaries. Never edit or commit generated output, patch its templates as a shortcut, or add recursive case-conversion/compatibility aliases without an accepted migration.
+Edit the owning source first, generate next, then adapt handwritten code. A new schema is not permission to expose new behavior. Generate only active boundaries. Include regenerated sources in the patch when the repository versions them. Leave ignored build outputs untracked. Never hand-edit generated files, patch their templates as a shortcut, or add recursive case-conversion/compatibility aliases without an accepted migration.
 
 ## Schema contracts
 
@@ -52,4 +52,4 @@ Replace handwritten transport mirrors only after the accepted shapes and owner/c
 
 ## Evidence
 
-Run source bundling and mapping synchronization in the configured order, generation, affected language builds/imports/typechecks, and active consumer tests. Enum, union, nullability and field changes require all affected consumers, not just the producer. Verify deterministic clean regeneration and ignored generated artifacts. Exercise handwritten serialization/error/validation behavior where meaningful; do not test generated source spelling. Report unsupported generation or missing consumer evidence as unresolved.
+Run source bundling and mapping synchronization in the configured order, generation, affected language builds/imports/typechecks, and active consumer tests. Enum, union, nullability and field changes require all affected consumers, not just the producer. Verify a clean generation reproduces the expected outputs, including any versioned sources. Exercise handwritten serialization/error/validation behavior where meaningful; do not test generated source spelling. Report unsupported generation or missing consumer evidence as unresolved.

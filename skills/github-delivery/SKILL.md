@@ -1,11 +1,11 @@
 ---
 name: github-delivery
-description: "Triage issues and deliver authorized changes through issue ownership, topic branches, coherent commits and draft pull requests. Merges require an explicit human request; cleanup follows the authorized delivery lifecycle."
+description: "Triage GitHub issues and deliver draft PRs in repositories that use issue-linked feature/, bugfix/ or tech/ branches and merge commits. Merge only on an explicit human request."
 ---
 
 # GitHub delivery
 
-Read repository instructions, Git state, remotes, branch model and the authorized scope. This workflow does not grant permission to publish, assign, merge or contact others beyond the user's task. Existing explicit authorization remains valid; do not ask for the same issue confirmation again.
+Read repository instructions, Git state, remotes, branch model and the authorized scope. If the repository requires a different branch or merge convention, follow its delivery workflow. Publishing, assigning, merging and contacting others require authorization within the user's task. Existing explicit authorization remains valid.
 
 ## Current authority and useful history
 

@@ -11,7 +11,7 @@ When distinct types are needed, use role names such as `CreateResourceCommand`, 
 
 Use MapStruct for needed mechanical field mapping; do not introduce a conversion solely to use a mapper. Same-name fields stay implicit; annotate renamed, nested, flattened, ignored, defaulted or qualified fields deliberately. Multiple mappers in a module share a module-local configuration with Spring component model, constructor injection, `NullValueCheckStrategy.ALWAYS` and `ReportingPolicy.ERROR`. One mapper can declare those settings directly.
 
-Configure annotation processors through the actual module build; use `lombok-mapstruct-binding` when Lombok-generated members are mapped. Generated mapper implementations are never handwritten or committed. Use `uses` or qualified mapping methods for real nested reuse.
+Configure annotation processors through the actual module build; use `lombok-mapstruct-binding` when Lombok-generated members are mapped. Edit the mapper declaration and let the processor regenerate its implementation in the configured output directory. Use `uses` or qualified mapping methods for real nested reuse.
 
 Handwrite decisions, aggregation, polymorphic dispatch, conditional enrichment or invariant/state-initializing construction. An explicit constructor that establishes valid state does not need proof of a generator failure; use MapStruct for the surrounding mechanical field mapping. Keep those methods small; a mapper does not orchestrate database reads or become a service.
 

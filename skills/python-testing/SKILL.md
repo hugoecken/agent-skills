@@ -48,4 +48,4 @@ Read [illustrative test fragments](references/examples.md) when the intended tes
 
 ## Verification
 
-Run focused tests during development, then the owning suite and affected consumers/integrations. Include configured Ruff/format and mypy strict for the new managed scope. Meaningful dependency-boundary tests are allowed; avoid source-wording checks, private-method probing, broad snapshots, arbitrary sleeps or live providers. Report passes, actual failures, expected failures and unavailable proof separately. Keep generated output ignored and inspect the final diff. No new E2E infrastructure is introduced by this policy.
+Run focused tests during development, then the owning suite and affected consumers/integrations. Include configured Ruff/format and mypy strict for the new managed scope. Meaningful dependency-boundary tests are allowed; avoid source-wording checks, private-method probing, broad snapshots, arbitrary sleeps or live providers. Report passes, actual failures, expected failures and unavailable proof separately. Inspect the final diff. No new E2E infrastructure is introduced by this policy.

@@ -62,8 +62,8 @@ add IDs to every nested view or expose implementation structure through selector
   render state and invoke explicit commands; they do not construct global clients or reach into native modules directly.
 - Extract normalization, formatting, validation, or update logic into a pure function only when it is meaningful on its
   own or actively reused. Keep a simple expression in the component instead of creating a test-only helper.
-- Let TanStack Query own remote state and the established providers own application state. Do not mirror state or add
-  effects merely to make assertions easier.
+- Exercise remote data through the feature's existing data layer. Keep application state in its established providers.
+  Do not mirror state or add effects merely to make assertions easier.
 - Prefer small named components for distinct user-visible states over one component with many unrelated modes. Keep
   ordinary `disabled`, `loading`, and selection state explicit and simple.
 - Do not add production branches for Jest, test-only props, service locators, dependency-injection containers, mock
@@ -107,7 +107,7 @@ Native Testing Library guidance for
 [user-focused queries](https://callstack.github.io/react-native-testing-library/docs/guides/how-to-query) and
 [realistic interactions](https://callstack.github.io/react-native-testing-library/docs/api/events/user-event).
 
-For affected data/form behavior, prove dirty values survive background refetch, failed validation never enters the successful query cache, and submission failures preserve editable values. Do not add a test-only state mirror.
+When the flow refetches during editing, verify that dirty values survive the refresh. If it caches remote data, verify that invalid responses never enter the cache as successful results. When testing submission failures, check that the form's values remain editable.
 
 ## Readable scenarios and reusable data
 
@@ -117,6 +117,6 @@ Keep simple values inline. Use targeted typed factories for rich valid objects t
 
 Use `@faker-js/faker` when generated secondary values are useful, as a test dependency with a project-owned compatible version. Use a native fixed seed per test and explicit construction; never mutable random state shared across parallel tests. Control the clock for time-sensitive data. Assert scenario values, not a hard-coded string tied to a Faker version or call order. Small tests do not require a data library, and installing this skill does not add dependencies.
 
-Read [canonical examples](references/examples.md) when adding or substantially restructuring tests or factories. They show a unit test, an integration boundary and a rich typed factory, not a new test framework. No new E2E infrastructure is introduced by this policy.
+Consult the [test examples](references/examples.md) when you need an example of testing a failed form submission or building a typed factory with explicit scenario values. No new E2E infrastructure is introduced by this policy.
 
 Focused architecture tests may protect important dependency boundaries. Avoid tests that assert source spelling or incidental file layout rather than the boundary itself.

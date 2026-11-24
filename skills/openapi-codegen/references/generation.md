@@ -6,7 +6,7 @@ Keep semantic model names in the authored contract and use supported generator n
 
 ## Java
 
-Generate server interfaces and DTOs into the configured build output. Implement interfaces in API adapters. Keep generated clients and their runtime lifecycle in infrastructure adapters. A generated DTO or enum may serve an application boundary when its contract owns that exact concept and this follows the project pattern. Map where semantics or lifetime differ; pure domain code remains independent of generated transport types.
+Generate server interfaces and DTOs in the project's configured source or build directory. Implement interfaces in API adapters. Keep generated clients and their runtime lifecycle in infrastructure adapters. A generated DTO or enum may serve an application boundary when its contract owns that exact concept and this follows the project pattern. Map where semantics or lifetime differ; pure domain code remains independent of generated transport types.
 
 Keep shared generated model packages limited to genuinely shared enums and technical primitives. Compile through the owning build so annotation processing and generated imports are exercised. Prove unions, enum serialization and null handling with actual generated output where configuration changes their behavior.
 

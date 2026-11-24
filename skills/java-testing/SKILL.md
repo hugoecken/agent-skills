@@ -164,4 +164,4 @@ Keep scenario-defining values explicit and UUIDs stable when asserted or persist
 
 Use Datafaker when generated secondary values are useful, as a test dependency with a project-owned compatible version. Use a native fixed seed per test and explicit construction; never mutable random state shared across parallel tests. Control the clock for time-sensitive data. Assert scenario values, not a hard-coded string tied to a Faker version or call order. Small tests do not require a data library, and installing this skill does not add dependencies.
 
-Read [canonical examples](references/examples.md) when adding or substantially restructuring tests or factories. They show meaningful decisions, cases requiring no extra unit test, a database boundary and optional reusable data. No new E2E infrastructure is introduced by this policy.
+Consult the [test examples](references/examples.md) when deciding how to prove a service rejection or exercise a uniqueness constraint at the database flush boundary. No new E2E infrastructure is introduced by this policy.

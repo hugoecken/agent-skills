@@ -87,7 +87,7 @@ it("submits the edited values after the parent rerenders", async () => {
 });
 ```
 
-Here the several interactions form one behavior: submitting the retained edit. For a refetch regression, use the real query/form composition, a fresh QueryClient and a controlled transport response changing after editing; a parent rerender alone does not prove refetch behavior. For response-validation regressions exercise the real handwritten transport and generated schema, then assert the invalid response was not cached as success.
+These interactions verify that the form submits the retained edit. For a refetch regression, render the form with its real data layer and control the transport so the next response changes after editing. To test response validation, send invalid data through the handwritten transport and generated schema and assert the failure the feature exposes. If the feature caches responses, isolate its cache and verify that the invalid data never becomes a successful entry.
 
 Use real Next/browser evidence for async server rendering, redirects and cache semantics. Keep that evidence distinct from this component integration; these examples neither add Playwright configuration nor establish a new E2E suite.
 

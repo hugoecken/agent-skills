@@ -11,7 +11,7 @@ Read the accepted specification, local platform/design authority, actual Expo/Re
 
 Keep Expo Router files thin: routes, layouts, navigation, redirects and top-level composition. Business feature screens live outside the route tree. Use the existing feature owners; do not require a container or screen hook for simple behavior.
 
-Keep native/provider constants and payloads in their adapters. Follow shared React conventions for feature state, forms, effects and generated contracts; this skill concentrates on native responsibilities. Session, token storage and authorization decisions come from the project's accepted identity architecture, not a portable provider profile.
+Keep native/provider constants and payloads in their adapters. Follow the project's React conventions and comparable features for state, forms, effects and generated contracts. Session, token storage and authorization decisions come from the project's accepted identity architecture, not a portable provider profile.
 
 ## Native UI and tokens
 
@@ -35,4 +35,4 @@ Expose role, accessible name, state and useful hints. Support screen-reader navi
 
 Run configured formatting, lint, typecheck and mobile tests. Run Expo Doctor for changed dependencies/configuration, and the relevant native build/launch for modules, provider adapters, routing or platform-specific behavior. Compare visual changes to the project's accepted design references at the required platform/theme/state and viewport; JavaScript tests prove neither visual fidelity nor native behavior. Report unavailable native/design evidence explicitly.
 
-Mechanics: [Expo Router](https://docs.expo.dev/router/introduction/) and [React Native accessibility](https://reactnative.dev/docs/accessibility). Feature structure, StyleSheet and form choices are personal conventions.
+Mechanics: [Expo Router](https://docs.expo.dev/router/introduction/) and [React Native accessibility](https://reactnative.dev/docs/accessibility). Feature structure and StyleSheet usage are personal conventions.

@@ -17,7 +17,7 @@ This skill selects a backend-separated web architecture. It is not a universal p
 
 Use narrow client boundaries and the Next router as navigation authority. Read data needed for server-rendered content and metadata through supported Next server mechanisms and the owning backend client. Select static generation, explicit revalidation or request rendering according to accepted freshness and the installed version. A server-only read does not require a Query cache.
 
-TanStack Query owns remote data whose lifecycle is managed by client interactions. Use its supported server prefetching and hydration when that client lifecycle benefits from initial server data. Keep request-scoped server Query clients isolated; do not share private data across requests or identities. Avoid independently refreshed server and client copies of the same displayed value. A client boundary does not require moving the whole page to client rendering, and a server-rendered page does not require Query for every read.
+Use the project's client data layer for remote data managed by client interactions. TanStack Query is the preferred default for new applications choosing that layer. When initial server data benefits the client lifecycle, use the selected library's supported prefetching and hydration. Scope server-side client caches to the request to isolate private data across requests and identities. Avoid independently refreshed server and client copies of the same displayed value. A client boundary does not require moving the whole page to client rendering, and a server-rendered page does not require Query for every read.
 
 ## Public content and caching
 
@@ -27,7 +27,7 @@ Choose revalidation and invalidation deliberately. Update metadata and content c
 
 ## Features, forms and UI
 
-Keep feature state, forms, effects and type ownership consistent with the shared React conventions. At the Next boundary, product mutations call the generated public backend/BFF client; do not route them through an extra application API in Next. A platform-only change does not require rereading unrelated form or state policies.
+Follow the project's React conventions and comparable features for state, forms, effects and type ownership. At the Next boundary, product mutations call the generated public backend/BFF client; do not route them through an extra application API in Next. A platform-only change does not require rereading unrelated form or state policies.
 
 Use approved library components and shadcn primitives. `components.json` owns aliases, base, icon family and Tailwind configuration. Style with semantic tokens, preserve accessible HTML, keyboard access, visible focus, readable contrast and touch targets. Cover accepted loading, empty, validation, permission and failure states; implement responsive changes from the design authority.
 

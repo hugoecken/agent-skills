@@ -13,7 +13,7 @@ These are personal engineering conventions informed by framework documentation, 
 | [react-feature-architecture](skills/react-feature-architecture/SKILL.md) | Shared React feature, state, form and effect ownership                                     |
 | [openapi-codegen](skills/openapi-codegen/SKILL.md)                       | Source-first REST contracts, generators and response validation                            |
 | [liquibase-schema](skills/liquibase-schema/SKILL.md)                     | Baseline posture, durable invariants and schema evolution                                  |
-| [github-delivery](skills/github-delivery/SKILL.md)                       | Issues, topic branches, draft PRs and human-directed merges                                |
+| [github-delivery](skills/github-delivery/SKILL.md)                       | Draft PRs on issue-linked `feature/`, `bugfix/` or `tech/` branches and human-requested merge commits |
 | [parallel-issue-delivery](skills/parallel-issue-delivery/SKILL.md) | Explicit parallel issue batches, isolated worktrees and fresh-context reviews |
 | [figma-design-governance](skills/figma-design-governance/SKILL.md)       | Library/screen ownership and approved design evidence                                      |
 | [code-documentation](skills/code-documentation/SKILL.md)                 | Useful Java, Python and TypeScript contracts                                               |
@@ -56,6 +56,6 @@ Copying Nx skills does not enable Nx Cloud, install MCP, change framework versio
 
 ## Evaluation
 
-[Scenario prompts](evaluations/scenarios.md) cover representative architecture, runtime and delivery decisions. Give an evaluator the request, selected skills and minimum raw context without the expected answer. Use a disposable directory, inspect actual outputs, and record missing build/runtime proof. Replay targeted scenarios when a material policy change warrants it, not on every documentation edit. Keep them here, outside project installations. These exercises complement structural validation; they do not certify an application's behavior or replace its tests. Measuring improvement requires comparable with/without-skill runs using the same task and raw context; a successful exercise alone makes no efficacy claim.
+[Maintenance scenarios](evaluations/scenarios.md) stay outside project installations. Choose a case that exercises the decision being changed. The Python replay includes its raw inputs. Design questions can be answered from the prompt, and exercises that need a source tree or snapshots list what to supply. Follow the evaluation notes to test skill selection or compare outputs on the same task.
 
 No license is selected for the personal content at this time. Existing third-party license terms remain applicable to their own material.
