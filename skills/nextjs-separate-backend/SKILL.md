@@ -1,11 +1,11 @@
 ---
 name: nextjs-separate-backend
-description: "Implement or review Next.js App Router web features with a separate business backend and BFF, including rendering, caching, routing, shadcn and semantic styling."
+description: "Implement or review Next.js App Router features backed by a separate business service. Covers the public API or BFF boundary, routing, rendering, caching and accessible UI."
 ---
 
 # Next.js with a separate backend
 
-This skill selects a backend-separated web architecture. It is not a universal prescription for every Next.js application. Read the repository's accepted architecture, product/design sources, Next version, app routes, generator configuration and `components.json`. Keep product-specific publication, access and lifecycle rules local.
+Read the project's backend boundary, installed Next.js version and affected routes. Consult its design sources for UI changes and its API client configuration for backend integration. Keep publication, access and lifecycle rules with the project.
 
 ## Responsibilities
 
@@ -15,9 +15,9 @@ This skill selects a backend-separated web architecture. It is not a universal p
 - Next.js owns rendering; the separate backend owns business behavior. Keep product authorization there, with no direct database access or second business API. Read the project’s accepted identity/session architecture for OAuth, cookies and session ownership rather than inventing a portable authentication profile. Do not add product-mutating Server Actions.
 - A technical route handler can serve an explicit non-product need; name that need and preserve the backend boundary. Do not create route handlers merely to proxy an already suitable BFF.
 
-Use narrow client boundaries and the Next router as navigation authority. Read data needed for server-rendered content and metadata through supported Next server mechanisms and the owning backend client. Select static generation, explicit revalidation or request rendering according to accepted freshness and the installed version. A server-only read does not require a Query cache.
+Use narrow client boundaries and the Next router as navigation authority. Read data needed for server-rendered content and metadata through supported Next server mechanisms and the owning backend client. Select static generation, explicit revalidation or request rendering according to accepted freshness and the installed version. A server-only read does not require a client data cache.
 
-TanStack Query owns remote data whose lifecycle is managed by client interactions. Use its supported server prefetching and hydration when that client lifecycle benefits from initial server data. Keep request-scoped server Query clients isolated; do not share private data across requests or identities. Avoid independently refreshed server and client copies of the same displayed value. A client boundary does not require moving the whole page to client rendering, and a server-rendered page does not require Query for every read.
+Give client-managed remote data one owner. If the project uses TanStack Query, use its supported prefetching and hydration when client interactions benefit from initial server data. Isolate server-side Query clients per request. Keep private data isolated across identities and avoid independently refreshed server and client copies of the same displayed value.
 
 ## Public content and caching
 
@@ -27,14 +27,14 @@ Choose revalidation and invalidation deliberately. Update metadata and content c
 
 ## Features, forms and UI
 
-Keep feature state, forms, effects and type ownership consistent with the shared React conventions. At the Next boundary, product mutations call the generated public backend/BFF client; do not route them through an extra application API in Next. A platform-only change does not require rereading unrelated form or state policies.
+Follow the application's existing React conventions for feature state, forms, effects and types. Send product mutations through its public backend/BFF client, using the generated client where configured.
 
-Use approved library components and shadcn primitives. `components.json` owns aliases, base, icon family and Tailwind configuration. Style with semantic tokens, preserve accessible HTML, keyboard access, visible focus, readable contrast and touch targets. Cover accepted loading, empty, validation, permission and failure states; implement responsive changes from the design authority.
+Reuse the project's existing UI primitives and semantic tokens where available. If the project's component registry uses `components.json`, take the component base, aliases, icons and styling settings from that file. Preserve accessible HTML, keyboard access, visible focus, readable contrast and touch targets. Cover accepted loading, empty, validation, permission and failure states and implement the approved responsive behavior.
 
-Use existing workspace targets for generation/typechecks/builds. Add a library only for a stable owner with actual consumers or a real enforceable boundary. No global barrels, speculative render engines, parallel design system or generated-code edits.
+Use the project's existing typecheck and build commands, and its generation command where applicable. Add a library only for a stable owner with actual consumers or a real enforceable boundary. No global barrels, speculative render engines, parallel design system or generated-code edits.
 
 ## Evidence
 
-Check route semantics, private/public data separation, hydration, metadata consistency and affected responsive states. Run generation/typecheck when boundaries change, relevant tests and the production Next build for routing, rendering or server/client changes. Use a real framework/browser proof for async server rendering, redirects or cache semantics that unit tests cannot reproduce. Inspect the final diff and ignored outputs. Do not claim visual approval from a passing build.
+Check route semantics, private/public data separation, hydration, metadata consistency and affected responsive states. Run relevant tests and typechecks, regenerate affected clients where configured, and run the production Next build for routing, rendering or server/client changes. Use a real framework/browser proof for async server rendering, redirects or cache semantics that unit tests cannot reproduce. Inspect the final diff and ignored outputs. Do not claim visual approval from a passing build.
 
 Mechanics: [Next.js data fetching](https://nextjs.org/docs/app/getting-started/fetching-data) and [TanStack Query server rendering](https://tanstack.com/query/latest/docs/framework/react/guides/advanced-ssr). Check the installed versions before choosing cache, prefetch or hydration APIs; these links do not prescribe version-specific defaults. Separate business ownership is a project profile selected by this pack.

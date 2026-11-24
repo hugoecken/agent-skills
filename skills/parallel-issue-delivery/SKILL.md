@@ -9,7 +9,7 @@ Use this workflow when the human explicitly requests a parallel issue batch or c
 
 ## Select or resume the batch
 
-- Read repository instructions, delivery policy, owning specifications and relevant skills. Inspect current issues, native blockers, assignees, PRs, branches, worktrees and existing task conversations before proposing work.
+- Read the issues and any applicable repository instructions, delivery policy, specifications or installed skills. Inspect native blockers, assignees, PRs, branches, worktrees and existing task conversations before proposing work.
 - Propose a bounded set of independently deliverable issues. Explain prerequisites, scope, shared files, generated contracts and shared runtime resources. Do not fill a numerical quota or confuse an epic, partially delivered task or pending provider qualification with a ready implementation issue.
 - Prefer tasks that can start from the same integration revision. A worktree isolates edits; it does not remove semantic dependencies, shared-port conflicts or integration conflicts.
 - Present the proposed batch and material tradeoffs, then await approval unless that exact batch is already authorized. Do not claim issues during read-only selection.
@@ -23,7 +23,7 @@ Begin each task conversation with a short, plain-language explanation of the pro
 
 Give each task a self-contained handoff:
 
-- Repository/worktree, issue, base revision, exact scope and owning spec/plan/tasks.
+- Repository/worktree, issue, base revision, exact scope and sources of any requirements agreed outside the issue.
 - Accepted decisions, explicit checklist exceptions and unresolved evidence limits, with their approval source. Do not silently convert proposals into approvals.
 - Applicable skills, permitted external actions, expected draft-PR outcome and the review protocol below. Request one goal per task when goals are included in the approved batch; never invent a token budget or mark incomplete work complete.
 - Ownership of shared files/resources and any intended integration order. Keep edits within the issue and preserve unrelated work; never stop another task's services or edit its worktree.
@@ -38,7 +38,7 @@ For concurrent iOS and Android checks, assign distinct devices and development-s
 
 ## Review each implementation independently
 
-This workflow uses two rounds of two reviewers as its personal default, not an upstream requirement or a guarantee of defect-free code. Run initial affected checks and review handwritten tests against their applicable testing skill/examples before the first round.
+This workflow uses two rounds of two reviewers as its personal default, not an upstream requirement or a guarantee of defect-free code. Run initial affected checks and review handwritten tests against the project’s testing conventions before the first round. Use an applicable testing skill when available.
 
 For each round, spawn two new reviewer subagents with fresh contexts, without inheriting the author's conversation. When available, use `fork_turns="none"`; otherwise disclose the context-isolation limit. Give both the same stable revision/tree, diff base, issue scope, raw requirements, applicable guidance and factual evidence limits. Do not supply the author's verdict, earlier findings or another reviewer's conclusions. Keep the tree stable until both reviewers finish.
 

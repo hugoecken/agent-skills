@@ -5,13 +5,13 @@ description: "Implement or review Expo Router and React Native features, native 
 
 # React Native and Expo
 
-Read the accepted specification, local platform/design authority, actual Expo/React Native versions, route tree and providers. Specifications own future intent; current source/tests describe delivered behavior. Installing this skill does not authorize framework upgrades, extra platform targets or a migration of existing form libraries.
+Start from the accepted request and any designated product or design specifications. Check the installed Expo/React Native versions, route tree and providers. Installing this skill does not authorize framework upgrades, extra platform targets or a migration of existing form libraries.
 
 ## Routing and feature ownership
 
 Keep Expo Router files thin: routes, layouts, navigation, redirects and top-level composition. Business feature screens live outside the route tree. Use the existing feature owners; do not require a container or screen hook for simple behavior.
 
-Keep native/provider constants and payloads in their adapters. Follow shared React conventions for feature state, forms, effects and generated contracts; this skill concentrates on native responsibilities. Session, token storage and authorization decisions come from the project's accepted identity architecture, not a portable provider profile.
+Keep native/provider constants and payloads in their adapters. Follow the project's React conventions for feature state, forms, effects and any generated contracts. Session, token storage and authorization decisions come from the project's accepted identity architecture, not a portable provider profile.
 
 ## Native UI and tokens
 

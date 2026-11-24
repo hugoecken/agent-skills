@@ -5,13 +5,13 @@ description: "Build and review standalone responsive web prototypes with mock da
 
 # Standalone design prototypes
 
-Read the accepted specifications, requested scope and project design constraints. The project owns approval requirements and stage transitions; this skill supplies prototype construction and review techniques. Use official Spec Kit procedures for specification changes when installed. Exploration does not silently change accepted behavior or select production architecture.
+Start from the requested exploration and the project's accepted design constraints. Follow its approval process when a proposed interaction changes agreed behavior. Keep production architecture decisions with the project.
 
 ## Inputs and licensed material
 
-When licensed material is needed, the request or repository must identify the human-provided source path and selected subdirectories. Verify the source exists and its component base matches the project. Do not substitute another archive or redistribute the full export; copy only selected material permitted for this use. Keep exact paths and registry choices in the consuming project.
+When using licensed material, verify the source path and permitted subset supplied by the owner. Check that the selected components fit the prototype before copying them. Use only material from that source, preserve attribution and keep the full export out of the deliverable.
 
-For shadcn, inspect `components.json` for base, aliases, icons, Tailwind and tokens. Reuse configured primitives and approved semantic tokens. Adapt selected blocks deliberately rather than importing a foreign theme or treating a block as a finished screen. A rough navigation sketch does not require finished branding or licensed blocks unless the request requires them.
+When a project supplies UI primitives or semantic tokens, reuse them. Before adapting a block, check its component base, import aliases, icons and styles against the prototype’s configuration. A rough navigation sketch can use plain controls when these are sufficient to judge the interaction.
 
 ## Build coherent journeys
 
@@ -27,6 +27,6 @@ Work in short loops: make interactions understandable, then refine the requested
 
 Present the prototype directly through its preview and useful captures. Exercise the requested journey's essential transitions and return paths, including states needed to judge its composition or action. Check relevant responsive and interaction behavior within the project's required scope; do not turn the prototype into an exhaustive platform, theme or failure matrix. A reviewed fragment does not establish integrated approval.
 
-Provide the exact reviewable revision, scope, unresolved decisions and material limitations. Clearly distinguish a candidate from an approved result. Keep licensed source attribution. If the next authorized task is Figma translation, hand over the chosen visual direction, interactions, states and reusable component needs without inventing additional product requirements.
+Provide the exact reviewable revision, scope, unresolved decisions and material limitations. Clearly distinguish a candidate from an approved result. For a requested design handoff, include the chosen visual direction, interactions, states and reusable component needs.
 
 Stop when the requested visual direction and essential interactions can be judged and the applicable review is complete. Keep the prototype available for future iterations; do not polish its internals into production code after that result is reached. Production adoption requires its own technical decision. Follow the project's delivery rules without requiring an application PR merely to review a prototype.

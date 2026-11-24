@@ -5,11 +5,11 @@ description: "Organize and verify Figma libraries, product screens, journeys and
 
 # Figma design governance
 
-Repository instructions and the accepted issue identify the canonical design files. Resolve their actual links before acting; this portable skill owns no file IDs or product screen list.
+Identify the canonical design files from the accepted request or project guidance and verify their links before editing.
 
 ## Design Authority
 
-- Accepted specifications own future observable product and design intent, for a whole application release or an evolution.
+- Use the project’s accepted requirements as the source of future product behavior and design intent.
 - Preserve the navigation, behavior and visual direction approved in the designated inputs. If a prototype is the accepted input, Figma formalizes that experience; it does not independently select a different direction.
 - The designated UI library owns approved reusable variables, styles, foundations, icons, and components.
 - The designated product design file owns approved product patterns and representative screen states composed from published designated UI library instances.
@@ -18,7 +18,7 @@ Repository instructions and the accepted issue identify the canonical design fil
 
 ## File Rules
 
-- Keep `Cover` limited to file identity, ownership, status, and links to the accepted specification.
+- Keep `Cover` limited to file identity, ownership, status, and links to the accepted requirements where available.
 - Keep reusable foundations and components in the designated UI library with deterministic names, Auto Layout, published variables and styles, and meaningful variant contracts. Add annotations only for requirements not already clear from the component.
 - Keep approved reusable product compositions in the Product Design `Patterns` page and representative journey evidence in its design pages.
 - Keep unresolved visual directions and experiments in `Explorations`. They do not become authoritative until explicitly approved.
@@ -27,9 +27,8 @@ Repository instructions and the accepted issue identify the canonical design fil
 
 ## Product Screen Organization
 
-These rules govern full product screens and journeys. They do not prescribe which
-screens a product must contain; screen scope remains owned by the approved product
-specification or issue.
+These rules govern full product screens and journeys. The accepted request or
+product requirements determine which screens belong in scope.
 
 ### Classify the artifact before creating it
 
@@ -116,8 +115,8 @@ Before creating a page, section, screen, or pattern:
 
 ## Evidence Rules
 
-- Cite the exact accepted or clarified specification snapshot and relevant acceptance criteria.
-- Group specifications only when they form one coherent journey or shared pattern.
+- Identify the accepted request and relevant acceptance criteria. Cite the exact revision when the project maintains a specification.
+- Group requirements only when they form one coherent journey or shared pattern.
 - Record exact Figma node links and screenshots for downstream planning.
 - Verify the changed compositions and applicable requested themes, widths and interactions. Shared tokens and components carry unchanged combinations; do not redraw a qualification matrix in the product file.
 - Keep native observations of keyboard/focus, touch, text scaling, safe areas, motion and SDK behavior at their actual qualification boundary. Figma frames do not prove runtime behavior.
@@ -125,10 +124,10 @@ Before creating a page, section, screen, or pattern:
 
 ## Scope and review
 
-Read the project's constitution and accepted request for prerequisites, design authorities and approval scope. In a Spec Kit project, its official procedures own specification and technical planning; this skill introduces no additional phase or gate.
+Follow the prerequisites, design authorities and approval scope established by the accepted request and any applicable project procedure.
 
-Identify the target files, relevant specification, journeys/components and evidence before editing. Reuse the designated library before composing Product Design with its published instances. Preserve accepted prototype interactions and visual direction when translating them. Raise a conflict with accepted intent or a missing library capability instead of detaching instances or silently redesigning the product.
+Identify the target files, requirements, journeys/components and evidence before editing. Reuse the designated library before composing Product Design with its published instances. Preserve accepted prototype interactions and visual direction when translating them. Raise a conflict with accepted intent or a missing library capability instead of detaching instances or silently redesigning the product.
 
 Stop when the requested distinct compositions precisely express the accepted intent through shared tokens and live instances. Preserve the project's separate prototype, Figma and native approval requirements where applicable; this skill adds no new approval for unchanged scope.
 
-Only certify the platforms, themes and states requested and actually reviewed. Record exact nodes, revision information where available, scope and remaining limitations in the existing review record. A file's existence, a passing test or approval of another scope does not approve the current result. Limited file maintenance does not require unrelated design exploration.
+Only certify the platforms, themes and states requested and actually reviewed. Include exact nodes, revision information where available, scope and remaining limitations in the existing review record or the handoff to the requester. A file's existence, a passing test or approval of another scope does not approve the current result. Limited file maintenance does not require unrelated design exploration.
