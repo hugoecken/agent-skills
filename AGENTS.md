@@ -1,7 +1,7 @@
 # Agent guidance
 
 - Speak French in conversation. Write repository content and GitHub artifacts in English.
-- Maintain standalone skills under `skills/<name>/SKILL.md`; read only the skill and its own references needed for the task. Keep descriptions precise and optional references purposeful.
+- Maintain standalone skills under `skills/<name>/SKILL.md`. Name tools that define the skill's specialty. Leave adjacent stack and workflow choices to the consuming project. Keep descriptions precise and optional references purposeful. Read only the skill and its own references needed for the task.
 - Preserve approved decisions. Distinguish personal conventions from official framework mechanics. Repository product intent, paths, versions, commands and credentials do not belong in portable skills.
 - Use an authorized GitHub issue, an issue-linked topic branch and a draft PR to `main`. Implement authorization is not merge authorization. Merge only on an explicit human request, with a merge commit and current checks.
 - Keep distribution simple: copy selected complete folders from `main` into a project's `.agents/skills` and review the diff. Do not add custom installation/synchronization scripts, profiles, provenance manifests, mandatory releases/tags or a project-context file.

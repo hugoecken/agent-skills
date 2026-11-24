@@ -1,30 +1,34 @@
 # Targeted skill evaluations
 
-These are neutral task prompts, not an executable framework or an answer key. Hypothetical capability and trial outcomes are scenario inputs, not verified library documentation. Replay relevant scenarios for material policy changes; not every edit needs a run. Keep this file in the pack repository, never in copied project skills. Provide the selected skills and minimum raw artifacts. Use an isolated temporary workspace and request concrete output, assumptions and missing verification. No production writes, live GitHub/Figma changes or dependency installation are implied.
+Choose an exercise for the decision that changed. The Python replay includes its files. For a case marked **Inputs to supply**, prepare the listed material before running it. Other prompts contain the facts needed for a design or planning response. Treat stated library capabilities and trial outcomes as hypothetical inputs. Use a disposable workspace. The exercises grant no permission for production calls, live GitHub or Figma writes, or dependency installation.
 
-A successful exercise checks applicability and may reveal ambiguity. It does not certify an application or prove improvement over an agent without the skill. An efficacy claim needs comparable with/without-skill runs, equal task/context and observable outcomes. Record executed checks separately from review conclusions.
+To exercise a skill's instructions, give the evaluator the task, the selected skill and the raw inputs. To test discovery, provide the available skill descriptions and the user request without naming the intended skill. To measure an effect, run the task with and without the skill, or against its previous version to assess a change. Use fresh contexts with the same raw inputs, model and tools. Inspect the proposed decisions or actual changes and record which checks ran.
 
 ## Java reservation
 
-A Spring/JPA service adds reservation create/read. Its generated API request contains a customer UUID, response contains a database-generated ID and status, and the contract defines PENDING/CONFIRMED. The repository uses MapStruct and Lombok. Provide the handwritten structure, write/read flow and focused tests. Identify evidence that cannot be obtained without the actual database/build.
+A Spring/JPA service adds reservation create/read. Its generated API request contains a customer UUID, response contains a database-generated ID and status, and the contract defines PENDING/CONFIRMED. The repository uses MapStruct and Lombok. Sketch the handwritten structure, write/read flow and focused test cases. Identify evidence that requires the actual database or build.
 
 ## Existing Java preferences module
+
+**Inputs to supply.** Provide the existing GET controller and response type, account lookup, service, preference entity, repository and current tests. Include the PUT contract if it is declared separately.
 
 An existing Spring/JPA module has a controller, a service and a Spring Data repository. Implement PUT for the authenticated account's theme and compact mode, returning the complete updated preferences in its existing response shape. Preserve GET. Another account returns 403 before its data is read or written; an absent preference record returns 404. Save both fields together. Use the supplied source and tests to produce inspectable edits and useful regression checks. No build configuration, database, new consumer or project scaffolding is supplied.
 
 ## Python backend feature and utility
 
-A new Python application periodically reads a partner catalogue and publishes available items through an internal API whose client is generated from OpenAPI using HTTPX. The partner JSON contains an item identifier, label, available quantity and a completeness marker. The internal API accepts a named publication request and returns an acknowledgement. Service URLs, a credential and operation limits come from process configuration. Implement a small vertical slice and its tests, including a second execution and interruptions. Explain the selected boundaries and unavailable proof. Separately provide a small CSV-counting CLI.
+Copy [the request](python-backend/request.md), [the API contract](python-backend/contract.yaml) and [the provider responses](python-backend/provider-fixtures.json) together. For convergence, give two independent agents the same skills and inputs. Compare their handling of complete, empty, partial and invalid data, repeated execution and interruption, using the observed publications and test results.
 
-The [replay request](python-backend/request.md) supplies the concrete neutral task and raw contract/fixtures used for the Python convergence exercise. It does not supply expected implementation files.
-
-For a convergence evaluation, give two independent agents this same prompt, the same raw contract/fixtures and the same relevant skills, without a target architecture or the other agent's output. Compare concrete ownership, models, conversions, error/lifecycle behavior and readable tests; do not require identical file counts or wording. A separate adoption question supplies an existing uv/Ruff/pytest application with no mypy configuration and asks what changes the skill alone authorizes.
+For a separate adoption decision, ask what project changes are authorized when an owner requests only that the Python development and testing skills be copied into an existing uv/Ruff/pytest application with no mypy configuration.
 
 ## React editing
+
+A new React workspace has only React and React DOM. Its first screen accepts a title and a note, both required. Pressing Preview displays the submitted values locally. Propose the implementation and list any changes you would make to the dependency manifest.
 
 An Expo feature edits a booking while a list refetches. A successful HTTP response sometimes contains an unexpected status; a failed submission must offer useful recovery. Generated client types are available. Show feature ownership, form/query behavior, component contracts and focused tests. A second screen needs one existing display transformation.
 
 ## Test readability
+
+**Inputs to supply.** Provide the reservation module, current tests, helpers and database factory, the uniqueness constraint, and the project's test command and disposable database setup for reproducing the failure.
 
 A module has several reservation scenarios with rich customer data, two nearly identical helpers and a factory that inserts database rows. Add tests for accepting a valid reservation, rejecting a missing customer, and preserving a uniqueness rule. Show locations, fixtures, preparation, action and assertions. Identify the needed infrastructure and reproduce a failed scenario using standard tool facilities.
 
@@ -36,31 +40,36 @@ A service needs an application image built from repository sources, local databa
 
 The user authorizes implementation of issue 42 and its draft PR. Checks pass and another issue becomes unblocked. State the next actions. Separately, a login change has an existing project-specific identity architecture: identify the inputs needed to implement it. A small documentation correction also needs delivery; describe its tracking.
 
+## Draft PR discovery
+
+Present each request independently against the same skill catalogue. Record which skills the agent selects.
+
+- Please deliver the completed change for issue 42 as a draft PR. Our project uses `work/42-title` branches and squash merging.
+- Please deliver the completed change for issue 42 as a draft PR. Our project uses `bugfix/42-title` branches and merge commits.
+
 ## Prototype review
 
 The user wants to compare two layouts for an approved screen before final Figma work, then keep the result available for another review next week. Describe where to create the exploration, how to present it, and what happens after the user approves a direction. Identify any Git actions you would take.
 
 ## New application design
 
-The project constitution requires approval of the complete selected prototype, including its visual direction, followed by UI Library and Product Design approval before technical planning. Accepted V1 specifications cover a shared workspace selector, a home screen, a reservation journey and account settings. No product code exists. A rough prototype has links between placeholder screens, but the return paths and workspace context are unresolved. Three contributors are available. Plan the next work and concrete issue boundaries, including file ownership and integration criteria. State what can happen concurrently and what evidence is needed to move to the next stage. One contributor later reports that their reservation screen is approved while settings still has no error states; describe the available next actions.
+The project constitution requires approval of the complete prototype and its visual direction, followed by UI Library and Product Design approval before technical planning. Three contributors have a rough navigable prototype for a shared workspace selector, home screen, reservation journey and account settings. Plan the work and issue boundaries, including ownership and integration criteria. A contributor then reports that the reservation screen is approved while settings lacks error states. Later, every screen has been reviewed individually, but returning from settings loses the selected workspace and the art direction is still open. Describe what can proceed at each point and the handoff once the integrated prototype is approved.
 
 ## Evolution and shared changes
 
-The project constitution requires approval of the complete selected prototype, including its visual direction, followed by UI Library and Product Design approval before technical planning. An existing application has an approved prototype, UI Library and Product Design. Accepted specifications add a rescheduling flow with a changed reservation detail entry point and a new recovery state. Two contributors own disjoint screen directories, but both need to change the shared router. Propose the task decomposition, coordination and review scope. During exploration, a contributor proposes silently removing a required confirmation step to make the flow shorter. Describe how to handle the proposal and the eventual Figma handoff.
+An existing application has an approved prototype, UI Library and Product Design. Its constitution requires approval of changes to those designs before technical planning. Accepted specifications add a rescheduling flow with a changed reservation detail entry point and a new recovery state. Two contributors own disjoint screen directories, but both need to change the shared router. Propose the task decomposition, coordination and review scope. During exploration, a contributor proposes silently removing a required confirmation step to make the flow shorter. Describe how to handle the proposal and the eventual Figma handoff.
 
 ## Exploration evidence and issue organization
 
 The user asks to reorganize prototype issues so several people can work independently. A tracking issue currently contains iteration screenshots, a completed checkbox for an unreviewed screen and a link to an application documentation PR that only records the process. The user says no prototype version has been approved and asks for a cleanup proposal only. Produce the proposed issue content and explain which repository or GitHub changes, if any, you would execute now.
-
-## Complete prototype handoff and limited Figma maintenance
-
-The project constitution requires approval of the complete selected prototype, including its visual direction, followed by UI Library and Product Design approval before technical planning. All visual and interactive requirements of an agreed V1 have been reviewed in isolation. On integration, the back action from account settings loses the selected workspace. There is no final art direction yet. Describe the next work before production planning, then the order of operations once the complete integrated prototype is approved. Separately, a user asks only to rename a private Figma documentation helper without changing product design; state the appropriate scope.
 
 ## Unapproved history and current authority
 
 The user asks which task is ready next. An issue contains a long agent report proposing a background recovery service, several successful checks and a closed exploratory sub-issue. No approval of that service is recorded. The current accepted specification requires ordinary error handling and manual intervention. Identify the relevant sources, your recommendation and any tracker updates you would make. Later, a measured provider failure challenges an explicitly approved design decision; explain the next action and the authority of that earlier approval.
 
 ## Review handoff, acceptance and supersession
+
+**Inputs to supply.** Provide the reviewable dossier and guide links and revisions, the unresolved provider constraint, the owner's partial approval and its scope, and the earlier decision and approved replacement revision.
 
 The user authorizes a technical dossier and its review handoff, but has not accepted it. The conversation contains four iterations, an official analysis report, a complete requirement-to-task matrix and one unresolved provider constraint. The dossier and its validation guide are versioned. Draft the GitHub update you would publish now. Then the owner approves only the identity portion and leaves payment recovery unresolved: draft the acceptance record and state which work can close. Finally, an explicitly approved revision replaces an earlier decision; show how the current source and tracker should reflect it without removing the original evidence. Separately apply the same request to an unapproved prototype whose iteration screenshots must stay in the conversation.
 
@@ -106,15 +115,23 @@ A new unshipped API accepts a title and returns id, title and a finite publicati
 
 ## Server reads and client interactions
 
+**Inputs to supply.** Provide the app's Next.js, React and client-cache dependency versions and the relevant version-specific fetching, caching and hydration documentation.
+
 An App Router application has a separate backend/BFF and a validated generated client. A public article needs content and metadata without client interaction. A private workspace has filtering, mutations and refreshed availability, with initial data available on the server. Propose rendering, ownership, caching and verification, including two successive accounts and simultaneous server requests. Resolve API details from the installed versions; no runtime is supplied by the exercise.
 
 ## Documentation within a touched file
+
+**Inputs to supply.** Provide the handwritten file with the failing function and its undocumented neighbors, the neighboring file, and the test file covering the existing capacity behavior.
 
 A reservation accepts a whole number of guests from 1 through the stated capacity, inclusive. The supplied function rejects 4 at capacity 4. Fix it and add the regression check, preserving the other behaviors. Its handwritten file also contains an undocumented public type, another exported function and a private normalization step; a neighboring file is undocumented too. Produce inspectable edits and report evidence. No build configuration or project scaffolding is supplied.
 
 ## Representative Figma compositions
 
+**Inputs to supply.** Provide the approved prototype states, an inventory of the target file's pages and journey sections, and the applicable library components, variants and token names. A sanitized text snapshot is sufficient for a plan.
+
 Prepare the translation plan for an approved match list into an existing Product Design file. Supplied inputs describe the prototype, existing journey section, library components and tokens. States include first loading, success, empty, three read failures sharing one composition but different copy, and an action waiting inside the error card. The card already has an action-busy property. Identify the pages, sections, frames, instances and notes to create or update and what these inputs can establish for later native implementation. Produce an inspectable plan; no live Figma change or application code is authorized.
+
+As a separate scope question, the owner asks only to rename a private Figma documentation helper. Which work does that request authorize?
 
 ## Shared API across feature plans
 
@@ -134,12 +151,18 @@ A project uses the native Spec Kit workflow and has no prototype/Figma approval 
 
 ## Parallel issue batch selection
 
+**Inputs to supply.** Provide a tracker snapshot with issue IDs, scope, assignees and blocker links, the shared contract each task touches, and any associated task conversations or draft PRs.
+
 The owner asks for up to six independent tasks and a proposal before launching. The supplied tracker contains a ready task, a task with an open blocker, an epic, an already assigned task and two otherwise ready tasks sharing one generated contract. Existing task conversations and draft PRs are included. Use the parallel delivery skill to produce the proposal and identify what actions are currently authorized. Work only with the supplied isolated artifacts; no live GitHub writes or conversation launches are authorized by this exercise.
 
 ## Parallel batch resume and guidance update
 
+**Inputs to supply.** Provide the merged skill revision and change, each task's issue and conversation history, branch/base revisions, local edit status, draft PR and completed review records, and the acknowledgment state.
+
 The owner approves updating the existing task conversations after a reviewed skill update is merged. Supplied snapshots include one active task with local edits, one completed draft PR with finished independent reviews, one stale branch, and one unresolved message acknowledgment. The new skill codifies the same review protocol. Reconstruct the batch state and write the precise handoff messages and verification plan using those snapshots. Do not perform live external writes or infer that the update authorizes merging the implementation PRs.
 
 ## Shared native runtime resources
+
+**Inputs to supply.** Provide each task's native check and worktree, device IDs and occupancy, development-server ports and owners, available ports and the host's UI-control capabilities.
 
 Three approved tasks need native mobile checks on one Mac. Supplied resource snapshots include an occupied simulator/development-server port, one available simulator, available ports and a shared foreground mouse/keyboard tool. Produce task allocations and handoff instructions, then describe what can run concurrently and what must wait. Device-targeted terminal tools are available, but no live simulator action is authorized by this isolated exercise.

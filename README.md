@@ -2,7 +2,7 @@
 
 Nineteen reusable skills for design, development and delivery. Each folder is independent and contains its own instructions and any conditional references. Copy only the skills a project needs; they do not depend on a central router or another skill's files.
 
-These are personal engineering conventions informed by framework documentation, not a claim that every community prescribes one architecture. The target choices include feature-first Java/React, service-owned Java decisions and transactions, React Hook Form/Zod, semantic StyleSheet styling for native, and generated contracts. Comparable needs follow recognizable project patterns; extra layers and representations require an actual responsibility. An existing application is not migrated merely because the skills are installed. Python guidance targets new projects with hybrid use cases, immutable internal values, explicit mapping, declared input conversions, strict typing and Pydantic Settings; web frameworks and ORMs remain project decisions. Conditional references and focused illustrative fragments clarify these conventions without distributing an example application, pinned demonstration toolchain or reusable scaffold.
+Each skill describes its own tools and personal engineering conventions. Read its `SKILL.md` to decide whether those choices fit your project. Adopting a different tool or architecture is a separate project decision.
 
 ## Catalogue
 
@@ -13,7 +13,7 @@ These are personal engineering conventions informed by framework documentation, 
 | [react-feature-architecture](skills/react-feature-architecture/SKILL.md) | Shared React feature, state, form and effect ownership                                     |
 | [openapi-codegen](skills/openapi-codegen/SKILL.md)                       | Source-first REST contracts, generators and response validation                            |
 | [liquibase-schema](skills/liquibase-schema/SKILL.md)                     | Baseline posture, durable invariants and schema evolution                                  |
-| [github-delivery](skills/github-delivery/SKILL.md)                       | Issues, topic branches, draft PRs and human-directed merges                                |
+| [github-delivery](skills/github-delivery/SKILL.md)                       | Draft PRs on issue-linked `feature/`, `bugfix/` or `tech/` branches and human-requested merge commits |
 | [parallel-issue-delivery](skills/parallel-issue-delivery/SKILL.md) | Explicit parallel issue batches, isolated worktrees and fresh-context reviews |
 | [figma-design-governance](skills/figma-design-governance/SKILL.md)       | Library/screen ownership and approved design evidence                                      |
 | [code-documentation](skills/code-documentation/SKILL.md)                 | Useful Java, Python and TypeScript contracts                                               |
@@ -32,7 +32,7 @@ These are personal engineering conventions informed by framework documentation, 
 
 1. Get the current reviewed `main` branch of this repository.
 2. Copy each selected **complete** `skills/<name>` folder into the project's `.agents/skills/<name>`. For an update, replace that selected folder completely so obsolete references do not remain; review any local differences before replacing it.
-3. Review and commit the ordinary Git diff in the project. Keep project-specific authority, paths, commands and design-file links in its existing `AGENTS.md`, manifests and documentation. No rewriting of the portable skill is needed.
+3. Review and commit the diff in the project. Keep project-specific decisions, paths, commands and design links in the project's usual documentation or configuration.
 
 For example, from a clone on `main`, a first copy can be as simple as:
 
@@ -42,20 +42,10 @@ cp -R skills/java-spring /path/to/project/.agents/skills/
 
 The destination skills directory must already exist. The example is a first copy, not a command to merge an update into an existing folder. There is no installer, required release/tag, profile or synchronization service. Projects update when the owner chooses, and Git records the installed contents. Improve a personal skill here, merge its review, then copy that folder to the projects that use it. Do not silently overwrite local work.
 
-A project can select the common backend/contracts/delivery skills plus the framework/test skills it actually uses. Do not install web skills in a native-only project or ingestion policies into a simple utility merely to complete a bundle. `liquibase-schema` does not convert an existing Flyway project.
-
-## Repository guidance and official skills
-
-Authentication follows each project’s accepted requirements and applicable technical plans. Route identity, session and authorization work to those owners from `AGENTS.md`; no separate architecture document or portable authentication profile is required.
-
-Keep `AGENTS.md` short: product/spec authority, repository map and commands, validation/reporting requirements, and task-based skill selection. Apply `code-documentation` to non-obvious contracts, reasons and effects, correcting comments affected by the change; touching a file does not require documenting its unchanged members. Use the relevant language/test skills. Apply `proportionate-design` when requirements or implementation add behavior, state, safeguards or custom mechanisms; assess necessity from the first addition and during ordinary review. Keep routine choices autonomous without a separate design review. When Spec Kit is installed, use its official procedures and artifacts for specification, technical planning and verification. Personal skills contribute scoped expertise without imposing a documentation catalogue or an additional architecture phase. Project-specific prototype/Figma sequencing belongs in the project constitution and is checked by the official workflow, not prescribed by this pack. Consult the official documentation for the installed Spec Kit version before changing its method; use supported customization mechanisms only for an accepted need. Ordinary coding tasks use their focused language and framework skills without a mandatory design review. An installed skill is neither authorization for unrelated changes nor proof that existing code complies.
-
-Keep official Spec Kit, Karpathy and shadcn skills intact when already present. Official Nx skills come directly from [nrwl/nx-ai-agents-config](https://github.com/nrwl/nx-ai-agents-config), with their complete folders and license, not from this personal pack. Verify the current [Nx catalogue](https://nx.dev/.well-known/agent-skills/index.json) at update time. The verified catalogue currently includes `link-workspace-packages`, `monitor-ci`, `nx-generate`, `nx-import`, `nx-plugins`, `nx-run-tasks` and `nx-workspace`.
-
-Copying Nx skills does not enable Nx Cloud, install MCP, change framework versions or rewrite workspace instructions. Some capabilities need unavailable services/tools; report that boundary rather than provisioning them implicitly. Retain the upstream license alongside the copied skills without changing their content.
+Limit updates to the folders you selected. Preserve other installed skills and their licenses.
 
 ## Evaluation
 
-[Scenario prompts](evaluations/scenarios.md) cover representative architecture, runtime and delivery decisions. Give an evaluator the request, selected skills and minimum raw context without the expected answer. Use a disposable directory, inspect actual outputs, and record missing build/runtime proof. Replay targeted scenarios when a material policy change warrants it, not on every documentation edit. Keep them here, outside project installations. These exercises complement structural validation; they do not certify an application's behavior or replace its tests. Measuring improvement requires comparable with/without-skill runs using the same task and raw context; a successful exercise alone makes no efficacy claim.
+[Maintenance scenarios](evaluations/scenarios.md) stay outside project installations. Choose a case that exercises the decision being changed. The Python replay includes its raw inputs. Design questions can be answered from the prompt, and exercises that need a source tree or snapshots list what to supply. Follow the evaluation notes to test skill selection or compare outputs on the same task.
 
 No license is selected for the personal content at this time. Existing third-party license terms remain applicable to their own material.
